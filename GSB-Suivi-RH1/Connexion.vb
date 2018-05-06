@@ -4,7 +4,14 @@
         Dim username As String = Me.TextBoxUsername.Text
         Dim password As String = Me.TextBoxPassword.Text
 
-        General.BDD.query("SELECT * FROM MembreRessourceHumaine WHERE nomUtilisateur='" & username & "' AND motDePasse='" & password & "';")
+        Dim reader As System.Data.Odbc.OdbcDataReader = General.BDD.query("SELECT * FROM MembreRessourceHumaine WHERE nomUtilisateur='" & username & "' AND motDePasse='" & password & "' LIMIT 1;")
+        If Not (reader.HasRows) Then
+            MessageBox.Show("Nom d'utilisateur ou mot de passe incorect.")
+        Else
+            Dim CRUDFormationInstance As CRUDFormation = New CRUDFormation()
+            CRUDFormationInstance.Show()
+            Me.Close()
+        End If
     End Sub
 
 End Class

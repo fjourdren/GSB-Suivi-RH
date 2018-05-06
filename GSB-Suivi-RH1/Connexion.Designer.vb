@@ -22,12 +22,13 @@ Partial Class Connexion
     'Ne la modifiez pas à l'aide de l'éditeur de code.
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
+        Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(Connexion))
         Me.loginBox = New System.Windows.Forms.GroupBox()
         Me.btnLogin = New System.Windows.Forms.Button()
-        Me.TextBoxPassword = New System.Windows.Forms.TextBox()
-        Me.TextBoxUsername = New System.Windows.Forms.TextBox()
-        Me.UsernameLabel = New System.Windows.Forms.Label()
         Me.PasswordLabel = New System.Windows.Forms.Label()
+        Me.TextBoxUsername = New System.Windows.Forms.TextBox()
+        Me.TextBoxPassword = New System.Windows.Forms.TextBox()
+        Me.UsernameLabel = New System.Windows.Forms.Label()
         Me.loginBox.SuspendLayout()
         Me.SuspendLayout()
         '
@@ -54,12 +55,14 @@ Partial Class Connexion
         Me.btnLogin.Text = "Connexion"
         Me.btnLogin.UseVisualStyleBackColor = True
         '
-        'TextBoxPassword
+        'PasswordLabel
         '
-        Me.TextBoxPassword.Location = New System.Drawing.Point(102, 46)
-        Me.TextBoxPassword.Name = "TextBoxPassword"
-        Me.TextBoxPassword.Size = New System.Drawing.Size(159, 20)
-        Me.TextBoxPassword.TabIndex = 2
+        Me.PasswordLabel.AutoSize = True
+        Me.PasswordLabel.Location = New System.Drawing.Point(6, 46)
+        Me.PasswordLabel.Name = "PasswordLabel"
+        Me.PasswordLabel.Size = New System.Drawing.Size(78, 13)
+        Me.PasswordLabel.TabIndex = 5
+        Me.PasswordLabel.Text = "Mot de Passe :"
         '
         'TextBoxUsername
         '
@@ -67,6 +70,14 @@ Partial Class Connexion
         Me.TextBoxUsername.Name = "TextBoxUsername"
         Me.TextBoxUsername.Size = New System.Drawing.Size(159, 20)
         Me.TextBoxUsername.TabIndex = 3
+        '
+        'TextBoxPassword
+        '
+        Me.TextBoxPassword.Location = New System.Drawing.Point(102, 46)
+        Me.TextBoxPassword.Name = "TextBoxPassword"
+        Me.TextBoxPassword.PasswordChar = Global.Microsoft.VisualBasic.ChrW(42)
+        Me.TextBoxPassword.Size = New System.Drawing.Size(159, 20)
+        Me.TextBoxPassword.TabIndex = 2
         '
         'UsernameLabel
         '
@@ -77,15 +88,6 @@ Partial Class Connexion
         Me.UsernameLabel.TabIndex = 4
         Me.UsernameLabel.Text = "Nom d'utilisateur :"
         '
-        'PasswordLabel
-        '
-        Me.PasswordLabel.AutoSize = True
-        Me.PasswordLabel.Location = New System.Drawing.Point(6, 46)
-        Me.PasswordLabel.Name = "PasswordLabel"
-        Me.PasswordLabel.Size = New System.Drawing.Size(78, 13)
-        Me.PasswordLabel.TabIndex = 5
-        Me.PasswordLabel.Text = "Mot de Passe :"
-        '
         'Connexion
         '
         Me.AcceptButton = Me.btnLogin
@@ -94,6 +96,7 @@ Partial Class Connexion
         Me.ClientSize = New System.Drawing.Size(295, 128)
         Me.Controls.Add(Me.loginBox)
         Me.Cursor = System.Windows.Forms.Cursors.Default
+        Me.Icon = CType(resources.GetObject("$this.Icon"), System.Drawing.Icon)
         Me.Location = New System.Drawing.Point(305, 162)
         Me.MaximizeBox = False
         Me.MaximumSize = New System.Drawing.Size(311, 167)
