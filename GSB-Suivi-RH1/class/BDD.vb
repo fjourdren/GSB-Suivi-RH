@@ -7,10 +7,14 @@
 
     Public Sub connect()
         Dim connectionString As String = Config.ODBCConnectionName
-        Dim conn As OdbcConnection = New OdbcConnection(connectionString)
-        conn.Open()
+        Try
+            Dim conn As OdbcConnection = New OdbcConnection(connectionString)
+            conn.Open()
 
-        Me.connection = conn
+            Me.connection = conn
+        Catch ex As Exception
+            MessageBox.Show(ex.Message)
+        End Try
     End Sub
 
     Public Sub nonQuery(ByVal sql)
@@ -28,10 +32,11 @@
 
         Try
             Dim myReader As System.Data.Odbc.OdbcDataReader = myCommand.ExecuteReader()
-            While myReader.Read()
-                Debug.WriteLine(myReader.GetString(1))
-                MessageBox.Show(myReader.GetString(1))
-            End While
+
+            'While myReader.Read()
+            '    Debug.WriteLine(myReader.GetString(1))
+            '    MessageBox.Show(myReader.GetString(1))
+            'End While
 
             Return myReader
         Catch ex As Exception
