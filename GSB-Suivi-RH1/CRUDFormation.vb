@@ -9,9 +9,4 @@
         DataGridViewFormation.Refresh()
     End Sub
 
-    Private Sub DéconnexionToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles DéconnexionToolStripMenuItem.Click
-        Dim ConnexionInstance As Connexion = New Connexion()
-        ConnexionInstance.Show()
-        Me.Close()
-    End Sub
 End Class

@@ -8,8 +8,8 @@
         If Not (reader.HasRows) Then
             MessageBox.Show("Nom d'utilisateur ou mot de passe incorect.")
         Else
-            Dim CRUDFormationInstance As CRUDFormation = New CRUDFormation()
-            CRUDFormationInstance.Show()
+            Dim MDIInstance As MDI = New MDI()
+            MDIInstance.Show()
             Me.Close()
         End If
     End Sub
