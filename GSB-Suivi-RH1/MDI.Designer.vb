@@ -29,7 +29,7 @@ Partial Class MDI
         Me.RéseauxSociauxToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.CompétencesToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.CompétencesToolStripMenuItem1 = New System.Windows.Forms.ToolStripMenuItem()
-        Me.CétégoriesDeCompétencesToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.CatégoriesDeCompétencesToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.EntreprisesToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.RégionsToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.DéconnexionToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
@@ -42,7 +42,7 @@ Partial Class MDI
         Me.MenuStrip1.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.PersonnesSuiviesToolStripMenuItem, Me.FormationToolStripMenuItem, Me.RéseauxSociauxToolStripMenuItem, Me.CompétencesToolStripMenuItem, Me.EntreprisesToolStripMenuItem, Me.RégionsToolStripMenuItem, Me.DéconnexionToolStripMenuItem, Me.MembresRessourceHumaineToolStripMenuItem})
         Me.MenuStrip1.Location = New System.Drawing.Point(0, 0)
         Me.MenuStrip1.Name = "MenuStrip1"
-        Me.MenuStrip1.Size = New System.Drawing.Size(800, 24)
+        Me.MenuStrip1.Size = New System.Drawing.Size(876, 24)
         Me.MenuStrip1.TabIndex = 8
         Me.MenuStrip1.Text = "MenuStrip1"
         '
@@ -66,7 +66,7 @@ Partial Class MDI
         '
         'CompétencesToolStripMenuItem
         '
-        Me.CompétencesToolStripMenuItem.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.CompétencesToolStripMenuItem1, Me.CétégoriesDeCompétencesToolStripMenuItem})
+        Me.CompétencesToolStripMenuItem.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.CompétencesToolStripMenuItem1, Me.CatégoriesDeCompétencesToolStripMenuItem})
         Me.CompétencesToolStripMenuItem.Name = "CompétencesToolStripMenuItem"
         Me.CompétencesToolStripMenuItem.Size = New System.Drawing.Size(92, 20)
         Me.CompétencesToolStripMenuItem.Text = "Compétences"
@@ -77,11 +77,11 @@ Partial Class MDI
         Me.CompétencesToolStripMenuItem1.Size = New System.Drawing.Size(222, 22)
         Me.CompétencesToolStripMenuItem1.Text = "Compétences"
         '
-        'CétégoriesDeCompétencesToolStripMenuItem
+        'CatégoriesDeCompétencesToolStripMenuItem
         '
-        Me.CétégoriesDeCompétencesToolStripMenuItem.Name = "CétégoriesDeCompétencesToolStripMenuItem"
-        Me.CétégoriesDeCompétencesToolStripMenuItem.Size = New System.Drawing.Size(222, 22)
-        Me.CétégoriesDeCompétencesToolStripMenuItem.Text = "Cétégories de Compétences"
+        Me.CatégoriesDeCompétencesToolStripMenuItem.Name = "CatégoriesDeCompétencesToolStripMenuItem"
+        Me.CatégoriesDeCompétencesToolStripMenuItem.Size = New System.Drawing.Size(222, 22)
+        Me.CatégoriesDeCompétencesToolStripMenuItem.Text = "Catégories de Compétences"
         '
         'EntreprisesToolStripMenuItem
         '
@@ -113,7 +113,7 @@ Partial Class MDI
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(800, 450)
+        Me.ClientSize = New System.Drawing.Size(876, 450)
         Me.Controls.Add(Me.MenuStrip1)
         Me.Icon = CType(resources.GetObject("$this.Icon"), System.Drawing.Icon)
         Me.IsMdiContainer = True
@@ -133,7 +133,7 @@ Partial Class MDI
     Friend WithEvents RéseauxSociauxToolStripMenuItem As ToolStripMenuItem
     Friend WithEvents CompétencesToolStripMenuItem As ToolStripMenuItem
     Friend WithEvents CompétencesToolStripMenuItem1 As ToolStripMenuItem
-    Friend WithEvents CétégoriesDeCompétencesToolStripMenuItem As ToolStripMenuItem
+    Friend WithEvents CatégoriesDeCompétencesToolStripMenuItem As ToolStripMenuItem
     Friend WithEvents EntreprisesToolStripMenuItem As ToolStripMenuItem
     Friend WithEvents RégionsToolStripMenuItem As ToolStripMenuItem
     Friend WithEvents DéconnexionToolStripMenuItem As ToolStripMenuItem

@@ -1,6 +1,6 @@
-﻿Public Class CRUDFormation
+﻿Public Class CRUDEntreprise
 
-    Dim table As String = "Formation"
+    Dim table As String = "Entreprise"
 
     'events
     Private Sub CRUD_Load(sender As Object, e As EventArgs) Handles MyBase.Load
@@ -24,7 +24,7 @@
 
     'boutons
     Private Sub btnReset_Click(sender As Object, e As EventArgs) Handles btnReset.Click
-        Me.clear() 'clear form
+        Me.clear()
     End Sub
 
     Private Sub btnNew_Click(sender As Object, e As EventArgs) Handles btnNew.Click

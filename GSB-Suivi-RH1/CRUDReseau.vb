@@ -1,6 +1,6 @@
-﻿Public Class CRUDFormation
+﻿Public Class CRUDReseau
 
-    Dim table As String = "Formation"
+    Dim table As String = "Reseau"
 
     'events
     Private Sub CRUD_Load(sender As Object, e As EventArgs) Handles MyBase.Load

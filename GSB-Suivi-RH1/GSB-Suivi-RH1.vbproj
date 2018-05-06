@@ -82,10 +82,52 @@
     <Compile Include="Connexion.vb">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="CRUDCategorie.Designer.vb">
+      <DependentUpon>CRUDCategorie.vb</DependentUpon>
+    </Compile>
+    <Compile Include="CRUDCategorie.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="CRUDCompetence.Designer.vb">
+      <DependentUpon>CRUDCompetence.vb</DependentUpon>
+    </Compile>
+    <Compile Include="CRUDCompetence.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="CRUDEntreprise.Designer.vb">
+      <DependentUpon>CRUDEntreprise.vb</DependentUpon>
+    </Compile>
+    <Compile Include="CRUDEntreprise.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="CRUDFormation.Designer.vb">
       <DependentUpon>CRUDFormation.vb</DependentUpon>
     </Compile>
     <Compile Include="CRUDFormation.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="CRUDMembresRessourceHumaine.Designer.vb">
+      <DependentUpon>CRUDMembresRessourceHumaine.vb</DependentUpon>
+    </Compile>
+    <Compile Include="CRUDMembresRessourceHumaine.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="CRUDPersonneSuivie.Designer.vb">
+      <DependentUpon>CRUDPersonneSuivie.vb</DependentUpon>
+    </Compile>
+    <Compile Include="CRUDPersonneSuivie.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="CRUDRegion.Designer.vb">
+      <DependentUpon>CRUDRegion.vb</DependentUpon>
+    </Compile>
+    <Compile Include="CRUDRegion.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="CRUDReseau.Designer.vb">
+      <DependentUpon>CRUDReseau.vb</DependentUpon>
+    </Compile>
+    <Compile Include="CRUDReseau.vb">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="General.vb" />
@@ -115,8 +157,29 @@
     <EmbeddedResource Include="Connexion.resx">
       <DependentUpon>Connexion.vb</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="CRUDCategorie.resx">
+      <DependentUpon>CRUDCategorie.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="CRUDCompetence.resx">
+      <DependentUpon>CRUDCompetence.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="CRUDEntreprise.resx">
+      <DependentUpon>CRUDEntreprise.vb</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="CRUDFormation.resx">
       <DependentUpon>CRUDFormation.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="CRUDMembresRessourceHumaine.resx">
+      <DependentUpon>CRUDMembresRessourceHumaine.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="CRUDPersonneSuivie.resx">
+      <DependentUpon>CRUDPersonneSuivie.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="CRUDRegion.resx">
+      <DependentUpon>CRUDRegion.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="CRUDReseau.resx">
+      <DependentUpon>CRUDReseau.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="MDI.resx">
       <DependentUpon>MDI.vb</DependentUpon>

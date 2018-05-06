@@ -1,6 +1,5 @@
-﻿Public Class CRUDFormation
-
-    Dim table As String = "Formation"
+﻿Public Class CRUDCategorie
+    Dim table As String = "Categorie"
 
     'events
     Private Sub CRUD_Load(sender As Object, e As EventArgs) Handles MyBase.Load
@@ -14,7 +13,7 @@
         If x >= 0 Then
             Try
                 Me.labelIdentifRender.Text = Me.DataGridView1.Rows(x).Cells(0).Value
-                Me.textBoxName.Text = Me.DataGridView1.Rows(x).Cells(1).Value
+                Me.textBoxLibelle.Text = Me.DataGridView1.Rows(x).Cells(1).Value
             Catch ex As Exception
                 MessageBox.Show("Erreur de chargement des données")
             End Try
@@ -28,7 +27,7 @@
     End Sub
 
     Private Sub btnNew_Click(sender As Object, e As EventArgs) Handles btnNew.Click
-        General.BDD.nonQuery("INSERT INTO " & Me.table & "(nom) VALUES ('" & Me.textBoxName.Text & "');")
+        General.BDD.nonQuery("INSERT INTO " & Me.table & "(libelle) VALUES ('" & Me.textBoxLibelle.Text & "');")
         Me.clear() 'clear form
         Me.loadDataGrid() 'refresh data grid
     End Sub
@@ -36,7 +35,7 @@
     Private Sub btnSave_Click(sender As Object, e As EventArgs) Handles btnSave.Click
         Dim identif As Integer = Me.labelIdentifRender.Text
         If identif > 0 Then
-            General.BDD.nonQuery("UPDATE " & Me.table & " SET nom='" & Me.textBoxName.Text & "' WHERE identif = '" & identif & "';")
+            General.BDD.nonQuery("UPDATE " & Me.table & " SET libelle='" & Me.textBoxLibelle.Text & "' WHERE identif = '" & identif & "';")
             Me.clear() 'clear form
             Me.loadDataGrid() 'refresh data grid
         End If
@@ -65,7 +64,7 @@
 
     Private Sub clear()
         Me.labelIdentifRender.Text = ""
-        Me.textBoxName.Text = ""
+        Me.textBoxLibelle.Text = ""
     End Sub
 
 End Class
