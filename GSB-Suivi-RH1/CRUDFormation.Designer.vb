@@ -27,20 +27,8 @@ Partial Class CRUDFormation
         Me.TextBox1 = New System.Windows.Forms.TextBox()
         Me.GroupBox1 = New System.Windows.Forms.GroupBox()
         Me.DataGridViewFormation = New System.Windows.Forms.DataGridView()
-        Me.MenuStrip1 = New System.Windows.Forms.MenuStrip()
-        Me.PersonnesSuiviesToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
-        Me.FormationToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
-        Me.RéseauxSociauxToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
-        Me.CompétencesToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
-        Me.CompétencesToolStripMenuItem1 = New System.Windows.Forms.ToolStripMenuItem()
-        Me.CétégoriesDeCompétencesToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
-        Me.EntreprisesToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
-        Me.RégionsToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
-        Me.DéconnexionToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
-        Me.MembresRessourceHumaineToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.GroupBox1.SuspendLayout()
         CType(Me.DataGridViewFormation, System.ComponentModel.ISupportInitialize).BeginInit()
-        Me.MenuStrip1.SuspendLayout()
         Me.SuspendLayout()
         '
         'Button1
@@ -78,78 +66,6 @@ Partial Class CRUDFormation
         Me.DataGridViewFormation.Size = New System.Drawing.Size(826, 351)
         Me.DataGridViewFormation.TabIndex = 3
         '
-        'MenuStrip1
-        '
-        Me.MenuStrip1.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.PersonnesSuiviesToolStripMenuItem, Me.FormationToolStripMenuItem, Me.RéseauxSociauxToolStripMenuItem, Me.CompétencesToolStripMenuItem, Me.EntreprisesToolStripMenuItem, Me.RégionsToolStripMenuItem, Me.DéconnexionToolStripMenuItem, Me.MembresRessourceHumaineToolStripMenuItem})
-        Me.MenuStrip1.Location = New System.Drawing.Point(0, 0)
-        Me.MenuStrip1.Name = "MenuStrip1"
-        Me.MenuStrip1.Size = New System.Drawing.Size(1040, 24)
-        Me.MenuStrip1.TabIndex = 4
-        Me.MenuStrip1.Text = "MenuStrip1"
-        '
-        'PersonnesSuiviesToolStripMenuItem
-        '
-        Me.PersonnesSuiviesToolStripMenuItem.Name = "PersonnesSuiviesToolStripMenuItem"
-        Me.PersonnesSuiviesToolStripMenuItem.Size = New System.Drawing.Size(111, 20)
-        Me.PersonnesSuiviesToolStripMenuItem.Text = "Personnes suivies"
-        '
-        'FormationToolStripMenuItem
-        '
-        Me.FormationToolStripMenuItem.Name = "FormationToolStripMenuItem"
-        Me.FormationToolStripMenuItem.Size = New System.Drawing.Size(79, 20)
-        Me.FormationToolStripMenuItem.Text = "Formations"
-        '
-        'RéseauxSociauxToolStripMenuItem
-        '
-        Me.RéseauxSociauxToolStripMenuItem.Name = "RéseauxSociauxToolStripMenuItem"
-        Me.RéseauxSociauxToolStripMenuItem.Size = New System.Drawing.Size(104, 20)
-        Me.RéseauxSociauxToolStripMenuItem.Text = "Réseaux Sociaux"
-        '
-        'CompétencesToolStripMenuItem
-        '
-        Me.CompétencesToolStripMenuItem.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.CompétencesToolStripMenuItem1, Me.CétégoriesDeCompétencesToolStripMenuItem})
-        Me.CompétencesToolStripMenuItem.Name = "CompétencesToolStripMenuItem"
-        Me.CompétencesToolStripMenuItem.Size = New System.Drawing.Size(92, 20)
-        Me.CompétencesToolStripMenuItem.Text = "Compétences"
-        '
-        'CompétencesToolStripMenuItem1
-        '
-        Me.CompétencesToolStripMenuItem1.Name = "CompétencesToolStripMenuItem1"
-        Me.CompétencesToolStripMenuItem1.Size = New System.Drawing.Size(222, 22)
-        Me.CompétencesToolStripMenuItem1.Text = "Compétences"
-        '
-        'CétégoriesDeCompétencesToolStripMenuItem
-        '
-        Me.CétégoriesDeCompétencesToolStripMenuItem.Name = "CétégoriesDeCompétencesToolStripMenuItem"
-        Me.CétégoriesDeCompétencesToolStripMenuItem.Size = New System.Drawing.Size(222, 22)
-        Me.CétégoriesDeCompétencesToolStripMenuItem.Text = "Cétégories de Compétences"
-        '
-        'EntreprisesToolStripMenuItem
-        '
-        Me.EntreprisesToolStripMenuItem.Name = "EntreprisesToolStripMenuItem"
-        Me.EntreprisesToolStripMenuItem.Size = New System.Drawing.Size(76, 20)
-        Me.EntreprisesToolStripMenuItem.Text = "Entreprises"
-        '
-        'RégionsToolStripMenuItem
-        '
-        Me.RégionsToolStripMenuItem.Name = "RégionsToolStripMenuItem"
-        Me.RégionsToolStripMenuItem.Size = New System.Drawing.Size(61, 20)
-        Me.RégionsToolStripMenuItem.Text = "Régions"
-        '
-        'DéconnexionToolStripMenuItem
-        '
-        Me.DéconnexionToolStripMenuItem.Alignment = System.Windows.Forms.ToolStripItemAlignment.Right
-        Me.DéconnexionToolStripMenuItem.Name = "DéconnexionToolStripMenuItem"
-        Me.DéconnexionToolStripMenuItem.RightToLeft = System.Windows.Forms.RightToLeft.No
-        Me.DéconnexionToolStripMenuItem.Size = New System.Drawing.Size(88, 20)
-        Me.DéconnexionToolStripMenuItem.Text = "Déconnexion"
-        '
-        'MembresRessourceHumaineToolStripMenuItem
-        '
-        Me.MembresRessourceHumaineToolStripMenuItem.Name = "MembresRessourceHumaineToolStripMenuItem"
-        Me.MembresRessourceHumaineToolStripMenuItem.Size = New System.Drawing.Size(187, 20)
-        Me.MembresRessourceHumaineToolStripMenuItem.Text = "Membres Ressources Humaines"
-        '
         'CRUDFormation
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
@@ -157,18 +73,13 @@ Partial Class CRUDFormation
         Me.ClientSize = New System.Drawing.Size(1040, 598)
         Me.Controls.Add(Me.DataGridViewFormation)
         Me.Controls.Add(Me.GroupBox1)
-        Me.Controls.Add(Me.MenuStrip1)
         Me.Icon = CType(resources.GetObject("$this.Icon"), System.Drawing.Icon)
-        Me.MainMenuStrip = Me.MenuStrip1
         Me.Name = "CRUDFormation"
-        Me.Text = "GSB Profilage Réseaux Sociaux"
+        Me.Text = "Gestion des formations"
         Me.GroupBox1.ResumeLayout(False)
         Me.GroupBox1.PerformLayout()
         CType(Me.DataGridViewFormation, System.ComponentModel.ISupportInitialize).EndInit()
-        Me.MenuStrip1.ResumeLayout(False)
-        Me.MenuStrip1.PerformLayout()
         Me.ResumeLayout(False)
-        Me.PerformLayout()
 
     End Sub
 
@@ -176,15 +87,4 @@ Partial Class CRUDFormation
     Friend WithEvents TextBox1 As TextBox
     Friend WithEvents GroupBox1 As GroupBox
     Friend WithEvents DataGridViewFormation As DataGridView
-    Friend WithEvents MenuStrip1 As MenuStrip
-    Friend WithEvents PersonnesSuiviesToolStripMenuItem As ToolStripMenuItem
-    Friend WithEvents FormationToolStripMenuItem As ToolStripMenuItem
-    Friend WithEvents RéseauxSociauxToolStripMenuItem As ToolStripMenuItem
-    Friend WithEvents CompétencesToolStripMenuItem As ToolStripMenuItem
-    Friend WithEvents CompétencesToolStripMenuItem1 As ToolStripMenuItem
-    Friend WithEvents CétégoriesDeCompétencesToolStripMenuItem As ToolStripMenuItem
-    Friend WithEvents EntreprisesToolStripMenuItem As ToolStripMenuItem
-    Friend WithEvents RégionsToolStripMenuItem As ToolStripMenuItem
-    Friend WithEvents DéconnexionToolStripMenuItem As ToolStripMenuItem
-    Friend WithEvents MembresRessourceHumaineToolStripMenuItem As ToolStripMenuItem
 End Class
