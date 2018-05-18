@@ -25,15 +25,15 @@ Partial Class CRUDReseau
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(CRUDReseau))
         Me.textBoxName = New System.Windows.Forms.TextBox()
         Me.GroupBox1 = New System.Windows.Forms.GroupBox()
-        Me.labelIdentifRender = New System.Windows.Forms.Label()
-        Me.lebelIdentifRender = New System.Windows.Forms.Label()
-        Me.labelIdentif = New System.Windows.Forms.Label()
-        Me.labelName = New System.Windows.Forms.Label()
-        Me.btnDelete = New System.Windows.Forms.Button()
-        Me.btnSave = New System.Windows.Forms.Button()
-        Me.btnNew = New System.Windows.Forms.Button()
-        Me.DataGridView1 = New System.Windows.Forms.DataGridView()
         Me.btnReset = New System.Windows.Forms.Button()
+        Me.labelIdentifRender = New System.Windows.Forms.Label()
+        Me.btnDelete = New System.Windows.Forms.Button()
+        Me.lebelIdentifRender = New System.Windows.Forms.Label()
+        Me.btnSave = New System.Windows.Forms.Button()
+        Me.labelIdentif = New System.Windows.Forms.Label()
+        Me.btnNew = New System.Windows.Forms.Button()
+        Me.labelName = New System.Windows.Forms.Label()
+        Me.DataGridView1 = New System.Windows.Forms.DataGridView()
         Me.GroupBox1.SuspendLayout()
         CType(Me.DataGridView1, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
@@ -63,6 +63,15 @@ Partial Class CRUDReseau
         Me.GroupBox1.TabStop = False
         Me.GroupBox1.Text = "Details"
         '
+        'btnReset
+        '
+        Me.btnReset.Location = New System.Drawing.Point(533, 14)
+        Me.btnReset.Name = "btnReset"
+        Me.btnReset.Size = New System.Drawing.Size(88, 23)
+        Me.btnReset.TabIndex = 14
+        Me.btnReset.Text = "Réinitialiser"
+        Me.btnReset.UseVisualStyleBackColor = True
+        '
         'labelIdentifRender
         '
         Me.labelIdentifRender.AutoSize = True
@@ -72,6 +81,15 @@ Partial Class CRUDReseau
         Me.labelIdentifRender.TabIndex = 5
         Me.labelIdentifRender.Text = "Label1"
         '
+        'btnDelete
+        '
+        Me.btnDelete.Location = New System.Drawing.Point(533, 103)
+        Me.btnDelete.Name = "btnDelete"
+        Me.btnDelete.Size = New System.Drawing.Size(88, 23)
+        Me.btnDelete.TabIndex = 11
+        Me.btnDelete.Text = "Supprimer"
+        Me.btnDelete.UseVisualStyleBackColor = True
+        '
         'lebelIdentifRender
         '
         Me.lebelIdentifRender.AutoSize = True
@@ -79,6 +97,15 @@ Partial Class CRUDReseau
         Me.lebelIdentifRender.Name = "lebelIdentifRender"
         Me.lebelIdentifRender.Size = New System.Drawing.Size(0, 13)
         Me.lebelIdentifRender.TabIndex = 4
+        '
+        'btnSave
+        '
+        Me.btnSave.Location = New System.Drawing.Point(533, 73)
+        Me.btnSave.Name = "btnSave"
+        Me.btnSave.Size = New System.Drawing.Size(88, 23)
+        Me.btnSave.TabIndex = 10
+        Me.btnSave.Text = "Sauvegarder"
+        Me.btnSave.UseVisualStyleBackColor = True
         '
         'labelIdentif
         '
@@ -89,6 +116,15 @@ Partial Class CRUDReseau
         Me.labelIdentif.TabIndex = 3
         Me.labelIdentif.Text = "ID :"
         '
+        'btnNew
+        '
+        Me.btnNew.Location = New System.Drawing.Point(533, 43)
+        Me.btnNew.Name = "btnNew"
+        Me.btnNew.Size = New System.Drawing.Size(88, 23)
+        Me.btnNew.TabIndex = 9
+        Me.btnNew.Text = "Nouveau"
+        Me.btnNew.UseVisualStyleBackColor = True
+        '
         'labelName
         '
         Me.labelName.AutoSize = True
@@ -97,33 +133,6 @@ Partial Class CRUDReseau
         Me.labelName.Size = New System.Drawing.Size(35, 13)
         Me.labelName.TabIndex = 2
         Me.labelName.Text = "Nom :"
-        '
-        'btnDelete
-        '
-        Me.btnDelete.Location = New System.Drawing.Point(546, 103)
-        Me.btnDelete.Name = "btnDelete"
-        Me.btnDelete.Size = New System.Drawing.Size(75, 23)
-        Me.btnDelete.TabIndex = 11
-        Me.btnDelete.Text = "Supprimer"
-        Me.btnDelete.UseVisualStyleBackColor = True
-        '
-        'btnSave
-        '
-        Me.btnSave.Location = New System.Drawing.Point(546, 73)
-        Me.btnSave.Name = "btnSave"
-        Me.btnSave.Size = New System.Drawing.Size(75, 23)
-        Me.btnSave.TabIndex = 10
-        Me.btnSave.Text = "Sauvegarder"
-        Me.btnSave.UseVisualStyleBackColor = True
-        '
-        'btnNew
-        '
-        Me.btnNew.Location = New System.Drawing.Point(546, 43)
-        Me.btnNew.Name = "btnNew"
-        Me.btnNew.Size = New System.Drawing.Size(75, 23)
-        Me.btnNew.TabIndex = 9
-        Me.btnNew.Text = "Nouveau"
-        Me.btnNew.UseVisualStyleBackColor = True
         '
         'DataGridView1
         '
@@ -136,15 +145,6 @@ Partial Class CRUDReseau
         Me.DataGridView1.ReadOnly = True
         Me.DataGridView1.Size = New System.Drawing.Size(628, 279)
         Me.DataGridView1.TabIndex = 8
-        '
-        'btnReset
-        '
-        Me.btnReset.Location = New System.Drawing.Point(546, 14)
-        Me.btnReset.Name = "btnReset"
-        Me.btnReset.Size = New System.Drawing.Size(75, 23)
-        Me.btnReset.TabIndex = 14
-        Me.btnReset.Text = "Réinitialiser"
-        Me.btnReset.UseVisualStyleBackColor = True
         '
         'CRUDReseau
         '

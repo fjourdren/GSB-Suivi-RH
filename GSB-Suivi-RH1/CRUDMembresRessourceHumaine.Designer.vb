@@ -78,9 +78,9 @@ Partial Class CRUDMembresRessourceHumaine
         '
         'btnReset
         '
-        Me.btnReset.Location = New System.Drawing.Point(766, 17)
+        Me.btnReset.Location = New System.Drawing.Point(753, 17)
         Me.btnReset.Name = "btnReset"
-        Me.btnReset.Size = New System.Drawing.Size(75, 23)
+        Me.btnReset.Size = New System.Drawing.Size(88, 23)
         Me.btnReset.TabIndex = 29
         Me.btnReset.Text = "Réinitialiser"
         Me.btnReset.UseVisualStyleBackColor = True
@@ -101,18 +101,18 @@ Partial Class CRUDMembresRessourceHumaine
         '
         'btnDelete
         '
-        Me.btnDelete.Location = New System.Drawing.Point(766, 106)
+        Me.btnDelete.Location = New System.Drawing.Point(753, 106)
         Me.btnDelete.Name = "btnDelete"
-        Me.btnDelete.Size = New System.Drawing.Size(75, 23)
+        Me.btnDelete.Size = New System.Drawing.Size(88, 23)
         Me.btnDelete.TabIndex = 31
         Me.btnDelete.Text = "Supprimer"
         Me.btnDelete.UseVisualStyleBackColor = True
         '
         'btnSave
         '
-        Me.btnSave.Location = New System.Drawing.Point(766, 76)
+        Me.btnSave.Location = New System.Drawing.Point(753, 77)
         Me.btnSave.Name = "btnSave"
-        Me.btnSave.Size = New System.Drawing.Size(75, 23)
+        Me.btnSave.Size = New System.Drawing.Size(88, 23)
         Me.btnSave.TabIndex = 30
         Me.btnSave.Text = "Sauvegarder"
         Me.btnSave.UseVisualStyleBackColor = True
@@ -126,9 +126,9 @@ Partial Class CRUDMembresRessourceHumaine
         '
         'btnNew
         '
-        Me.btnNew.Location = New System.Drawing.Point(766, 46)
+        Me.btnNew.Location = New System.Drawing.Point(753, 46)
         Me.btnNew.Name = "btnNew"
-        Me.btnNew.Size = New System.Drawing.Size(75, 23)
+        Me.btnNew.Size = New System.Drawing.Size(88, 23)
         Me.btnNew.TabIndex = 29
         Me.btnNew.Text = "Nouveau"
         Me.btnNew.UseVisualStyleBackColor = True

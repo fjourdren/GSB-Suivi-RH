@@ -24,16 +24,16 @@ Partial Class CRUDRegion
     Private Sub InitializeComponent()
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(CRUDRegion))
         Me.GroupBox1 = New System.Windows.Forms.GroupBox()
+        Me.btnReset = New System.Windows.Forms.Button()
         Me.labelIdentifRender = New System.Windows.Forms.Label()
+        Me.btnDelete = New System.Windows.Forms.Button()
         Me.lebelIdentifRender = New System.Windows.Forms.Label()
+        Me.btnSave = New System.Windows.Forms.Button()
         Me.labelIdentif = New System.Windows.Forms.Label()
+        Me.btnNew = New System.Windows.Forms.Button()
         Me.labelName = New System.Windows.Forms.Label()
         Me.textBoxName = New System.Windows.Forms.TextBox()
-        Me.btnDelete = New System.Windows.Forms.Button()
-        Me.btnSave = New System.Windows.Forms.Button()
-        Me.btnNew = New System.Windows.Forms.Button()
         Me.DataGridView1 = New System.Windows.Forms.DataGridView()
-        Me.btnReset = New System.Windows.Forms.Button()
         Me.GroupBox1.SuspendLayout()
         CType(Me.DataGridView1, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
@@ -56,6 +56,15 @@ Partial Class CRUDRegion
         Me.GroupBox1.TabStop = False
         Me.GroupBox1.Text = "Details"
         '
+        'btnReset
+        '
+        Me.btnReset.Location = New System.Drawing.Point(533, 14)
+        Me.btnReset.Name = "btnReset"
+        Me.btnReset.Size = New System.Drawing.Size(88, 23)
+        Me.btnReset.TabIndex = 14
+        Me.btnReset.Text = "Réinitialiser"
+        Me.btnReset.UseVisualStyleBackColor = True
+        '
         'labelIdentifRender
         '
         Me.labelIdentifRender.AutoSize = True
@@ -65,6 +74,15 @@ Partial Class CRUDRegion
         Me.labelIdentifRender.TabIndex = 5
         Me.labelIdentifRender.Text = "Label1"
         '
+        'btnDelete
+        '
+        Me.btnDelete.Location = New System.Drawing.Point(533, 101)
+        Me.btnDelete.Name = "btnDelete"
+        Me.btnDelete.Size = New System.Drawing.Size(88, 23)
+        Me.btnDelete.TabIndex = 11
+        Me.btnDelete.Text = "Supprimer"
+        Me.btnDelete.UseVisualStyleBackColor = True
+        '
         'lebelIdentifRender
         '
         Me.lebelIdentifRender.AutoSize = True
@@ -72,6 +90,15 @@ Partial Class CRUDRegion
         Me.lebelIdentifRender.Name = "lebelIdentifRender"
         Me.lebelIdentifRender.Size = New System.Drawing.Size(0, 13)
         Me.lebelIdentifRender.TabIndex = 4
+        '
+        'btnSave
+        '
+        Me.btnSave.Location = New System.Drawing.Point(533, 72)
+        Me.btnSave.Name = "btnSave"
+        Me.btnSave.Size = New System.Drawing.Size(88, 23)
+        Me.btnSave.TabIndex = 10
+        Me.btnSave.Text = "Sauvegarder"
+        Me.btnSave.UseVisualStyleBackColor = True
         '
         'labelIdentif
         '
@@ -81,6 +108,15 @@ Partial Class CRUDRegion
         Me.labelIdentif.Size = New System.Drawing.Size(24, 13)
         Me.labelIdentif.TabIndex = 3
         Me.labelIdentif.Text = "ID :"
+        '
+        'btnNew
+        '
+        Me.btnNew.Location = New System.Drawing.Point(533, 41)
+        Me.btnNew.Name = "btnNew"
+        Me.btnNew.Size = New System.Drawing.Size(88, 23)
+        Me.btnNew.TabIndex = 9
+        Me.btnNew.Text = "Nouveau"
+        Me.btnNew.UseVisualStyleBackColor = True
         '
         'labelName
         '
@@ -98,33 +134,6 @@ Partial Class CRUDRegion
         Me.textBoxName.Size = New System.Drawing.Size(163, 20)
         Me.textBoxName.TabIndex = 1
         '
-        'btnDelete
-        '
-        Me.btnDelete.Location = New System.Drawing.Point(546, 101)
-        Me.btnDelete.Name = "btnDelete"
-        Me.btnDelete.Size = New System.Drawing.Size(75, 23)
-        Me.btnDelete.TabIndex = 11
-        Me.btnDelete.Text = "Supprimer"
-        Me.btnDelete.UseVisualStyleBackColor = True
-        '
-        'btnSave
-        '
-        Me.btnSave.Location = New System.Drawing.Point(546, 71)
-        Me.btnSave.Name = "btnSave"
-        Me.btnSave.Size = New System.Drawing.Size(75, 23)
-        Me.btnSave.TabIndex = 10
-        Me.btnSave.Text = "Sauvegarder"
-        Me.btnSave.UseVisualStyleBackColor = True
-        '
-        'btnNew
-        '
-        Me.btnNew.Location = New System.Drawing.Point(546, 41)
-        Me.btnNew.Name = "btnNew"
-        Me.btnNew.Size = New System.Drawing.Size(75, 23)
-        Me.btnNew.TabIndex = 9
-        Me.btnNew.Text = "Nouveau"
-        Me.btnNew.UseVisualStyleBackColor = True
-        '
         'DataGridView1
         '
         Me.DataGridView1.AllowUserToAddRows = False
@@ -136,15 +145,6 @@ Partial Class CRUDRegion
         Me.DataGridView1.ReadOnly = True
         Me.DataGridView1.Size = New System.Drawing.Size(627, 279)
         Me.DataGridView1.TabIndex = 8
-        '
-        'btnReset
-        '
-        Me.btnReset.Location = New System.Drawing.Point(546, 14)
-        Me.btnReset.Name = "btnReset"
-        Me.btnReset.Size = New System.Drawing.Size(75, 23)
-        Me.btnReset.TabIndex = 14
-        Me.btnReset.Text = "Réinitialiser"
-        Me.btnReset.UseVisualStyleBackColor = True
         '
         'CRUDRegion
         '

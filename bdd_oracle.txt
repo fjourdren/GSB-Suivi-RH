@@ -1,0 +1,309 @@
+﻿CREATE TABLE MembreRessourceHumaine (
+	identif number NOT NULL,
+	nom varchar2(155),
+	prenom varchar2(155),
+	email varchar2(155),
+	nomUtilisateur varchar2(155) NOT NULL,
+	motDePasse varchar2(155) NOT NULL,
+	CONSTRAINT pk_MembreRessourceHumaine PRIMARY KEY (identif)
+);
+
+CREATE SEQUENCE MembreRessourceHum_sequence
+INCREMENT BY 1
+START WITH 1
+MAXVALUE 99999999999
+NOCYCLE;
+
+CREATE OR REPLACE TRIGGER MembreRessourceHum_on_insert
+	BEFORE INSERT ON MembreRessourceHumaine
+	FOR EACH ROW
+BEGIN
+	SELECT MembreRessourceHum_sequence.nextval
+	INTO :new.identif
+	FROM dual;
+END;
+/
+
+
+
+CREATE TABLE Personne (
+	identif number NOT NULL,
+	nom varchar2(155) NOT NULL,
+	prenom varchar2(155) NOT NULL,
+	email varchar2(155),
+	dateDeNaissance DATE,
+	transport varchar2(4000),
+	noteRessourceHumaine varchar2(4000),
+	identif_MembreRessourceHumaine number,
+	identif_Region number,
+	CONSTRAINT pk_Personne PRIMARY KEY (identif)
+);
+
+ALTER TABLE Personne ADD CONSTRAINT fk_MembreRessourceHumaine FOREIGN KEY (identif_MembreRessourceHumaine) REFERENCES MembreRessourceHumaine (identif);
+ALTER TABLE Personne ADD CONSTRAINT fk_Region FOREIGN KEY (identif_Region) REFERENCES Region (identif);
+
+CREATE SEQUENCE Personne_sequence
+INCREMENT BY 1
+START WITH 1
+MAXVALUE 99999999999
+NOCYCLE;
+
+CREATE OR REPLACE TRIGGER Personne_on_insert
+	BEFORE INSERT ON Personne
+	FOR EACH ROW
+BEGIN
+	SELECT Personne_sequence.nextval
+	INTO :new.identif
+	FROM dual;
+END;
+/
+
+
+
+CREATE TABLE Reseau (
+	identif number NOT NULL,
+	nom varchar2(155) NOT NULL,
+	CONSTRAINT pk_Reseau PRIMARY KEY (identif)
+);
+
+CREATE SEQUENCE Reseau_sequence
+INCREMENT BY 1
+START WITH 1
+MAXVALUE 99999999999
+NOCYCLE;
+
+CREATE OR REPLACE TRIGGER Reseau_on_insert
+	BEFORE INSERT ON Reseau
+	FOR EACH ROW
+BEGIN
+	SELECT Reseau_sequence.nextval
+	INTO :new.identif
+	FROM dual;
+END;
+/
+
+
+
+CREATE TABLE Competence (
+	identif number NOT NULL,
+	libelle varchar2(155) NOT NULL,
+	CONSTRAINT pk_Competence PRIMARY KEY (identif)
+);
+
+CREATE SEQUENCE Competence_sequence
+INCREMENT BY 1
+START WITH 1
+MAXVALUE 99999999999
+NOCYCLE;
+
+CREATE OR REPLACE TRIGGER Competence_on_insert
+	BEFORE INSERT ON Competence
+	FOR EACH ROW
+BEGIN
+	SELECT Competence_sequence.nextval
+	INTO :new.identif
+	FROM dual;
+END;
+/
+
+
+
+CREATE TABLE Categorie (
+	identif number NOT NULL,
+	libelle varchar2(155) NOT NULL,
+	CONSTRAINT pk_Categorie PRIMARY KEY (identif)
+);
+
+CREATE SEQUENCE Categorie_sequence
+INCREMENT BY 1
+START WITH 1
+MAXVALUE 99999999999
+NOCYCLE;
+
+CREATE OR REPLACE TRIGGER Categorie_on_insert
+	BEFORE INSERT ON Categorie
+	FOR EACH ROW
+BEGIN
+	SELECT Categorie_sequence.nextval
+	INTO :new.identif
+	FROM dual;
+END;
+/
+
+
+
+CREATE TABLE Entreprise (
+	identif number NOT NULL,
+	nom varchar2(155) NOT NULL,
+	CONSTRAINT pk_Entreprise PRIMARY KEY (identif)
+);
+
+CREATE SEQUENCE Entreprise_sequence
+INCREMENT BY 1
+START WITH 1
+MAXVALUE 99999999999
+NOCYCLE;
+
+CREATE OR REPLACE TRIGGER Entreprise_on_insert
+	BEFORE INSERT ON Entreprise
+	FOR EACH ROW
+BEGIN
+	SELECT Entreprise_sequence.nextval
+	INTO :new.identif
+	FROM dual;
+END;
+/
+
+
+
+CREATE TABLE Formation (
+	identif number NOT NULL,
+	nom varchar2(155) NOT NULL,
+	CONSTRAINT pk_Formation PRIMARY KEY (identif)
+);
+
+CREATE SEQUENCE Formation_sequence
+INCREMENT BY 1
+START WITH 1
+MAXVALUE 99999999999
+NOCYCLE;
+
+CREATE OR REPLACE TRIGGER Formation_on_insert
+	BEFORE INSERT ON Formation
+	FOR EACH ROW
+BEGIN
+	SELECT Formation_sequence.nextval
+	INTO :new.identif
+	FROM dual;
+END;
+/
+
+
+
+CREATE TABLE Region (
+	identif number NOT NULL,
+	nom varchar2(155) NOT NULL,
+	CONSTRAINT pk_Region PRIMARY KEY (identif)
+);
+
+CREATE SEQUENCE Region_sequence
+INCREMENT BY 1
+START WITH 1
+MAXVALUE 99999999999
+NOCYCLE;
+
+CREATE OR REPLACE TRIGGER Region_on_insert
+	BEFORE INSERT ON Region
+	FOR EACH ROW
+BEGIN
+	SELECT Region_sequence.nextval
+	INTO :new.identif
+	FROM dual;
+END;
+/
+
+
+
+
+
+
+
+
+CREATE TABLE Personne_Reseau (
+	identif_Personne number NOT NULL,
+	identif_Reseau number NOT NULL,
+	lien varchar2(155) NOT NULL,
+	CONSTRAINT pk_Personne_Reseau PRIMARY KEY (identif_Personne, identif_Reseau)
+);
+
+ALTER TABLE Personne_Reseau ADD CONSTRAINT fk_Personne FOREIGN KEY (identif_Personne) REFERENCES Personne (identif);
+ALTER TABLE Personne_Reseau ADD CONSTRAINT fk_Reseau FOREIGN KEY (identif_Reseau) REFERENCES Reseau (identif);
+
+
+
+CREATE TABLE Personne_Competence (
+	identif_Personne number NOT NULL,
+	identif_Competence number NOT NULL,
+	CONSTRAINT pk_Personne_Competence PRIMARY KEY (identif_Personne, identif_Competence)
+);
+
+ALTER TABLE Personne_Competence ADD CONSTRAINT fk_Personne FOREIGN KEY (identif_Personne) REFERENCES Personne (identif);
+ALTER TABLE Personne_Competence ADD CONSTRAINT fk_Competence FOREIGN KEY (identif_Competence) REFERENCES Competence (identif);
+
+
+
+CREATE TABLE Competence_Categorie (
+	identif_Competence number NOT NULL,
+	identif_Categorie number NOT NULL,
+	CONSTRAINT pk_Competence_Categorie PRIMARY KEY (identif_Categorie, identif_Competence)
+);
+
+ALTER TABLE Competence_Categorie ADD CONSTRAINT fk_Competence FOREIGN KEY (identif_Competence) REFERENCES Competence (identif);
+ALTER TABLE Competence_Categorie ADD CONSTRAINT fk_Categorie FOREIGN KEY (identif_Categorie) REFERENCES Categorie (identif);
+
+
+
+CREATE TABLE Personne_Entreprise (
+	identif_Personne number NOT NULL,
+	identif_Entreprise number NOT NULL,
+	dateDeb date NOT NULL,
+	dateFin date NOT NULL,
+	CONSTRAINT pk_Personne_Entreprise PRIMARY KEY (identif_Personne, identif_Entreprise)
+);
+
+ALTER TABLE Personne_Entreprise ADD CONSTRAINT fk_Personne FOREIGN KEY (identif_Personne) REFERENCES Personne (identif);
+ALTER TABLE Personne_Entreprise ADD CONSTRAINT fk_Entreprise FOREIGN KEY (identif_Entreprise) REFERENCES Entreprise (identif);
+
+
+
+CREATE TABLE Personne_Formation (
+	identif_Formation number NOT NULL,
+	identif_Personne number NOT NULL,
+	annee varchar2(4) NOT NULL,
+	CONSTRAINT pk_Personne_Formation PRIMARY KEY (identif_Personne, identif_Formation)
+);
+
+ALTER TABLE Personne_Formation ADD CONSTRAINT fk_Personne FOREIGN KEY (identif_Personne) REFERENCES Personne (identif);
+ALTER TABLE Personne_Formation ADD CONSTRAINT fk_Formation FOREIGN KEY (identif_Formation) REFERENCES Formation (identif);
+
+
+
+
+
+
+
+
+INSERT INTO MembreRessourceHumaine (identif, nom, prenom, email, nomUtilisateur, motDePasse) VALUES (1, 'Martin', 'Paul', 'paul.martin@gmail.com', 'pmartin', '123');
+
+
+INSERT INTO region(nom) VALUES ('Alsace');
+INSERT INTO region(nom) VALUES ('Aquitaine');
+INSERT INTO region(nom) VALUES ('Auvergne');
+INSERT INTO region(nom) VALUES ('Basse Normandie');
+INSERT INTO region(nom) VALUES ('Bourgogne');
+INSERT INTO region(nom) VALUES ('Bretagne');
+INSERT INTO region(nom) VALUES ('Centre');
+INSERT INTO region(nom) VALUES ('Champagne Ardenne');
+INSERT INTO region(nom) VALUES ('Corse');
+INSERT INTO region(nom) VALUES ('Franche Comte');
+INSERT INTO region(nom) VALUES ('Haute Normandie');
+INSERT INTO region(nom) VALUES ('Ile de France');
+INSERT INTO region(nom) VALUES ('Languedoc Roussillon');
+INSERT INTO region(nom) VALUES ('Limousin');
+INSERT INTO region(nom) VALUES ('Lorraine');
+INSERT INTO region(nom) VALUES ('Midi-Pyrénées');
+INSERT INTO region(nom) VALUES ('Nord Pas de Calais');
+INSERT INTO region(nom) VALUES ('PACA');
+INSERT INTO region(nom) VALUES ('Pays de la Loire');
+INSERT INTO region(nom) VALUES ('Picardie');
+INSERT INTO region(nom) VALUES ('Poitou Charente');
+INSERT INTO region(nom) VALUES ('Rhone Alpes');
+
+INSERT INTO Reseau(nom) VALUES ('Twitter');
+INSERT INTO Reseau(nom) VALUES ('Facebook');
+INSERT INTO Reseau(nom) VALUES ('Linkedin');
+INSERT INTO Reseau(nom) VALUES ('Google+');
+INSERT INTO Reseau(nom) VALUES ('Site web');
+
+INSERT INTO Formation(nom) VALUES ('BTS SIO : SLAM');
+INSERT INTO Formation(nom) VALUES ('BTS SIO : SISR');

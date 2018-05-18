@@ -34,15 +34,18 @@ Partial Class MDI
         Me.RégionsToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.DéconnexionToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.MembresRessourceHumaineToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.LogicielToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.StatistiqueToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.RechercheToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.MenuStrip1.SuspendLayout()
         Me.SuspendLayout()
         '
         'MenuStrip1
         '
-        Me.MenuStrip1.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.PersonnesSuiviesToolStripMenuItem, Me.FormationToolStripMenuItem, Me.RéseauxSociauxToolStripMenuItem, Me.CompétencesToolStripMenuItem, Me.EntreprisesToolStripMenuItem, Me.RégionsToolStripMenuItem, Me.DéconnexionToolStripMenuItem, Me.MembresRessourceHumaineToolStripMenuItem})
+        Me.MenuStrip1.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.PersonnesSuiviesToolStripMenuItem, Me.FormationToolStripMenuItem, Me.RéseauxSociauxToolStripMenuItem, Me.CompétencesToolStripMenuItem, Me.EntreprisesToolStripMenuItem, Me.RégionsToolStripMenuItem, Me.DéconnexionToolStripMenuItem, Me.MembresRessourceHumaineToolStripMenuItem, Me.LogicielToolStripMenuItem})
         Me.MenuStrip1.Location = New System.Drawing.Point(0, 0)
         Me.MenuStrip1.Name = "MenuStrip1"
-        Me.MenuStrip1.Size = New System.Drawing.Size(876, 24)
+        Me.MenuStrip1.Size = New System.Drawing.Size(1059, 24)
         Me.MenuStrip1.TabIndex = 8
         Me.MenuStrip1.Text = "MenuStrip1"
         '
@@ -109,11 +112,30 @@ Partial Class MDI
         Me.MembresRessourceHumaineToolStripMenuItem.Size = New System.Drawing.Size(187, 20)
         Me.MembresRessourceHumaineToolStripMenuItem.Text = "Membres Ressources Humaines"
         '
+        'LogicielToolStripMenuItem
+        '
+        Me.LogicielToolStripMenuItem.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.StatistiqueToolStripMenuItem, Me.RechercheToolStripMenuItem})
+        Me.LogicielToolStripMenuItem.Name = "LogicielToolStripMenuItem"
+        Me.LogicielToolStripMenuItem.Size = New System.Drawing.Size(60, 20)
+        Me.LogicielToolStripMenuItem.Text = "Logiciel"
+        '
+        'StatistiqueToolStripMenuItem
+        '
+        Me.StatistiqueToolStripMenuItem.Name = "StatistiqueToolStripMenuItem"
+        Me.StatistiqueToolStripMenuItem.Size = New System.Drawing.Size(180, 22)
+        Me.StatistiqueToolStripMenuItem.Text = "Statistiques"
+        '
+        'RechercheToolStripMenuItem
+        '
+        Me.RechercheToolStripMenuItem.Name = "RechercheToolStripMenuItem"
+        Me.RechercheToolStripMenuItem.Size = New System.Drawing.Size(180, 22)
+        Me.RechercheToolStripMenuItem.Text = "Recherche"
+        '
         'MDI
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(876, 450)
+        Me.ClientSize = New System.Drawing.Size(1059, 450)
         Me.Controls.Add(Me.MenuStrip1)
         Me.Icon = CType(resources.GetObject("$this.Icon"), System.Drawing.Icon)
         Me.IsMdiContainer = True
@@ -138,4 +160,7 @@ Partial Class MDI
     Friend WithEvents RégionsToolStripMenuItem As ToolStripMenuItem
     Friend WithEvents DéconnexionToolStripMenuItem As ToolStripMenuItem
     Friend WithEvents MembresRessourceHumaineToolStripMenuItem As ToolStripMenuItem
+    Friend WithEvents LogicielToolStripMenuItem As ToolStripMenuItem
+    Friend WithEvents StatistiqueToolStripMenuItem As ToolStripMenuItem
+    Friend WithEvents RechercheToolStripMenuItem As ToolStripMenuItem
 End Class
