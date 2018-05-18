@@ -131,6 +131,12 @@
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="General.vb" />
+    <Compile Include="LiaisonPersonneCompetences.Designer.vb">
+      <DependentUpon>LiaisonPersonneCompetences.vb</DependentUpon>
+    </Compile>
+    <Compile Include="LiaisonPersonneCompetences.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="MDI.Designer.vb">
       <DependentUpon>MDI.vb</DependentUpon>
     </Compile>
@@ -186,6 +192,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="CRUDReseau.resx">
       <DependentUpon>CRUDReseau.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="LiaisonPersonneCompetences.resx">
+      <DependentUpon>LiaisonPersonneCompetences.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="MDI.resx">
       <DependentUpon>MDI.vb</DependentUpon>

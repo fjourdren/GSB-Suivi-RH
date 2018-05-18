@@ -23,6 +23,8 @@
                 Me.textBoxNote.Text = Me.DataGridView1.Rows(x).Cells(6).Value
 
 
+                'show bouton de liaison compétence
+                Me.btnLiaisonCompetence.Enabled = True
 
                 'focus region
                 Try
@@ -59,10 +61,11 @@
                 End Try
 
             Catch ex As Exception
-
+                Me.clear()
             End Try
         End If
     End Sub
+
 
 
     'boutons
@@ -134,10 +137,19 @@
         End If
     End Sub
 
+    Private Sub btnLiaisonCompetence_Click(sender As Object, e As EventArgs) Handles btnLiaisonCompetence.Click
+        Dim LiaisonPersonneCompetencesInstance As New LiaisonPersonneCompetences(Me.labelIdentifRender.Text)
+        LiaisonPersonneCompetencesInstance.MdiParent = Me.MdiParent
+        LiaisonPersonneCompetencesInstance.Show()
+    End Sub
+
+
 
     'utils
     Private Sub loadComboBoxRegion()
-        Dim reader As System.Data.Odbc.OdbcDataReader = General.BDD.query("SELECT identif, nom FROM Region ORDER BY nom;")
+        Dim reader As System.Data.Odbc.OdbcDataReader = General.BDD.query("SELECT identif, nom 
+                                                                           FROM Region 
+                                                                           ORDER BY nom;")
 
         'ajoute les colonnes à la combobox
         Me.comboBoxRegion.DisplayMember = "Text"
@@ -181,7 +193,8 @@
     End Sub
 
     Private Sub loadDataGrid()
-        Dim reader As System.Data.Odbc.OdbcDataReader = General.BDD.query("SELECT identif, nom, prenom, email, dateDeNaissance, transport, noteRessourceHumaine FROM " & Me.table & ";")
+        Dim reader As System.Data.Odbc.OdbcDataReader = General.BDD.query("SELECT identif, nom, prenom, email, dateDeNaissance, transport, noteRessourceHumaine 
+                                                                           FROM " & Me.table & ";")
 
         Dim dataTable = New DataTable()
         dataTable.Load(reader)
@@ -190,7 +203,13 @@
         DataGridView1.Refresh()
     End Sub
 
+
+
     Private Sub clear()
+        'désactive le bouton compétence car il n'y aura pas d'identif
+        Me.btnLiaisonCompetence.Enabled = False
+
+        'clear values
         Me.labelIdentifRender.Text = ""
         Me.textBoxNom.Text = ""
         Me.textBoxPrenom.Text = ""

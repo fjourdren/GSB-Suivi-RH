@@ -58,9 +58,9 @@ Partial Class CRUDCompetence
         '
         'btnReset
         '
-        Me.btnReset.Location = New System.Drawing.Point(546, 13)
+        Me.btnReset.Location = New System.Drawing.Point(533, 13)
         Me.btnReset.Name = "btnReset"
-        Me.btnReset.Size = New System.Drawing.Size(75, 23)
+        Me.btnReset.Size = New System.Drawing.Size(88, 23)
         Me.btnReset.TabIndex = 29
         Me.btnReset.Text = "Réinitialiser"
         Me.btnReset.UseVisualStyleBackColor = True
@@ -68,7 +68,7 @@ Partial Class CRUDCompetence
         'labelIdentifRender
         '
         Me.labelIdentifRender.AutoSize = True
-        Me.labelIdentifRender.Location = New System.Drawing.Point(70, 20)
+        Me.labelIdentifRender.Location = New System.Drawing.Point(66, 13)
         Me.labelIdentifRender.Name = "labelIdentifRender"
         Me.labelIdentifRender.Size = New System.Drawing.Size(39, 13)
         Me.labelIdentifRender.TabIndex = 5
@@ -77,16 +77,16 @@ Partial Class CRUDCompetence
         'lebelIdentifRender
         '
         Me.lebelIdentifRender.AutoSize = True
-        Me.lebelIdentifRender.Location = New System.Drawing.Point(67, 20)
+        Me.lebelIdentifRender.Location = New System.Drawing.Point(63, 13)
         Me.lebelIdentifRender.Name = "lebelIdentifRender"
         Me.lebelIdentifRender.Size = New System.Drawing.Size(0, 13)
         Me.lebelIdentifRender.TabIndex = 4
         '
         'btnDelete
         '
-        Me.btnDelete.Location = New System.Drawing.Point(546, 102)
+        Me.btnDelete.Location = New System.Drawing.Point(533, 100)
         Me.btnDelete.Name = "btnDelete"
-        Me.btnDelete.Size = New System.Drawing.Size(75, 23)
+        Me.btnDelete.Size = New System.Drawing.Size(88, 23)
         Me.btnDelete.TabIndex = 16
         Me.btnDelete.Text = "Supprimer"
         Me.btnDelete.UseVisualStyleBackColor = True
@@ -94,7 +94,7 @@ Partial Class CRUDCompetence
         'labelIdentif
         '
         Me.labelIdentif.AutoSize = True
-        Me.labelIdentif.Location = New System.Drawing.Point(10, 20)
+        Me.labelIdentif.Location = New System.Drawing.Point(6, 13)
         Me.labelIdentif.Name = "labelIdentif"
         Me.labelIdentif.Size = New System.Drawing.Size(24, 13)
         Me.labelIdentif.TabIndex = 3
@@ -102,9 +102,9 @@ Partial Class CRUDCompetence
         '
         'btnSave
         '
-        Me.btnSave.Location = New System.Drawing.Point(546, 72)
+        Me.btnSave.Location = New System.Drawing.Point(533, 71)
         Me.btnSave.Name = "btnSave"
-        Me.btnSave.Size = New System.Drawing.Size(75, 23)
+        Me.btnSave.Size = New System.Drawing.Size(88, 23)
         Me.btnSave.TabIndex = 15
         Me.btnSave.Text = "Sauvegarder"
         Me.btnSave.UseVisualStyleBackColor = True
@@ -112,7 +112,7 @@ Partial Class CRUDCompetence
         'labelLibelle
         '
         Me.labelLibelle.AutoSize = True
-        Me.labelLibelle.Location = New System.Drawing.Point(10, 48)
+        Me.labelLibelle.Location = New System.Drawing.Point(6, 32)
         Me.labelLibelle.Name = "labelLibelle"
         Me.labelLibelle.Size = New System.Drawing.Size(43, 13)
         Me.labelLibelle.TabIndex = 2
@@ -120,16 +120,16 @@ Partial Class CRUDCompetence
         '
         'btnNew
         '
-        Me.btnNew.Location = New System.Drawing.Point(546, 42)
+        Me.btnNew.Location = New System.Drawing.Point(533, 42)
         Me.btnNew.Name = "btnNew"
-        Me.btnNew.Size = New System.Drawing.Size(75, 23)
+        Me.btnNew.Size = New System.Drawing.Size(88, 23)
         Me.btnNew.TabIndex = 14
         Me.btnNew.Text = "Nouveau"
         Me.btnNew.UseVisualStyleBackColor = True
         '
         'textBoxLibelle
         '
-        Me.textBoxLibelle.Location = New System.Drawing.Point(70, 45)
+        Me.textBoxLibelle.Location = New System.Drawing.Point(66, 29)
         Me.textBoxLibelle.Name = "textBoxLibelle"
         Me.textBoxLibelle.Size = New System.Drawing.Size(163, 20)
         Me.textBoxLibelle.TabIndex = 1
@@ -154,6 +154,9 @@ Partial Class CRUDCompetence
         Me.Controls.Add(Me.GroupBox1)
         Me.Controls.Add(Me.DataGridView1)
         Me.Icon = CType(resources.GetObject("$this.Icon"), System.Drawing.Icon)
+        Me.MaximizeBox = False
+        Me.MaximumSize = New System.Drawing.Size(669, 489)
+        Me.MinimumSize = New System.Drawing.Size(669, 489)
         Me.Name = "CRUDCompetence"
         Me.Text = "Gestion des Compétences"
         Me.GroupBox1.ResumeLayout(False)

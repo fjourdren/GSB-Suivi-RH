@@ -43,17 +43,18 @@ Partial Class CRUDPersonneSuivie
         Me.labelDateDeNaissance = New System.Windows.Forms.Label()
         Me.labelPrenom = New System.Windows.Forms.Label()
         Me.labelIdentifRender = New System.Windows.Forms.Label()
-        Me.lebelIdentifRender = New System.Windows.Forms.Label()
         Me.labelIdentif = New System.Windows.Forms.Label()
         Me.labelNom = New System.Windows.Forms.Label()
         Me.textBoxNom = New System.Windows.Forms.TextBox()
         Me.DataGridView1 = New System.Windows.Forms.DataGridView()
+        Me.btnLiaisonCompetence = New System.Windows.Forms.Button()
         Me.GroupBox1.SuspendLayout()
         CType(Me.DataGridView1, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
         'GroupBox1
         '
+        Me.GroupBox1.Controls.Add(Me.btnLiaisonCompetence)
         Me.GroupBox1.Controls.Add(Me.btnReset)
         Me.GroupBox1.Controls.Add(Me.labelResponsable)
         Me.GroupBox1.Controls.Add(Me.labelRegion)
@@ -73,7 +74,6 @@ Partial Class CRUDPersonneSuivie
         Me.GroupBox1.Controls.Add(Me.labelDateDeNaissance)
         Me.GroupBox1.Controls.Add(Me.labelPrenom)
         Me.GroupBox1.Controls.Add(Me.labelIdentifRender)
-        Me.GroupBox1.Controls.Add(Me.lebelIdentifRender)
         Me.GroupBox1.Controls.Add(Me.labelIdentif)
         Me.GroupBox1.Controls.Add(Me.labelNom)
         Me.GroupBox1.Controls.Add(Me.textBoxNom)
@@ -122,6 +122,7 @@ Partial Class CRUDPersonneSuivie
         '
         'comboBoxResponsable
         '
+        Me.comboBoxResponsable.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
         Me.comboBoxResponsable.FormattingEnabled = True
         Me.comboBoxResponsable.Location = New System.Drawing.Point(452, 103)
         Me.comboBoxResponsable.Name = "comboBoxResponsable"
@@ -156,6 +157,7 @@ Partial Class CRUDPersonneSuivie
         '
         'comboBoxRegion
         '
+        Me.comboBoxRegion.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
         Me.comboBoxRegion.FormattingEnabled = True
         Me.comboBoxRegion.Location = New System.Drawing.Point(452, 76)
         Me.comboBoxRegion.Name = "comboBoxRegion"
@@ -246,14 +248,6 @@ Partial Class CRUDPersonneSuivie
         Me.labelIdentifRender.TabIndex = 5
         Me.labelIdentifRender.Text = "Label1"
         '
-        'lebelIdentifRender
-        '
-        Me.lebelIdentifRender.AutoSize = True
-        Me.lebelIdentifRender.Location = New System.Drawing.Point(63, 13)
-        Me.lebelIdentifRender.Name = "lebelIdentifRender"
-        Me.lebelIdentifRender.Size = New System.Drawing.Size(0, 13)
-        Me.lebelIdentifRender.TabIndex = 4
-        '
         'labelIdentif
         '
         Me.labelIdentif.AutoSize = True
@@ -291,6 +285,15 @@ Partial Class CRUDPersonneSuivie
         Me.DataGridView1.Size = New System.Drawing.Size(847, 342)
         Me.DataGridView1.TabIndex = 23
         '
+        'btnLiaisonCompetence
+        '
+        Me.btnLiaisonCompetence.Location = New System.Drawing.Point(753, 131)
+        Me.btnLiaisonCompetence.Name = "btnLiaisonCompetence"
+        Me.btnLiaisonCompetence.Size = New System.Drawing.Size(88, 23)
+        Me.btnLiaisonCompetence.TabIndex = 28
+        Me.btnLiaisonCompetence.Text = "Compétences"
+        Me.btnLiaisonCompetence.UseVisualStyleBackColor = True
+        '
         'CRUDPersonneSuivie
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
@@ -299,6 +302,9 @@ Partial Class CRUDPersonneSuivie
         Me.Controls.Add(Me.GroupBox1)
         Me.Controls.Add(Me.DataGridView1)
         Me.Icon = CType(resources.GetObject("$this.Icon"), System.Drawing.Icon)
+        Me.MaximizeBox = False
+        Me.MaximumSize = New System.Drawing.Size(887, 607)
+        Me.MinimumSize = New System.Drawing.Size(887, 607)
         Me.Name = "CRUDPersonneSuivie"
         Me.Text = "Gestion des Personnes Suivies"
         Me.GroupBox1.ResumeLayout(False)
@@ -310,7 +316,6 @@ Partial Class CRUDPersonneSuivie
 
     Friend WithEvents GroupBox1 As GroupBox
     Friend WithEvents labelIdentifRender As Label
-    Friend WithEvents lebelIdentifRender As Label
     Friend WithEvents labelIdentif As Label
     Friend WithEvents labelNom As Label
     Friend WithEvents textBoxNom As TextBox
@@ -333,4 +338,5 @@ Partial Class CRUDPersonneSuivie
     Friend WithEvents labelRegion As Label
     Friend WithEvents comboBoxResponsable As ComboBox
     Friend WithEvents btnReset As Button
+    Friend WithEvents btnLiaisonCompetence As Button
 End Class

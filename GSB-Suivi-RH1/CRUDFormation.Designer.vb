@@ -40,7 +40,7 @@ Partial Class CRUDFormation
         '
         'textBoxName
         '
-        Me.textBoxName.Location = New System.Drawing.Point(70, 45)
+        Me.textBoxName.Location = New System.Drawing.Point(66, 32)
         Me.textBoxName.Name = "textBoxName"
         Me.textBoxName.Size = New System.Drawing.Size(163, 20)
         Me.textBoxName.TabIndex = 1
@@ -93,7 +93,7 @@ Partial Class CRUDFormation
         'labelIdentifRender
         '
         Me.labelIdentifRender.AutoSize = True
-        Me.labelIdentifRender.Location = New System.Drawing.Point(70, 20)
+        Me.labelIdentifRender.Location = New System.Drawing.Point(66, 16)
         Me.labelIdentifRender.Name = "labelIdentifRender"
         Me.labelIdentifRender.Size = New System.Drawing.Size(39, 13)
         Me.labelIdentifRender.TabIndex = 5
@@ -111,7 +111,7 @@ Partial Class CRUDFormation
         'lebelIdentifRender
         '
         Me.lebelIdentifRender.AutoSize = True
-        Me.lebelIdentifRender.Location = New System.Drawing.Point(67, 20)
+        Me.lebelIdentifRender.Location = New System.Drawing.Point(63, 16)
         Me.lebelIdentifRender.Name = "lebelIdentifRender"
         Me.lebelIdentifRender.Size = New System.Drawing.Size(0, 13)
         Me.lebelIdentifRender.TabIndex = 4
@@ -119,7 +119,7 @@ Partial Class CRUDFormation
         'labelIdentif
         '
         Me.labelIdentif.AutoSize = True
-        Me.labelIdentif.Location = New System.Drawing.Point(10, 20)
+        Me.labelIdentif.Location = New System.Drawing.Point(6, 16)
         Me.labelIdentif.Name = "labelIdentif"
         Me.labelIdentif.Size = New System.Drawing.Size(24, 13)
         Me.labelIdentif.TabIndex = 3
@@ -128,7 +128,7 @@ Partial Class CRUDFormation
         'labelName
         '
         Me.labelName.AutoSize = True
-        Me.labelName.Location = New System.Drawing.Point(10, 48)
+        Me.labelName.Location = New System.Drawing.Point(6, 35)
         Me.labelName.Name = "labelName"
         Me.labelName.Size = New System.Drawing.Size(35, 13)
         Me.labelName.TabIndex = 2
@@ -154,6 +154,9 @@ Partial Class CRUDFormation
         Me.Controls.Add(Me.DataGridView1)
         Me.Controls.Add(Me.GroupBox1)
         Me.Icon = CType(resources.GetObject("$this.Icon"), System.Drawing.Icon)
+        Me.MaximizeBox = False
+        Me.MaximumSize = New System.Drawing.Size(669, 489)
+        Me.MinimumSize = New System.Drawing.Size(669, 489)
         Me.Name = "CRUDFormation"
         Me.Text = "Gestion des Formations"
         Me.GroupBox1.ResumeLayout(False)

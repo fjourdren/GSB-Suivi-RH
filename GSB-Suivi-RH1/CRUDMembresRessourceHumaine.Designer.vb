@@ -256,6 +256,9 @@ Partial Class CRUDMembresRessourceHumaine
         Me.Controls.Add(Me.GroupBox1)
         Me.Controls.Add(Me.DataGridView1)
         Me.Icon = CType(resources.GetObject("$this.Icon"), System.Drawing.Icon)
+        Me.MaximizeBox = False
+        Me.MaximumSize = New System.Drawing.Size(887, 607)
+        Me.MinimumSize = New System.Drawing.Size(887, 607)
         Me.Name = "CRUDMembresRessourceHumaine"
         Me.Text = "Gestion des Membres Ressources Humaines"
         Me.GroupBox1.ResumeLayout(False)

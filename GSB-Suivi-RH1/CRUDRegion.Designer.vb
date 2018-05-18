@@ -68,7 +68,7 @@ Partial Class CRUDRegion
         'labelIdentifRender
         '
         Me.labelIdentifRender.AutoSize = True
-        Me.labelIdentifRender.Location = New System.Drawing.Point(70, 20)
+        Me.labelIdentifRender.Location = New System.Drawing.Point(67, 16)
         Me.labelIdentifRender.Name = "labelIdentifRender"
         Me.labelIdentifRender.Size = New System.Drawing.Size(39, 13)
         Me.labelIdentifRender.TabIndex = 5
@@ -76,7 +76,7 @@ Partial Class CRUDRegion
         '
         'btnDelete
         '
-        Me.btnDelete.Location = New System.Drawing.Point(533, 101)
+        Me.btnDelete.Location = New System.Drawing.Point(533, 99)
         Me.btnDelete.Name = "btnDelete"
         Me.btnDelete.Size = New System.Drawing.Size(88, 23)
         Me.btnDelete.TabIndex = 11
@@ -93,7 +93,7 @@ Partial Class CRUDRegion
         '
         'btnSave
         '
-        Me.btnSave.Location = New System.Drawing.Point(533, 72)
+        Me.btnSave.Location = New System.Drawing.Point(533, 70)
         Me.btnSave.Name = "btnSave"
         Me.btnSave.Size = New System.Drawing.Size(88, 23)
         Me.btnSave.TabIndex = 10
@@ -103,7 +103,7 @@ Partial Class CRUDRegion
         'labelIdentif
         '
         Me.labelIdentif.AutoSize = True
-        Me.labelIdentif.Location = New System.Drawing.Point(10, 20)
+        Me.labelIdentif.Location = New System.Drawing.Point(6, 16)
         Me.labelIdentif.Name = "labelIdentif"
         Me.labelIdentif.Size = New System.Drawing.Size(24, 13)
         Me.labelIdentif.TabIndex = 3
@@ -121,7 +121,7 @@ Partial Class CRUDRegion
         'labelName
         '
         Me.labelName.AutoSize = True
-        Me.labelName.Location = New System.Drawing.Point(10, 48)
+        Me.labelName.Location = New System.Drawing.Point(6, 35)
         Me.labelName.Name = "labelName"
         Me.labelName.Size = New System.Drawing.Size(35, 13)
         Me.labelName.TabIndex = 2
@@ -129,7 +129,7 @@ Partial Class CRUDRegion
         '
         'textBoxName
         '
-        Me.textBoxName.Location = New System.Drawing.Point(70, 45)
+        Me.textBoxName.Location = New System.Drawing.Point(70, 32)
         Me.textBoxName.Name = "textBoxName"
         Me.textBoxName.Size = New System.Drawing.Size(163, 20)
         Me.textBoxName.TabIndex = 1
@@ -154,6 +154,9 @@ Partial Class CRUDRegion
         Me.Controls.Add(Me.GroupBox1)
         Me.Controls.Add(Me.DataGridView1)
         Me.Icon = CType(resources.GetObject("$this.Icon"), System.Drawing.Icon)
+        Me.MaximizeBox = False
+        Me.MaximumSize = New System.Drawing.Size(669, 489)
+        Me.MinimumSize = New System.Drawing.Size(669, 489)
         Me.Name = "CRUDRegion"
         Me.Text = "Gestion des Régions"
         Me.GroupBox1.ResumeLayout(False)
