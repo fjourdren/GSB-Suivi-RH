@@ -54,4 +54,14 @@
         CRUDMembresRessourceHumaineInstance.MdiParent = Me
         CRUDMembresRessourceHumaineInstance.Show()
     End Sub
+
+    Private Sub StatistiqueToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles StatistiqueToolStripMenuItem.Click
+        Dim Statistiques As New Statistiques
+        Statistiques.MdiParent = Me
+        Statistiques.Show()
+    End Sub
+
+    Private Sub RechercheToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles RechercheToolStripMenuItem.Click
+
+    End Sub
 End Class
