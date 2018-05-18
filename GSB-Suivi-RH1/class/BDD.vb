@@ -14,6 +14,7 @@
             Me.connection = conn
         Catch ex As Exception
             MessageBox.Show(ex.Message)
+            Application.Exit()
         End Try
     End Sub
 
@@ -24,6 +25,7 @@
             myCommand.ExecuteNonQuery()
         Catch ex As Exception
             MessageBox.Show(ex.Message)
+            Application.Exit()
         End Try
     End Sub
 
@@ -32,15 +34,10 @@
 
         Try
             Dim myReader As System.Data.Odbc.OdbcDataReader = myCommand.ExecuteReader()
-
-            'While myReader.Read()
-            '    Debug.WriteLine(myReader.GetString(1))
-            '    MessageBox.Show(myReader.GetString(1))
-            'End While
-
             Return myReader
         Catch ex As Exception
             MessageBox.Show(ex.Message)
+            Application.Exit()
         End Try
 
         Return -1

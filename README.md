@@ -10,3 +10,4 @@ Projet client lourd BTS SIO
 * Hashage des mots de passe
 * Ecran d'affichage d'un profil complet
 * Imprimer un profil
+* Changement du nom des colonnes identif en ID

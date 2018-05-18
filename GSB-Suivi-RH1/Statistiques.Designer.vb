@@ -315,7 +315,7 @@ Partial Class Statistiques
         '
         Me.TopPersonnesAvecCompetences.ColumnCount = 2
         Me.TopPersonnesAvecCompetences.ColumnStyles.Add(New System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 22.0!))
-        Me.TopPersonnesAvecCompetences.ColumnStyles.Add(New System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 28.0!))
+        Me.TopPersonnesAvecCompetences.ColumnStyles.Add(New System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 178.0!))
         Me.TopPersonnesAvecCompetences.Controls.Add(Me.Label14, 0, 4)
         Me.TopPersonnesAvecCompetences.Controls.Add(Me.Label10, 0, 0)
         Me.TopPersonnesAvecCompetences.Controls.Add(Me.Label11, 0, 1)
@@ -391,7 +391,7 @@ Partial Class Statistiques
         '
         Me.TopFormationsAvecPersonnes.ColumnCount = 2
         Me.TopFormationsAvecPersonnes.ColumnStyles.Add(New System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 22.0!))
-        Me.TopFormationsAvecPersonnes.ColumnStyles.Add(New System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 28.0!))
+        Me.TopFormationsAvecPersonnes.ColumnStyles.Add(New System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 178.0!))
         Me.TopFormationsAvecPersonnes.Controls.Add(Me.Label16, 0, 4)
         Me.TopFormationsAvecPersonnes.Controls.Add(Me.Label17, 0, 0)
         Me.TopFormationsAvecPersonnes.Controls.Add(Me.Label18, 0, 1)
@@ -467,7 +467,7 @@ Partial Class Statistiques
         '
         Me.TopRegionsAvecPersonnes.ColumnCount = 2
         Me.TopRegionsAvecPersonnes.ColumnStyles.Add(New System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 22.0!))
-        Me.TopRegionsAvecPersonnes.ColumnStyles.Add(New System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 28.0!))
+        Me.TopRegionsAvecPersonnes.ColumnStyles.Add(New System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 178.0!))
         Me.TopRegionsAvecPersonnes.Controls.Add(Me.Label29, 0, 4)
         Me.TopRegionsAvecPersonnes.Controls.Add(Me.Label30, 0, 0)
         Me.TopRegionsAvecPersonnes.Controls.Add(Me.Label31, 0, 1)
@@ -543,7 +543,7 @@ Partial Class Statistiques
         '
         Me.TopEntreprisesAvecPersonnes.ColumnCount = 2
         Me.TopEntreprisesAvecPersonnes.ColumnStyles.Add(New System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 22.0!))
-        Me.TopEntreprisesAvecPersonnes.ColumnStyles.Add(New System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 28.0!))
+        Me.TopEntreprisesAvecPersonnes.ColumnStyles.Add(New System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 178.0!))
         Me.TopEntreprisesAvecPersonnes.Controls.Add(Me.Label23, 0, 4)
         Me.TopEntreprisesAvecPersonnes.Controls.Add(Me.Label24, 0, 0)
         Me.TopEntreprisesAvecPersonnes.Controls.Add(Me.Label25, 0, 1)
@@ -619,7 +619,7 @@ Partial Class Statistiques
         '
         Me.TopMembresRessourceHumaineAvecPersonnes.ColumnCount = 2
         Me.TopMembresRessourceHumaineAvecPersonnes.ColumnStyles.Add(New System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 22.0!))
-        Me.TopMembresRessourceHumaineAvecPersonnes.ColumnStyles.Add(New System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 28.0!))
+        Me.TopMembresRessourceHumaineAvecPersonnes.ColumnStyles.Add(New System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 178.0!))
         Me.TopMembresRessourceHumaineAvecPersonnes.Controls.Add(Me.Label35, 0, 4)
         Me.TopMembresRessourceHumaineAvecPersonnes.Controls.Add(Me.Label36, 0, 0)
         Me.TopMembresRessourceHumaineAvecPersonnes.Controls.Add(Me.Label37, 0, 1)
@@ -695,6 +695,8 @@ Partial Class Statistiques
         Me.Controls.Add(Me.GroupBox2)
         Me.Controls.Add(Me.GroupBox1)
         Me.Icon = CType(resources.GetObject("$this.Icon"), System.Drawing.Icon)
+        Me.MaximumSize = New System.Drawing.Size(469, 511)
+        Me.MinimumSize = New System.Drawing.Size(469, 511)
         Me.Name = "Statistiques"
         Me.Text = "Statistiques"
         Me.GroupBox1.ResumeLayout(False)

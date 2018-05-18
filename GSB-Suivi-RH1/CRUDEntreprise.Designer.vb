@@ -52,7 +52,7 @@ Partial Class CRUDEntreprise
         '
         'textBoxName
         '
-        Me.textBoxName.Location = New System.Drawing.Point(70, 45)
+        Me.textBoxName.Location = New System.Drawing.Point(66, 32)
         Me.textBoxName.Name = "textBoxName"
         Me.textBoxName.Size = New System.Drawing.Size(163, 20)
         Me.textBoxName.TabIndex = 1
@@ -87,7 +87,7 @@ Partial Class CRUDEntreprise
         'labelIdentifRender
         '
         Me.labelIdentifRender.AutoSize = True
-        Me.labelIdentifRender.Location = New System.Drawing.Point(70, 20)
+        Me.labelIdentifRender.Location = New System.Drawing.Point(66, 16)
         Me.labelIdentifRender.Name = "labelIdentifRender"
         Me.labelIdentifRender.Size = New System.Drawing.Size(39, 13)
         Me.labelIdentifRender.TabIndex = 5
@@ -96,14 +96,14 @@ Partial Class CRUDEntreprise
         'lebelIdentifRender
         '
         Me.lebelIdentifRender.AutoSize = True
-        Me.lebelIdentifRender.Location = New System.Drawing.Point(67, 20)
+        Me.lebelIdentifRender.Location = New System.Drawing.Point(63, 16)
         Me.lebelIdentifRender.Name = "lebelIdentifRender"
         Me.lebelIdentifRender.Size = New System.Drawing.Size(0, 13)
         Me.lebelIdentifRender.TabIndex = 4
         '
         'btnDelete
         '
-        Me.btnDelete.Location = New System.Drawing.Point(533, 104)
+        Me.btnDelete.Location = New System.Drawing.Point(533, 100)
         Me.btnDelete.Name = "btnDelete"
         Me.btnDelete.Size = New System.Drawing.Size(88, 23)
         Me.btnDelete.TabIndex = 11
@@ -113,7 +113,7 @@ Partial Class CRUDEntreprise
         'labelIdentif
         '
         Me.labelIdentif.AutoSize = True
-        Me.labelIdentif.Location = New System.Drawing.Point(10, 20)
+        Me.labelIdentif.Location = New System.Drawing.Point(6, 16)
         Me.labelIdentif.Name = "labelIdentif"
         Me.labelIdentif.Size = New System.Drawing.Size(24, 13)
         Me.labelIdentif.TabIndex = 3
@@ -121,7 +121,7 @@ Partial Class CRUDEntreprise
         '
         'btnSave
         '
-        Me.btnSave.Location = New System.Drawing.Point(533, 75)
+        Me.btnSave.Location = New System.Drawing.Point(533, 71)
         Me.btnSave.Name = "btnSave"
         Me.btnSave.Size = New System.Drawing.Size(88, 23)
         Me.btnSave.TabIndex = 10
@@ -131,7 +131,7 @@ Partial Class CRUDEntreprise
         'labelName
         '
         Me.labelName.AutoSize = True
-        Me.labelName.Location = New System.Drawing.Point(10, 48)
+        Me.labelName.Location = New System.Drawing.Point(6, 35)
         Me.labelName.Name = "labelName"
         Me.labelName.Size = New System.Drawing.Size(35, 13)
         Me.labelName.TabIndex = 2
@@ -139,7 +139,7 @@ Partial Class CRUDEntreprise
         '
         'btnNew
         '
-        Me.btnNew.Location = New System.Drawing.Point(533, 44)
+        Me.btnNew.Location = New System.Drawing.Point(533, 42)
         Me.btnNew.Name = "btnNew"
         Me.btnNew.Size = New System.Drawing.Size(88, 23)
         Me.btnNew.TabIndex = 9
@@ -154,6 +154,9 @@ Partial Class CRUDEntreprise
         Me.Controls.Add(Me.DataGridView1)
         Me.Controls.Add(Me.GroupBox1)
         Me.Icon = CType(resources.GetObject("$this.Icon"), System.Drawing.Icon)
+        Me.MaximizeBox = False
+        Me.MaximumSize = New System.Drawing.Size(669, 489)
+        Me.MinimumSize = New System.Drawing.Size(669, 489)
         Me.Name = "CRUDEntreprise"
         Me.Text = "Gestion des Entreprises"
         CType(Me.DataGridView1, System.ComponentModel.ISupportInitialize).EndInit()
