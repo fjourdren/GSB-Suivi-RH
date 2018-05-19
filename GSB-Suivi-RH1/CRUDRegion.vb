@@ -16,6 +16,7 @@
                 Me.textBoxName.Text = Me.DataGridView1.Rows(x).Cells(1).Value
             Catch ex As Exception
                 MessageBox.Show("Erreur de chargement des données")
+                Me.clear()
             End Try
         End If
     End Sub
@@ -23,7 +24,7 @@
 
     'boutons
     Private Sub btnReset_Click(sender As Object, e As EventArgs) Handles btnReset.Click
-
+        Me.clear()
     End Sub
 
     Private Sub btnNew_Click(sender As Object, e As EventArgs) Handles btnNew.Click

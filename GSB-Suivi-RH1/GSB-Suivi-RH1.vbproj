@@ -131,10 +131,28 @@
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="General.vb" />
+    <Compile Include="LiaisonCategorieCompetences.Designer.vb">
+      <DependentUpon>LiaisonCategorieCompetences.vb</DependentUpon>
+    </Compile>
+    <Compile Include="LiaisonCategorieCompetences.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="LiaisonPersonneCompetences.Designer.vb">
       <DependentUpon>LiaisonPersonneCompetences.vb</DependentUpon>
     </Compile>
     <Compile Include="LiaisonPersonneCompetences.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="LiaisonPersonneFormations.Designer.vb">
+      <DependentUpon>LiaisonPersonneFormations.vb</DependentUpon>
+    </Compile>
+    <Compile Include="LiaisonPersonneFormations.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="LiaisonPersonneReseaux.Designer.vb">
+      <DependentUpon>LiaisonPersonneReseaux.vb</DependentUpon>
+    </Compile>
+    <Compile Include="LiaisonPersonneReseaux.vb">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="MDI.Designer.vb">
@@ -193,8 +211,17 @@
     <EmbeddedResource Include="CRUDReseau.resx">
       <DependentUpon>CRUDReseau.vb</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="LiaisonCategorieCompetences.resx">
+      <DependentUpon>LiaisonCategorieCompetences.vb</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="LiaisonPersonneCompetences.resx">
       <DependentUpon>LiaisonPersonneCompetences.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="LiaisonPersonneFormations.resx">
+      <DependentUpon>LiaisonPersonneFormations.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="LiaisonPersonneReseaux.resx">
+      <DependentUpon>LiaisonPersonneReseaux.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="MDI.resx">
       <DependentUpon>MDI.vb</DependentUpon>
