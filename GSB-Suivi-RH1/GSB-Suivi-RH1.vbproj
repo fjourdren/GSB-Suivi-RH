@@ -143,6 +143,12 @@
     <Compile Include="LiaisonPersonneCompetences.vb">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="LiaisonPersonneEntreprises.Designer.vb">
+      <DependentUpon>LiaisonPersonneEntreprises.vb</DependentUpon>
+    </Compile>
+    <Compile Include="LiaisonPersonneEntreprises.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="LiaisonPersonneFormations.Designer.vb">
       <DependentUpon>LiaisonPersonneFormations.vb</DependentUpon>
     </Compile>
@@ -216,6 +222,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="LiaisonPersonneCompetences.resx">
       <DependentUpon>LiaisonPersonneCompetences.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="LiaisonPersonneEntreprises.resx">
+      <DependentUpon>LiaisonPersonneEntreprises.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="LiaisonPersonneFormations.resx">
       <DependentUpon>LiaisonPersonneFormations.vb</DependentUpon>

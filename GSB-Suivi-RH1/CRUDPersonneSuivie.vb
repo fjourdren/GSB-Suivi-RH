@@ -27,6 +27,7 @@
                 Me.btnLiaisonCompetences.Enabled = True
                 Me.btnLiaisonFormations.Enabled = True
                 Me.btnLiaisonReseaux.Enabled = True
+                Me.btnLiaisonEntreprises.Enabled = True
 
                 'focus region
                 Try
@@ -157,6 +158,12 @@
         LiaisonPersonneReseauxInstance.Show()
     End Sub
 
+    Private Sub btnLiaisonEntreprises_Click(sender As Object, e As EventArgs) Handles btnLiaisonEntreprises.Click
+        Dim LiaisonPersonneEntreprisesInterface As New LiaisonPersonneEntreprises(Me.labelIdentifRender.Text)
+        LiaisonPersonneEntreprisesInterface.MdiParent = Me.MdiParent
+        LiaisonPersonneEntreprisesInterface.Show()
+    End Sub
+
 
 
     'utils
@@ -224,6 +231,7 @@
         Me.btnLiaisonCompetences.Enabled = False
         Me.btnLiaisonFormations.Enabled = False
         Me.btnLiaisonReseaux.Enabled = False
+        Me.btnLiaisonEntreprises.Enabled = False
 
         'clear values
         Me.labelIdentifRender.Text = ""

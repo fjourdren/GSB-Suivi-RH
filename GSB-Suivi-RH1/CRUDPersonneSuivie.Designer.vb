@@ -24,6 +24,7 @@ Partial Class CRUDPersonneSuivie
     Private Sub InitializeComponent()
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(CRUDPersonneSuivie))
         Me.GroupBox1 = New System.Windows.Forms.GroupBox()
+        Me.btnLiaisonEntreprises = New System.Windows.Forms.Button()
         Me.btnLiaisonReseaux = New System.Windows.Forms.Button()
         Me.btnLiaisonFormations = New System.Windows.Forms.Button()
         Me.btnLiaisonCompetences = New System.Windows.Forms.Button()
@@ -56,6 +57,7 @@ Partial Class CRUDPersonneSuivie
         '
         'GroupBox1
         '
+        Me.GroupBox1.Controls.Add(Me.btnLiaisonEntreprises)
         Me.GroupBox1.Controls.Add(Me.btnLiaisonReseaux)
         Me.GroupBox1.Controls.Add(Me.btnLiaisonFormations)
         Me.GroupBox1.Controls.Add(Me.btnLiaisonCompetences)
@@ -87,6 +89,15 @@ Partial Class CRUDPersonneSuivie
         Me.GroupBox1.TabIndex = 22
         Me.GroupBox1.TabStop = False
         Me.GroupBox1.Text = "Details"
+        '
+        'btnLiaisonEntreprises
+        '
+        Me.btnLiaisonEntreprises.Location = New System.Drawing.Point(621, 136)
+        Me.btnLiaisonEntreprises.Name = "btnLiaisonEntreprises"
+        Me.btnLiaisonEntreprises.Size = New System.Drawing.Size(88, 23)
+        Me.btnLiaisonEntreprises.TabIndex = 31
+        Me.btnLiaisonEntreprises.Text = "Entreprises"
+        Me.btnLiaisonEntreprises.UseVisualStyleBackColor = True
         '
         'btnLiaisonReseaux
         '
@@ -214,7 +225,7 @@ Partial Class CRUDPersonneSuivie
         '
         'dateTimeDateDeNaissance
         '
-        Me.dateTimeDateDeNaissance.CustomFormat = "dd-MM-yyyy"
+        Me.dateTimeDateDeNaissance.CustomFormat = ""
         Me.dateTimeDateDeNaissance.Location = New System.Drawing.Point(121, 107)
         Me.dateTimeDateDeNaissance.Name = "dateTimeDateDeNaissance"
         Me.dateTimeDateDeNaissance.Size = New System.Drawing.Size(163, 20)
@@ -364,4 +375,5 @@ Partial Class CRUDPersonneSuivie
     Friend WithEvents btnLiaisonCompetences As Button
     Friend WithEvents btnLiaisonFormations As Button
     Friend WithEvents btnLiaisonReseaux As Button
+    Friend WithEvents btnLiaisonEntreprises As Button
 End Class
