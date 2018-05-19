@@ -227,7 +227,7 @@
     Public Sub remplirTopFormationsAvecPersonnes()
         Dim reader As System.Data.Odbc.OdbcDataReader = General.BDD.query("SELECT Formation.identif, Formation.nom, count(Personne_Formation.identif_Personne) As nbPeronne 
                                                                            FROM Formation, Personne_Formation 
-                                                                           WHERE Personne_Formation.identif_Personne=Formation.identif 
+                                                                           WHERE Personne_Formation.identif_Formation=Formation.identif 
                                                                            GROUP BY Formation.identif, Formation.nom 
                                                                            ORDER BY count(Personne_Formation.identif_Personne) DESC
                                                                            LIMIT 5;")
@@ -259,7 +259,7 @@
     Public Sub remplirTopEntreprisesAvecPersonnes()
         Dim reader As System.Data.Odbc.OdbcDataReader = General.BDD.query("SELECT Entreprise.identif, Entreprise.nom, count(Personne_Entreprise.identif_Personne) As nbPeronne 
                                                                            FROM Entreprise, Personne_Entreprise 
-                                                                           WHERE Personne_Entreprise.identif_Personne=Entreprise.identif 
+                                                                           WHERE Personne_Entreprise.identif_Entreprise=Entreprise.identif 
                                                                            GROUP BY Entreprise.identif, Entreprise.nom
                                                                            ORDER BY count(Personne_Entreprise.identif_Personne) DESC
                                                                            LIMIT 5;")

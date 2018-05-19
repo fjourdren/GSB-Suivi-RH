@@ -695,6 +695,7 @@ Partial Class Statistiques
         Me.Controls.Add(Me.GroupBox2)
         Me.Controls.Add(Me.GroupBox1)
         Me.Icon = CType(resources.GetObject("$this.Icon"), System.Drawing.Icon)
+        Me.MaximizeBox = False
         Me.MaximumSize = New System.Drawing.Size(469, 511)
         Me.MinimumSize = New System.Drawing.Size(469, 511)
         Me.Name = "Statistiques"
