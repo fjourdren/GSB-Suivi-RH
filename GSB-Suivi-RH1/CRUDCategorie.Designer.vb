@@ -34,12 +34,14 @@ Partial Class CRUDCategorie
         Me.btnNew = New System.Windows.Forms.Button()
         Me.textBoxLibelle = New System.Windows.Forms.TextBox()
         Me.DataGridView1 = New System.Windows.Forms.DataGridView()
+        Me.btnLiaisonCompetences = New System.Windows.Forms.Button()
         Me.GroupBox1.SuspendLayout()
         CType(Me.DataGridView1, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
         'GroupBox1
         '
+        Me.GroupBox1.Controls.Add(Me.btnLiaisonCompetences)
         Me.GroupBox1.Controls.Add(Me.btnReset)
         Me.GroupBox1.Controls.Add(Me.labelIdentifRender)
         Me.GroupBox1.Controls.Add(Me.lebelIdentifRender)
@@ -51,7 +53,7 @@ Partial Class CRUDCategorie
         Me.GroupBox1.Controls.Add(Me.textBoxLibelle)
         Me.GroupBox1.Location = New System.Drawing.Point(13, 11)
         Me.GroupBox1.Name = "GroupBox1"
-        Me.GroupBox1.Size = New System.Drawing.Size(627, 144)
+        Me.GroupBox1.Size = New System.Drawing.Size(627, 131)
         Me.GroupBox1.TabIndex = 17
         Me.GroupBox1.TabStop = False
         Me.GroupBox1.Text = "Details"
@@ -138,13 +140,23 @@ Partial Class CRUDCategorie
         '
         Me.DataGridView1.AllowUserToAddRows = False
         Me.DataGridView1.AllowUserToDeleteRows = False
+        Me.DataGridView1.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill
         Me.DataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
-        Me.DataGridView1.Location = New System.Drawing.Point(13, 161)
+        Me.DataGridView1.Location = New System.Drawing.Point(13, 148)
         Me.DataGridView1.MultiSelect = False
         Me.DataGridView1.Name = "DataGridView1"
         Me.DataGridView1.ReadOnly = True
-        Me.DataGridView1.Size = New System.Drawing.Size(628, 279)
+        Me.DataGridView1.Size = New System.Drawing.Size(628, 292)
         Me.DataGridView1.TabIndex = 18
+        '
+        'btnLiaisonCompetences
+        '
+        Me.btnLiaisonCompetences.Location = New System.Drawing.Point(66, 71)
+        Me.btnLiaisonCompetences.Name = "btnLiaisonCompetences"
+        Me.btnLiaisonCompetences.Size = New System.Drawing.Size(88, 23)
+        Me.btnLiaisonCompetences.TabIndex = 29
+        Me.btnLiaisonCompetences.Text = "Compétences"
+        Me.btnLiaisonCompetences.UseVisualStyleBackColor = True
         '
         'CRUDCategorie
         '
@@ -177,4 +189,5 @@ Partial Class CRUDCategorie
     Friend WithEvents btnDelete As Button
     Friend WithEvents btnSave As Button
     Friend WithEvents btnNew As Button
+    Friend WithEvents btnLiaisonCompetences As Button
 End Class

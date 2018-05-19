@@ -1,5 +1,5 @@
-﻿Public Class LiaisonPersonneCompetences
-    Dim table As String = "Personne_Competence"
+﻿Public Class LiaisonPersonneReseaux
+    Dim table As String = "Personne_Reseau"
 
     Dim identif As Integer
     Dim nom As String
@@ -37,46 +37,63 @@
         Me.labelPrenomRender.Text = Me.prenom
         Me.labelEmailRender.Text = Me.email
 
-        ' load competence combo box
-        Me.loadComboBoxCompetence()
+        ' load reseau combo box
+        Me.loadComboBoxReseaux()
 
-        ' load datagrid des compétence de la personne
+        ' load datagrid des reseaux de la personne
         Me.loadDataGrid()
     End Sub
 
-    Private Sub LiaisonPersonneCompetences_Load(sender As Object, e As EventArgs) Handles MyBase.Load
+    Private Sub LiaisonPersonneReseaux_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         Me.Text = Me.Text & " " & Me.prenom & " " & Me.nom
     End Sub
 
 
 
-
     Private Sub btnAdd_Click(sender As Object, e As EventArgs) Handles btnAdd.Click
-        If Not (Me.comboBoxCompetence.SelectedIndex = -1) And Not (Me.hasCompetence(Me.comboBoxCompetence.SelectedIndex)) Then
-            General.BDD.nonQuery("INSERT INTO " & Me.table & "(identif_Personne, identif_Competence) 
-                                  VALUES (" & Me.identif & ", " & Me.comboBoxCompetence.SelectedIndex & ");")
+        If Not (Me.comboBoxReseau.SelectedValue = -1) And Not (Me.hasReseau(Me.comboBoxReseau.SelectedValue)) Then
+            Dim lien As String = Me.textBoxLien.Text
+            If String.IsNullOrEmpty(lien) Then
+                General.BDD.nonQuery("INSERT INTO " & Me.table & "(identif_Personne, identif_Reseau) 
+                                      VALUES (" & Me.identif & ", " & Me.comboBoxReseau.SelectedValue & ");")
+                Me.loadDataGrid()
+            Else
+                General.BDD.nonQuery("INSERT INTO " & Me.table & "(identif_Personne, identif_Reseau, lien) 
+                                      VALUES (" & Me.identif & ", " & Me.comboBoxReseau.SelectedValue & ", '" & lien & "');")
+                Me.loadDataGrid()
+            End If
         End If
-
-        Me.loadDataGrid()
     End Sub
 
     Private Sub btnDelete_Click(sender As Object, e As EventArgs) Handles btnDelete.Click
         General.BDD.nonQuery("DELETE FROM " & Me.table & " 
-                              WHERE identif_Competence = " & Me.comboBoxCompetence.SelectedValue & "
+                              WHERE identif_Reseau = " & Me.comboBoxReseau.SelectedValue & "
                               AND identif_Personne = " & Me.identif & ";")
 
         Me.loadDataGrid()
     End Sub
 
+    'bouton d'ouverture du réseau social
+    Private Sub btnOpenLien_Click(sender As Object, e As EventArgs) Handles btnOpenLien.Click
+        Process.Start(Me.textBoxLien.Text)
+    End Sub
+
 
 
     Private Sub DataGridView1_CellContentClick(sender As Object, e As DataGridViewCellEventArgs) Handles DataGridView1.CellContentClick, DataGridView1.CellContentDoubleClick, DataGridView1.CellClick
-        'focus compétence dans la combobox
+        'focus reseau dans la combobox
         Dim x As Integer = e.RowIndex
 
         If x >= 0 Then
             Try
-                Me.comboBoxCompetence.SelectedValue = Me.DataGridView1.Rows(x).Cells(0).Value
+                Me.comboBoxReseau.SelectedValue = Me.DataGridView1.Rows(x).Cells(0).Value
+
+                Dim lien As String = ""
+                If TypeOf Me.DataGridView1.Rows(x).Cells(2).Value IsNot DBNull Then
+                    lien = Me.DataGridView1.Rows(x).Cells(2).Value
+                End If
+                Me.textBoxLien.Text = lien
+
             Catch ex As Exception
                 MessageBox.Show("Erreur de chargement des données")
             End Try
@@ -85,14 +102,14 @@
 
 
 
-    Private Sub loadComboBoxCompetence()
-        Dim reader As System.Data.Odbc.OdbcDataReader = General.BDD.query("SELECT * 
-                                                                           FROM Competence
-                                                                           ORDER BY libelle;")
+    Private Sub loadComboBoxReseaux()
+        Dim reader As System.Data.Odbc.OdbcDataReader = General.BDD.query("SELECT identif, nom 
+                                                                           FROM Reseau
+                                                                           ORDER BY nom;")
 
         'ajoute les colonnes à la combobox
-        Me.comboBoxCompetence.DisplayMember = "Text"
-        Me.comboBoxCompetence.ValueMember = "Value"
+        Me.comboBoxReseau.DisplayMember = "Text"
+        Me.comboBoxReseau.ValueMember = "Value"
 
         'créer la data table de la combobox
         Dim tb As New DataTable
@@ -106,16 +123,17 @@
         End While
 
         'applique les données à la combo
-        Me.comboBoxCompetence.DataSource = tb
+        Me.comboBoxReseau.DataSource = tb
     End Sub
 
 
 
     Private Sub loadDataGrid()
-        Dim reader As System.Data.Odbc.OdbcDataReader = General.BDD.query("SELECT Competence.* 
-                                                                           FROM " & Me.table & ", Competence
-                                                                           WHERE " & Me.table & ".identif_Competence = Competence.identif 
-                                                                           AND " & Me.table & ".identif_Personne = " & Me.identif & ";")
+        Dim reader As System.Data.Odbc.OdbcDataReader = General.BDD.query("SELECT Reseau.*, " & Me.table & ".lien
+                                                                           FROM " & Me.table & ", Reseau
+                                                                           WHERE " & Me.table & ".identif_Personne = " & Me.identif & "
+                                                                           AND " & Me.table & ".identif_Reseau = Reseau.identif
+                                                                           ORDER BY Reseau.nom;")
 
         Dim dataTable = New DataTable()
         dataTable.Load(reader)
@@ -126,12 +144,12 @@
 
 
 
-    'vérifie si la personne a déjà la compétence en passant par un select avant une insertion (évite de planter le programme)
-    Private Function hasCompetence(ByVal identif_competence As Integer) As Boolean
+    'vérifie si la personne a déjà le reseau en passant par un select avant une insertion (évite de planter le programme)
+    Private Function hasReseau(ByVal identif_reseau As Integer) As Boolean
         Dim reader As System.Data.Odbc.OdbcDataReader = General.BDD.query("SELECT * 
                                                                            FROM " & Me.table & " 
                                                                            WHERE identif_Personne = " & Me.identif & "
-                                                                           AND identif_Competence = " & identif_competence & "
+                                                                           AND identif_Reseau = " & identif_reseau & "
                                                                            LIMIT 1;")
         If reader.HasRows Then
             While reader.Read()

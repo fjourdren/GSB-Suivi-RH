@@ -1,4 +1,4 @@
-CREATE TABLE MembreRessourceHumaine (
+﻿CREATE TABLE MembreRessourceHumaine (
 	identif int NOT NULL AUTO_INCREMENT,
 	nom varchar(255),
 	prenom varchar(255),
@@ -106,7 +106,7 @@ ALTER TABLE Personne_Entreprise ADD CONSTRAINT fkPersonne_Entreprise_Entreprise 
 CREATE TABLE Personne_Formation (
 	identif_Formation int NOT NULL,
 	identif_Personne int NOT NULL,
-	annee char(4) NOT NULL,
+	annee char(4),
 	CONSTRAINT pk_Personne_Formation PRIMARY KEY (identif_Personne, identif_Formation)
 );
 

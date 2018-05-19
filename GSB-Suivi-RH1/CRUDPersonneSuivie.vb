@@ -12,8 +12,8 @@
     Private Sub DataGridView_CellContentClick(sender As Object, e As DataGridViewCellEventArgs) Handles DataGridView1.CellContentClick, DataGridView1.CellContentDoubleClick, DataGridView1.CellClick
         Dim x As Integer = e.RowIndex
 
-        If x >= 0 Then
-            Try
+        Try
+            If x >= 0 Then
                 Me.labelIdentifRender.Text = Me.DataGridView1.Rows(x).Cells(0).Value
                 Me.textBoxNom.Text = Me.DataGridView1.Rows(x).Cells(1).Value
                 Me.textBoxPrenom.Text = Me.DataGridView1.Rows(x).Cells(2).Value
@@ -23,8 +23,10 @@
                 Me.textBoxNote.Text = Me.DataGridView1.Rows(x).Cells(6).Value
 
 
-                'show bouton de liaison compétence
-                Me.btnLiaisonCompetence.Enabled = True
+                'show boutons qui nécessite une sélection par l'utilisteur
+                Me.btnLiaisonCompetences.Enabled = True
+                Me.btnLiaisonFormations.Enabled = True
+                Me.btnLiaisonReseaux.Enabled = True
 
                 'focus region
                 Try
@@ -59,11 +61,11 @@
                 Catch ex As Exception
 
                 End Try
-
-            Catch ex As Exception
-                Me.clear()
-            End Try
-        End If
+            End If
+        Catch ex As Exception
+            MessageBox.Show("Erreur de chargement des données")
+            Me.clear()
+        End Try
     End Sub
 
 
@@ -137,10 +139,22 @@
         End If
     End Sub
 
-    Private Sub btnLiaisonCompetence_Click(sender As Object, e As EventArgs) Handles btnLiaisonCompetence.Click
+    Private Sub btnLiaisonCompetences_Click(sender As Object, e As EventArgs) Handles btnLiaisonCompetences.Click
         Dim LiaisonPersonneCompetencesInstance As New LiaisonPersonneCompetences(Me.labelIdentifRender.Text)
         LiaisonPersonneCompetencesInstance.MdiParent = Me.MdiParent
         LiaisonPersonneCompetencesInstance.Show()
+    End Sub
+
+    Private Sub btnLiaisonFormations_Click(sender As Object, e As EventArgs) Handles btnLiaisonFormations.Click
+        Dim LiaisonPersonnePersonneInstance As New LiaisonPersonneFormations(Me.labelIdentifRender.Text)
+        LiaisonPersonnePersonneInstance.MdiParent = Me.MdiParent
+        LiaisonPersonnePersonneInstance.Show()
+    End Sub
+
+    Private Sub btnLiaisonReseaux_Click(sender As Object, e As EventArgs) Handles btnLiaisonReseaux.Click
+        Dim LiaisonPersonneReseauxInstance As New LiaisonPersonneReseaux(Me.labelIdentifRender.Text)
+        LiaisonPersonneReseauxInstance.MdiParent = Me.MdiParent
+        LiaisonPersonneReseauxInstance.Show()
     End Sub
 
 
@@ -206,8 +220,10 @@
 
 
     Private Sub clear()
-        'désactive le bouton compétence car il n'y aura pas d'identif
-        Me.btnLiaisonCompetence.Enabled = False
+        'désactive les boutons nécessitant un élément sélectionné
+        Me.btnLiaisonCompetences.Enabled = False
+        Me.btnLiaisonFormations.Enabled = False
+        Me.btnLiaisonReseaux.Enabled = False
 
         'clear values
         Me.labelIdentifRender.Text = ""

@@ -259,7 +259,7 @@ ALTER TABLE Personne_Entreprise ADD CONSTRAINT fk_Entreprise FOREIGN KEY (identi
 CREATE TABLE Personne_Formation (
 	identif_Formation number NOT NULL,
 	identif_Personne number NOT NULL,
-	annee varchar2(4) NOT NULL,
+	annee varchar2(4),
 	CONSTRAINT pk_Personne_Formation PRIMARY KEY (identif_Personne, identif_Formation)
 );
 

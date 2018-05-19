@@ -1,5 +1,4 @@
 ﻿Public Class CRUDMembresRessourceHumaine
-
     Dim table As String = "MembreRessourceHumaine"
 
     'events
@@ -22,6 +21,7 @@
                 Me.textBoxRepeatPassword.Text = ""
             Catch ex As Exception
                 MessageBox.Show("Erreur de chargement des données")
+                Me.clear()
             End Try
         End If
     End Sub

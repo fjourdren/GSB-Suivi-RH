@@ -24,6 +24,9 @@ Partial Class CRUDPersonneSuivie
     Private Sub InitializeComponent()
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(CRUDPersonneSuivie))
         Me.GroupBox1 = New System.Windows.Forms.GroupBox()
+        Me.btnLiaisonReseaux = New System.Windows.Forms.Button()
+        Me.btnLiaisonFormations = New System.Windows.Forms.Button()
+        Me.btnLiaisonCompetences = New System.Windows.Forms.Button()
         Me.btnReset = New System.Windows.Forms.Button()
         Me.labelResponsable = New System.Windows.Forms.Label()
         Me.labelRegion = New System.Windows.Forms.Label()
@@ -47,14 +50,15 @@ Partial Class CRUDPersonneSuivie
         Me.labelNom = New System.Windows.Forms.Label()
         Me.textBoxNom = New System.Windows.Forms.TextBox()
         Me.DataGridView1 = New System.Windows.Forms.DataGridView()
-        Me.btnLiaisonCompetence = New System.Windows.Forms.Button()
         Me.GroupBox1.SuspendLayout()
         CType(Me.DataGridView1, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
         'GroupBox1
         '
-        Me.GroupBox1.Controls.Add(Me.btnLiaisonCompetence)
+        Me.GroupBox1.Controls.Add(Me.btnLiaisonReseaux)
+        Me.GroupBox1.Controls.Add(Me.btnLiaisonFormations)
+        Me.GroupBox1.Controls.Add(Me.btnLiaisonCompetences)
         Me.GroupBox1.Controls.Add(Me.btnReset)
         Me.GroupBox1.Controls.Add(Me.labelResponsable)
         Me.GroupBox1.Controls.Add(Me.labelRegion)
@@ -83,6 +87,33 @@ Partial Class CRUDPersonneSuivie
         Me.GroupBox1.TabIndex = 22
         Me.GroupBox1.TabStop = False
         Me.GroupBox1.Text = "Details"
+        '
+        'btnLiaisonReseaux
+        '
+        Me.btnLiaisonReseaux.Location = New System.Drawing.Point(527, 136)
+        Me.btnLiaisonReseaux.Name = "btnLiaisonReseaux"
+        Me.btnLiaisonReseaux.Size = New System.Drawing.Size(88, 23)
+        Me.btnLiaisonReseaux.TabIndex = 30
+        Me.btnLiaisonReseaux.Text = "Réseaux"
+        Me.btnLiaisonReseaux.UseVisualStyleBackColor = True
+        '
+        'btnLiaisonFormations
+        '
+        Me.btnLiaisonFormations.Location = New System.Drawing.Point(433, 136)
+        Me.btnLiaisonFormations.Name = "btnLiaisonFormations"
+        Me.btnLiaisonFormations.Size = New System.Drawing.Size(88, 23)
+        Me.btnLiaisonFormations.TabIndex = 29
+        Me.btnLiaisonFormations.Text = "Formations"
+        Me.btnLiaisonFormations.UseVisualStyleBackColor = True
+        '
+        'btnLiaisonCompetences
+        '
+        Me.btnLiaisonCompetences.Location = New System.Drawing.Point(339, 136)
+        Me.btnLiaisonCompetences.Name = "btnLiaisonCompetences"
+        Me.btnLiaisonCompetences.Size = New System.Drawing.Size(88, 23)
+        Me.btnLiaisonCompetences.TabIndex = 28
+        Me.btnLiaisonCompetences.Text = "Compétences"
+        Me.btnLiaisonCompetences.UseVisualStyleBackColor = True
         '
         'btnReset
         '
@@ -277,6 +308,7 @@ Partial Class CRUDPersonneSuivie
         '
         Me.DataGridView1.AllowUserToAddRows = False
         Me.DataGridView1.AllowUserToDeleteRows = False
+        Me.DataGridView1.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill
         Me.DataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
         Me.DataGridView1.Location = New System.Drawing.Point(12, 213)
         Me.DataGridView1.MultiSelect = False
@@ -284,15 +316,6 @@ Partial Class CRUDPersonneSuivie
         Me.DataGridView1.ReadOnly = True
         Me.DataGridView1.Size = New System.Drawing.Size(847, 342)
         Me.DataGridView1.TabIndex = 23
-        '
-        'btnLiaisonCompetence
-        '
-        Me.btnLiaisonCompetence.Location = New System.Drawing.Point(753, 131)
-        Me.btnLiaisonCompetence.Name = "btnLiaisonCompetence"
-        Me.btnLiaisonCompetence.Size = New System.Drawing.Size(88, 23)
-        Me.btnLiaisonCompetence.TabIndex = 28
-        Me.btnLiaisonCompetence.Text = "Compétences"
-        Me.btnLiaisonCompetence.UseVisualStyleBackColor = True
         '
         'CRUDPersonneSuivie
         '
@@ -338,5 +361,7 @@ Partial Class CRUDPersonneSuivie
     Friend WithEvents labelRegion As Label
     Friend WithEvents comboBoxResponsable As ComboBox
     Friend WithEvents btnReset As Button
-    Friend WithEvents btnLiaisonCompetence As Button
+    Friend WithEvents btnLiaisonCompetences As Button
+    Friend WithEvents btnLiaisonFormations As Button
+    Friend WithEvents btnLiaisonReseaux As Button
 End Class

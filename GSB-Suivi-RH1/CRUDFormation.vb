@@ -1,5 +1,4 @@
 ﻿Public Class CRUDFormation
-
     Dim table As String = "Formation"
 
     'events
@@ -17,6 +16,7 @@
                 Me.textBoxName.Text = Me.DataGridView1.Rows(x).Cells(1).Value
             Catch ex As Exception
                 MessageBox.Show("Erreur de chargement des données")
+                Me.clear()
             End Try
         End If
     End Sub

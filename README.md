@@ -11,3 +11,5 @@ Projet client lourd BTS SIO
 * Ecran d'affichage d'un profil complet
 * Imprimer un profil
 * Changement du nom des colonnes identif en ID
+* Ajout de la possibilité pour une personne d'avoir plusieurs période dans une entreprise
+* Ajout de la possibilité de modifier des valeurs dans les liaisons

@@ -1,31 +1,27 @@
-﻿Public Class LiaisonPersonneCompetences
-    Dim table As String = "Personne_Competence"
+﻿Public Class LiaisonCategorieCompetences
+    Dim table As String = "Competence_Categorie"
 
     Dim identif As Integer
-    Dim nom As String
-    Dim prenom As String
-    Dim email As String
+    Dim libelle As String
 
     Public Sub New(ByVal identif As Integer)
 
         ' Cet appel est requis par le concepteur.
         InitializeComponent()
 
-        'va chercher la personne dans la base de donnée
+        'va chercher la catégorie dans la base de donnée
         Me.identif = identif
 
-        Dim reader As System.Data.Odbc.OdbcDataReader = General.BDD.query("SELECT nom, prenom, email 
-                                                                           FROM Personne 
+        Dim reader As System.Data.Odbc.OdbcDataReader = General.BDD.query("SELECT libelle 
+                                                                           FROM Categorie  
                                                                            WHERE identif = " & Me.identif & " 
                                                                            LIMIT 1;")
         If reader.HasRows Then
             While reader.Read()
-                Me.nom = reader.GetString(0)
-                Me.prenom = reader.GetString(1)
-                Me.email = reader.GetString(2)
+                Me.libelle = reader.GetString(0)
             End While
         Else
-            MessageBox.Show("La personne suivie n'existe pas")
+            MessageBox.Show("La catégorie n'existe pas")
             Me.Close()
         End If
 
@@ -33,19 +29,19 @@
 
         ' setup form
         Me.labelIdentifRender.Text = Me.identif
-        Me.labelNomRender.Text = Me.nom
-        Me.labelPrenomRender.Text = Me.prenom
-        Me.labelEmailRender.Text = Me.email
+        Me.labelLibelleRender.Text = Me.libelle
 
         ' load competence combo box
         Me.loadComboBoxCompetence()
 
-        ' load datagrid des compétence de la personne
+        ' load datagrid des compétence de la catégorie
         Me.loadDataGrid()
     End Sub
 
-    Private Sub LiaisonPersonneCompetences_Load(sender As Object, e As EventArgs) Handles MyBase.Load
-        Me.Text = Me.Text & " " & Me.prenom & " " & Me.nom
+    Private Sub LiaisonCategorieCompetences_Load(sender As Object, e As EventArgs)
+        MessageBox.Show("test")
+        Me.Text = Me.Text & " " & Me.libelle
+        MessageBox.Show(Me.Text)
     End Sub
 
 
@@ -53,7 +49,7 @@
 
     Private Sub btnAdd_Click(sender As Object, e As EventArgs) Handles btnAdd.Click
         If Not (Me.comboBoxCompetence.SelectedIndex = -1) And Not (Me.hasCompetence(Me.comboBoxCompetence.SelectedIndex)) Then
-            General.BDD.nonQuery("INSERT INTO " & Me.table & "(identif_Personne, identif_Competence) 
+            General.BDD.nonQuery("INSERT INTO " & Me.table & "(identif_Categorie, identif_Competence) 
                                   VALUES (" & Me.identif & ", " & Me.comboBoxCompetence.SelectedIndex & ");")
         End If
 
@@ -63,7 +59,7 @@
     Private Sub btnDelete_Click(sender As Object, e As EventArgs) Handles btnDelete.Click
         General.BDD.nonQuery("DELETE FROM " & Me.table & " 
                               WHERE identif_Competence = " & Me.comboBoxCompetence.SelectedValue & "
-                              AND identif_Personne = " & Me.identif & ";")
+                              AND identif_Categorie = " & Me.identif & ";")
 
         Me.loadDataGrid()
     End Sub
@@ -115,7 +111,7 @@
         Dim reader As System.Data.Odbc.OdbcDataReader = General.BDD.query("SELECT Competence.* 
                                                                            FROM " & Me.table & ", Competence
                                                                            WHERE " & Me.table & ".identif_Competence = Competence.identif 
-                                                                           AND " & Me.table & ".identif_Personne = " & Me.identif & ";")
+                                                                           AND " & Me.table & ".identif_Categorie = " & Me.identif & ";")
 
         Dim dataTable = New DataTable()
         dataTable.Load(reader)
@@ -126,11 +122,11 @@
 
 
 
-    'vérifie si la personne a déjà la compétence en passant par un select avant une insertion (évite de planter le programme)
+    'vérifie si la categorie a déjà la compétence en passant par un select avant une insertion (évite de planter le programme)
     Private Function hasCompetence(ByVal identif_competence As Integer) As Boolean
         Dim reader As System.Data.Odbc.OdbcDataReader = General.BDD.query("SELECT * 
                                                                            FROM " & Me.table & " 
-                                                                           WHERE identif_Personne = " & Me.identif & "
+                                                                           WHERE identif_Categorie = " & Me.identif & "
                                                                            AND identif_Competence = " & identif_competence & "
                                                                            LIMIT 1;")
         If reader.HasRows Then
@@ -142,4 +138,7 @@
         Return False
     End Function
 
+    Private Sub LiaisonCategorieCompetences_Load_1(sender As Object, e As EventArgs) Handles MyBase.Load
+
+    End Sub
 End Class

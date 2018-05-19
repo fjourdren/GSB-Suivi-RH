@@ -14,8 +14,12 @@
             Try
                 Me.labelIdentifRender.Text = Me.DataGridView1.Rows(x).Cells(0).Value
                 Me.textBoxLibelle.Text = Me.DataGridView1.Rows(x).Cells(1).Value
+
+                'show bouton de liaison compétence
+                Me.btnLiaisonCompetences.Enabled = True
             Catch ex As Exception
                 MessageBox.Show("Erreur de chargement des données")
+                Me.clear()
             End Try
         End If
     End Sub
@@ -50,6 +54,12 @@
         End If
     End Sub
 
+    Private Sub btnLiaisonCompetences_Click(sender As Object, e As EventArgs) Handles btnLiaisonCompetences.Click
+        Dim liaisonCategorieCompetencesInstance As New LiaisonCategorieCompetences(Me.labelIdentifRender.Text)
+        liaisonCategorieCompetencesInstance.MdiParent = Me.MdiParent
+        liaisonCategorieCompetencesInstance.Show()
+    End Sub
+
 
     'utils
     Private Sub loadDataGrid()
@@ -63,6 +73,10 @@
     End Sub
 
     Private Sub clear()
+        'désactive le bouton compétence car il n'y aura pas d'identif
+        Me.btnLiaisonCompetences.Enabled = False
+
+        'clear values
         Me.labelIdentifRender.Text = ""
         Me.textBoxLibelle.Text = ""
     End Sub
