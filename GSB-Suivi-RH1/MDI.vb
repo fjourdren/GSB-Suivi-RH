@@ -62,6 +62,8 @@
     End Sub
 
     Private Sub RechercheToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles RechercheToolStripMenuItem.Click
-
+        Dim RechercheInstance As New Recherche
+        RechercheInstance.MdiParent = Me
+        RechercheInstance.Show()
     End Sub
 End Class

@@ -340,7 +340,7 @@ INSERT INTO region(nom) VALUES  ('Alsace'),
 								('Rhone Alpes');
 
 
-INSERT INTO Personne(identif, nom, prenom, email, dateDeNaissance, transport, noteRessourceHumaine, identif_MembreRessourceHumaine, identif_Region) VALUES  (1, 'SERGUEÏ', 'Brin', 'email@gmail.com', '1973-08-21', 'Permis B & Voiture', '', 1, 2),
+INSERT INTO Personne(identif, nom, prenom, email, dateDeNaissance, transport, noteRessourceHumaine, identif_MembreRessourceHumaine, identif_Region) VALUES  (1, 'BRIN', 'Sergueï', 'email@gmail.com', '1973-08-21', 'Permis B & Voiture', '', 1, 2),
 																																							(2, 'LARRY', 'Page', 'email@gmail.com', '1973-04-26', 'Permis B', '', 1, 5),
 																																							(3, 'BEZOS', 'Jeff', 'email@gmail.com', '1946-01-12', '', '', 2, 2),
 																																							(4, 'GATES', 'Bill', 'email@gmail.com', '1955-10-28', 'Permis B', '', 2, 2),

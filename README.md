@@ -13,3 +13,4 @@ Projet client lourd BTS SIO
 * Changement du nom des colonnes identif en ID
 * Ajout de la possibilité pour une personne d'avoir plusieurs période dans une entreprise
 * Ajout de la possibilité de modifier des valeurs dans les liaisons
+* Retirer bouton "recherche" de l'écran de recherche
