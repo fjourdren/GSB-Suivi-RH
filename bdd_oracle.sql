@@ -273,37 +273,132 @@ ALTER TABLE Personne_Formation ADD CONSTRAINT fk_Formation FOREIGN KEY (identif_
 
 
 
-INSERT INTO MembreRessourceHumaine (identif, nom, prenom, email, nomUtilisateur, motDePasse) VALUES (1, 'Martin', 'Paul', 'paul.martin@gmail.com', 'pmartin', '123');
+
+/* INSERTS */
+INSERT INTO MembreRessourceHumaine (identif, nom, prenom, email, nomUtilisateur, motDePasse) VALUES (1, 'MARTIN', 'Paul', 'paul.martin@gmail.com', 'pmartin', '123'),
+																									(2, 'BERNARD', 'Jules', 'jules.bernard@gmail.com', 'jbernard', '123');
 
 
-INSERT INTO region(nom) VALUES ('Alsace');
-INSERT INTO region(nom) VALUES ('Aquitaine');
-INSERT INTO region(nom) VALUES ('Auvergne');
-INSERT INTO region(nom) VALUES ('Basse Normandie');
-INSERT INTO region(nom) VALUES ('Bourgogne');
-INSERT INTO region(nom) VALUES ('Bretagne');
-INSERT INTO region(nom) VALUES ('Centre');
-INSERT INTO region(nom) VALUES ('Champagne Ardenne');
-INSERT INTO region(nom) VALUES ('Corse');
-INSERT INTO region(nom) VALUES ('Franche Comte');
-INSERT INTO region(nom) VALUES ('Haute Normandie');
-INSERT INTO region(nom) VALUES ('Ile de France');
-INSERT INTO region(nom) VALUES ('Languedoc Roussillon');
-INSERT INTO region(nom) VALUES ('Limousin');
-INSERT INTO region(nom) VALUES ('Lorraine');
-INSERT INTO region(nom) VALUES ('Midi-Pyrénées');
-INSERT INTO region(nom) VALUES ('Nord Pas de Calais');
-INSERT INTO region(nom) VALUES ('PACA');
-INSERT INTO region(nom) VALUES ('Pays de la Loire');
-INSERT INTO region(nom) VALUES ('Picardie');
-INSERT INTO region(nom) VALUES ('Poitou Charente');
-INSERT INTO region(nom) VALUES ('Rhone Alpes');
+INSERT INTO Competence (identif, libelle) VALUES (1, 'PHP'),
+											 		(2, 'Golang'),
+											 		(3, 'JavaScript'),
+											 		(4, 'Java'),
+											 		(5, 'Réseau neuronal convolutif'),
+											 		(6, 'D3.js'),
+											 		(7, 'QOS'),
+											 		(8, 'Téléphonie'),
+											 		(9, 'Gestion de domaine'),
+											 		(10, 'DNS'),
+											 		(11, 'MySQL'),
+											 		(12, 'UML');
 
-INSERT INTO Reseau(nom) VALUES ('Twitter');
-INSERT INTO Reseau(nom) VALUES ('Facebook');
-INSERT INTO Reseau(nom) VALUES ('Linkedin');
-INSERT INTO Reseau(nom) VALUES ('Google+');
-INSERT INTO Reseau(nom) VALUES ('Site web');
 
-INSERT INTO Formation(nom) VALUES ('BTS SIO : SLAM');
-INSERT INTO Formation(nom) VALUES ('BTS SIO : SISR');
+INSERT INTO Categorie (identif, libelle) VALUES (1, 'Programmation Informatique'),
+											 		(2, 'Intelligence artificiel'),
+											 		(3, 'Réseaux Informatiques'),
+											 		(4, 'Systèmes Informatiques'),
+											 		(5, 'Analyse et Conception logiciel Informatique');
+
+
+INSERT INTO Competence_Categorie (identif_Categorie, identif_Competence) VALUES (1, 1),
+																		 		(1, 2),
+																		 		(1, 3),
+																		 		(1, 4),
+																		 		(1, 6),
+																		 		(1, 11),
+																		 		(2, 5),
+																		 		(2, 6),
+																		 		(3, 7),
+																		 		(3, 8),
+																		 		(4, 9),
+																		 		(4, 10),
+																		 		(4, 11),
+																		 		(5, 11),
+																		 		(5, 12);
+
+INSERT INTO region(nom) VALUES  ('Alsace'),
+								('Aquitaine'),
+								('Auvergne'),
+								('Basse Normandie'),
+								('Bourgogne'),
+								('Bretagne'),
+								('Centre'),
+								('Champagne Ardenne'),
+								('Corse'),
+								('Franche Comte'),
+								('Haute Normandie'),
+								('Ile de France'),
+								('Languedoc Roussillon'),
+								('Limousin'),
+								('Lorraine'),
+								('Midi-Pyrénées'),
+								('Nord Pas de Calais'),
+								('PACA'),
+								('Pays de la Loire'),
+								('Picardie'),
+								('Poitou Charente'),
+								('Rhone Alpes');
+
+
+INSERT INTO Personne(identif, nom, prenom, email, dateDeNaissance, transport, noteRessourceHumaine, identif_MembreRessourceHumaine, identif_Region) VALUES  (1, 'SERGUEÏ', 'Brin', 'email@gmail.com', '1973-08-21', 'Permis B & Voiture', '', 1, 2),
+																																							(2, 'LARRY', 'Page', 'email@gmail.com', '1973-04-26', 'Permis B', '', 1, 5),
+																																							(3, 'BEZOS', 'Jeff', 'email@gmail.com', '1946-01-12', '', '', 2, 2),
+																																							(4, 'GATES', 'Bill', 'email@gmail.com', '1955-10-28', 'Permis B', '', 2, 2),
+																																							(5, 'ZUCKERBERG', 'Mark', 'email@gmail.com', '1984-05-14', 'Permis B', '', 2, 7),
+																																							(6, 'NIEL', 'Xavier', 'email@gmail.com', '1967-08-25', '', '', 2, 2);
+
+
+INSERT INTO Reseau(identif, nom) VALUES (1, 'Twitter'),
+										(2, 'Facebook'),
+										(3, 'Linkedin'),
+										(4, 'Google+'),
+										(5, 'Github'),
+										(6, 'Site web');
+
+
+INSERT INTO Personne_Reseau(identif_Personne, identif_Reseau, lien) VALUES  (4, 1, 'https://twitter.com/billgates'),
+																			(4, 3, 'https://www.linkedin.com/in/williamhgates'),
+																			(4, 6, 'https://microsoft.com'),
+																			(5, 1, 'https://twitter.com/finkd'),
+																			(5, 2, 'https://www.facebook.com/zuck'),
+																			(5, 6, 'https://facebook.com');
+
+
+INSERT INTO Entreprise (identif, nom) VALUES (1, 'Entreprise 1'),
+											 (2, 'Entreprise 2');
+
+
+INSERT INTO Personne_Entreprise (identif_Personne, identif_Entreprise, dateDeb, dateFin) VALUES (1, 1, '2008-11-12', '2009-01-24'),
+																								(4, 1, '2010-11-12', '2012-02-12'),
+																								(5, 2, '2006-11-12', '2010-06-04'),
+																								(6, 2, '2000-11-20', '2012-07-30');
+
+
+INSERT INTO Formation(identif, nom) VALUES  (1, 'BTS SIO : SLAM'),
+								  			(2, 'BTS SIO : SISR');
+
+
+INSERT INTO Personne_Formation(identif_Personne, identif_Formation, annee) VALUES  (1, 1, 1990),
+																					(1, 2, 1991),
+								  													(2, 1, 1994),
+								  													(2, 2, 1995),
+								  													(3, 1, 1980),
+								  													(4, 1, 1979),
+								  													(4, 2, 1979),
+								  													(5, 1, 2002),
+								  													(6, 1, 1988),
+								  													(6, 2, 1989);
+
+
+INSERT INTO Personne_Competence(identif_Personne, identif_Competence) VALUES  (1, 1),
+								  												(2, 1),
+								  												(3, 1),
+								  												(4, 1),
+								  												(5, 1),
+								  												(6, 1),
+								  												(5, 5),
+								  												(3, 5),
+								  												(5, 6),
+								  												(6, 10),
+								  												(5, 7),
+								  												(5, 8);
