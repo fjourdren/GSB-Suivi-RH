@@ -60,7 +60,9 @@
 
             'update password si les champs sont remplis
             If Me.textBoxPassword.Text And Me.textBoxPassword.Text = Me.textBoxRepeatPassword.Text Then
-                General.BDD.nonQuery("Update " & Me.table & " SET motDePasse='" & Me.textBoxPassword.Text & "' WHERE identif = '" & identif & "';")
+                General.BDD.nonQuery("UPDATE " & Me.table & " SET motDePasse='" & Me.textBoxPassword.Text & "' WHERE identif = '" & identif & "';")
+            Else
+                MessageBox.Show("Les mots de passes ne sont pas identiques")
             End If
             Me.clear() 'clear form
         End If

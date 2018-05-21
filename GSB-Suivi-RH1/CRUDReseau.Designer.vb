@@ -159,7 +159,7 @@ Partial Class CRUDReseau
         Me.MaximumSize = New System.Drawing.Size(669, 489)
         Me.MinimumSize = New System.Drawing.Size(669, 489)
         Me.Name = "CRUDReseau"
-        Me.Text = "Gestion des Formations"
+        Me.Text = "Gestion des Réseaux Sociaux"
         Me.GroupBox1.ResumeLayout(False)
         Me.GroupBox1.PerformLayout()
         CType(Me.DataGridView1, System.ComponentModel.ISupportInitialize).EndInit()
