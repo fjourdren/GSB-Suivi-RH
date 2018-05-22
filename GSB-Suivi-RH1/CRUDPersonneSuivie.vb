@@ -2,14 +2,14 @@
     Dim table As String = "Personne"
 
     'events
-    Private Sub CRUD_Load(sender As Object, e As EventArgs) Handles MyBase.Load
+    Private Sub CRUD_Load(ByVal sender As Object, ByVal e As EventArgs) Handles MyBase.Load
         Me.clear() 'clear form
         Me.loadComboBoxRegion()
         Me.loadComboBoxResponsable()
         Me.loadDataGrid()
     End Sub
 
-    Private Sub DataGridView_CellContentClick(sender As Object, e As DataGridViewCellEventArgs) Handles DataGridView1.CellContentClick, DataGridView1.CellContentDoubleClick, DataGridView1.CellClick
+    Private Sub DataGridView_CellContentClick(ByVal sender As Object, ByVal e As DataGridViewCellEventArgs) Handles DataGridView1.CellContentClick, DataGridView1.CellContentDoubleClick, DataGridView1.CellClick
         Dim x As Integer = e.RowIndex
 
         Try
@@ -19,9 +19,23 @@
                 Me.textBoxPrenom.Text = Me.DataGridView1.Rows(x).Cells(2).Value
                 Me.textBoxEmail.Text = Me.DataGridView1.Rows(x).Cells(3).Value
                 Me.dateTimeDateDeNaissance.Value = Me.DataGridView1.Rows(x).Cells(4).Value
-                Me.textBoxTransport.Text = Me.DataGridView1.Rows(x).Cells(5).Value
-                Me.textBoxNote.Text = Me.DataGridView1.Rows(x).Cells(6).Value
 
+                If Not (TypeOf Me.DataGridView1.Rows(x).Cells(5).Value Is DBNull) Then
+                    Me.textBoxTransport.Text = Me.DataGridView1.Rows(x).Cells(5).Value
+                Else
+                    Me.textBoxTransport.Text = ""
+                End If
+
+                If Not (TypeOf Me.DataGridView1.Rows(x).Cells(6).Value Is DBNull) Then
+                    Me.textBoxNote.Text = Me.DataGridView1.Rows(x).Cells(6).Value
+                Else
+                    Me.textBoxNote.Text = ""
+                End If
+
+
+
+                Me.btnDelete.Enabled = True
+                Me.btnSave.Enabled = True
 
                 'show boutons qui nécessite une sélection par l'utilisteur
                 Me.btnLiaisonCompetences.Enabled = True
@@ -29,13 +43,15 @@
                 Me.btnLiaisonReseaux.Enabled = True
                 Me.btnLiaisonEntreprises.Enabled = True
 
+
                 'focus region
                 Try
-                    Dim reader As System.Data.Odbc.OdbcDataReader = General.BDD.query("SELECT region.identif FROM " & Me.table & ", region WHERE region.identif = " & Me.table & ".identif_Region 
-                                                                                                                                              AND " & Me.table & ".identif='" & Me.DataGridView1.Rows(x).Cells(0).Value & "';")
+                    Dim reader As System.Data.Odbc.OdbcDataReader = General.BDD.query("SELECT region.identif FROM " & Me.table & ", region WHERE region.identif = " & Me.table & ".identif_Region " &
+                                                                                                                                              "AND " & Me.table & ".identif='" & Me.DataGridView1.Rows(x).Cells(0).Value & "';")
                     If reader.HasRows Then
                         While reader.Read()
-                            Me.comboBoxRegion.SelectedValue = reader.GetInt32(0)
+                            Dim id As Integer = reader.GetInt32(0)
+                            Me.comboBoxRegion.SelectedValue = id
                         End While
                     Else
                         Me.comboBoxRegion.SelectedValue = -1
@@ -48,13 +64,14 @@
 
                 'focus responsable
                 Try
-                    Dim readerResponsable As System.Data.Odbc.OdbcDataReader = General.BDD.query("SELECT MembreRessourceHumaine.identif
-                                                                                                  FROM " & Me.table & ", MembreRessourceHumaine 
-                                                                                                  WHERE MembreRessourceHumaine.identif = " & Me.table & ".identif_MembreRessourceHumaine  
-                                                                                                  AND " & Me.table & ".identif='" & Me.DataGridView1.Rows(x).Cells(0).Value & "';")
+                    Dim readerResponsable As System.Data.Odbc.OdbcDataReader = General.BDD.query("SELECT MembreRessourceHumaine.identif " &
+                                                                                                  "FROM " & Me.table & ", MembreRessourceHumaine " &
+                                                                                                  "WHERE MembreRessourceHumaine.identif = " & Me.table & ".identif_MembreRessourceHumaine " &
+                                                                                                  "AND " & Me.table & ".identif='" & Me.DataGridView1.Rows(x).Cells(0).Value & "';")
                     If readerResponsable.HasRows Then
                         While readerResponsable.Read()
-                            Me.comboBoxResponsable.SelectedValue = readerResponsable.GetInt32(0)
+                            Dim id As Integer = readerResponsable.GetInt32(0)
+                            Me.comboBoxResponsable.SelectedValue = id
                         End While
                     Else
                         Me.comboBoxResponsable.SelectedValue = -1
@@ -72,11 +89,11 @@
 
 
     'boutons
-    Private Sub btnReset_Click(sender As Object, e As EventArgs) Handles btnReset.Click
+    Private Sub btnReset_Click(ByVal sender As Object, ByVal e As EventArgs) Handles btnReset.Click
         Me.clear() 'clear form
     End Sub
 
-    Private Sub btnNew_Click(sender As Object, e As EventArgs) Handles btnNew.Click
+    Private Sub btnNew_Click(ByVal sender As Object, ByVal e As EventArgs) Handles btnNew.Click
 
         Dim identif_MembreRessourceHumaineValue As Object = Me.comboBoxResponsable.SelectedValue
         Dim identif_regionValue As Object = Me.comboBoxRegion.SelectedValue
@@ -89,20 +106,20 @@
             identif_regionValue = "NULL"
         End If
 
-        General.BDD.nonQuery("INSERT INTO " & Me.table & "(nom, prenom, email, dateDeNaissance, transport, noteRessourceHumaine, identif_MembreRessourceHumaine, identif_Region) 
-                              VALUES ('" & Me.textBoxNom.Text & "', 
-                                      '" & Me.textBoxPrenom.Text & "', 
-                                      '" & Me.textBoxEmail.Text & "', 
-                                      '" & Format(Me.dateTimeDateDeNaissance.Value, "yyyy-MM-dd") & "',
-                                      '" & Me.textBoxTransport.Text & "',
-                                      '" & Me.textBoxNote.Text & "',
-                                      '" & identif_MembreRessourceHumaineValue & "',
-                                      '" & identif_regionValue & "');")
+        General.BDD.nonQuery("INSERT INTO " & Me.table & "(nom, prenom, email, dateDeNaissance, transport, noteRessourceHumaine, identif_MembreRessourceHumaine, identif_Region) " &
+                              "VALUES ('" & Me.textBoxNom.Text & "', " &
+                                        "'" & Me.textBoxPrenom.Text & "', " &
+                                        "'" & Me.textBoxEmail.Text & "'," &
+                                        "'" & Format(Me.dateTimeDateDeNaissance.Value, "yyyy-MM-dd") & "', " &
+                                        "'" & Me.textBoxTransport.Text & "', " &
+                                        "'" & Me.textBoxNote.Text & "', " &
+                                        "'" & identif_MembreRessourceHumaineValue & "', " &
+                                        "'" & identif_regionValue & "');")
         Me.clear() 'clear form
         Me.loadDataGrid() 'refresh data grid
     End Sub
 
-    Private Sub btnSave_Click(sender As Object, e As EventArgs) Handles btnSave.Click
+    Private Sub btnSave_Click(ByVal sender As Object, ByVal e As EventArgs) Handles btnSave.Click
         Dim identif As Integer = Me.labelIdentifRender.Text
         If identif > 0 Then
 
@@ -117,21 +134,21 @@
                 identif_regionValue = "NULL"
             End If
 
-            General.BDD.nonQuery("UPDATE " & Me.table & " SET nom='" & Me.textBoxNom.Text & "',
-                                                              prenom='" & Me.textBoxPrenom.Text & "',
-                                                              email='" & Me.textBoxEmail.Text & "',
-                                                              dateDeNaissance='" & Format(Me.dateTimeDateDeNaissance.Value, "yyyy-MM-dd") & "',
-                                                              transport='" & Me.textBoxTransport.Text & "',
-                                                              noteRessourceHumaine='" & Me.textBoxNote.Text & "',
-                                                              identif_MembreRessourceHumaine='" & identif_MembreRessourceHumaineValue & "',
-                                                              identif_Region='" & identif_regionValue & "'
-                                  WHERE identif='" & identif & "';")
+            General.BDD.nonQuery("UPDATE " & Me.table & " SET nom='" & Me.textBoxNom.Text & "', " &
+                                                              "prenom='" & Me.textBoxPrenom.Text & "'," &
+                                                              "email='" & Me.textBoxEmail.Text & "'," &
+                                                              "dateDeNaissance='" & Format(Me.dateTimeDateDeNaissance.Value, "yyyy-MM-dd") & "'," &
+                                                              "transport='" & Me.textBoxTransport.Text & "'," &
+                                                              "noteRessourceHumaine='" & Me.textBoxNote.Text & "'," &
+                                                              "identif_MembreRessourceHumaine='" & identif_MembreRessourceHumaineValue & "'," &
+                                                              "identif_Region='" & identif_regionValue & "'" &
+                                  "WHERE identif='" & identif & "';")
             Me.clear() 'clear form
             Me.loadDataGrid() 'refresh data grid
         End If
     End Sub
 
-    Private Sub btnDelete_Click(sender As Object, e As EventArgs) Handles btnDelete.Click
+    Private Sub btnDelete_Click(ByVal sender As Object, ByVal e As EventArgs) Handles btnDelete.Click
         Dim identif As Integer = Me.labelIdentifRender.Text
         If identif > 0 Then
             General.BDD.nonQuery("DELETE FROM " & Me.table & " WHERE identif = '" & identif & "';")
@@ -140,25 +157,25 @@
         End If
     End Sub
 
-    Private Sub btnLiaisonCompetences_Click(sender As Object, e As EventArgs) Handles btnLiaisonCompetences.Click
+    Private Sub btnLiaisonCompetences_Click(ByVal sender As Object, ByVal e As EventArgs) Handles btnLiaisonCompetences.Click
         Dim LiaisonPersonneCompetencesInstance As New LiaisonPersonneCompetences(Me.labelIdentifRender.Text)
         LiaisonPersonneCompetencesInstance.MdiParent = Me.MdiParent
         LiaisonPersonneCompetencesInstance.Show()
     End Sub
 
-    Private Sub btnLiaisonFormations_Click(sender As Object, e As EventArgs) Handles btnLiaisonFormations.Click
+    Private Sub btnLiaisonFormations_Click(ByVal sender As Object, ByVal e As EventArgs) Handles btnLiaisonFormations.Click
         Dim LiaisonPersonnePersonneInstance As New LiaisonPersonneFormations(Me.labelIdentifRender.Text)
         LiaisonPersonnePersonneInstance.MdiParent = Me.MdiParent
         LiaisonPersonnePersonneInstance.Show()
     End Sub
 
-    Private Sub btnLiaisonReseaux_Click(sender As Object, e As EventArgs) Handles btnLiaisonReseaux.Click
+    Private Sub btnLiaisonReseaux_Click(ByVal sender As Object, ByVal e As EventArgs) Handles btnLiaisonReseaux.Click
         Dim LiaisonPersonneReseauxInstance As New LiaisonPersonneReseaux(Me.labelIdentifRender.Text)
         LiaisonPersonneReseauxInstance.MdiParent = Me.MdiParent
         LiaisonPersonneReseauxInstance.Show()
     End Sub
 
-    Private Sub btnLiaisonEntreprises_Click(sender As Object, e As EventArgs) Handles btnLiaisonEntreprises.Click
+    Private Sub btnLiaisonEntreprises_Click(ByVal sender As Object, ByVal e As EventArgs) Handles btnLiaisonEntreprises.Click
         Dim LiaisonPersonneEntreprisesInterface As New LiaisonPersonneEntreprises(Me.labelIdentifRender.Text)
         LiaisonPersonneEntreprisesInterface.MdiParent = Me.MdiParent
         LiaisonPersonneEntreprisesInterface.Show()
@@ -168,9 +185,9 @@
 
     'utils
     Private Sub loadComboBoxRegion()
-        Dim reader As System.Data.Odbc.OdbcDataReader = General.BDD.query("SELECT identif, nom 
-                                                                           FROM Region 
-                                                                           ORDER BY nom;")
+        Dim reader As System.Data.Odbc.OdbcDataReader = General.BDD.query("SELECT identif, nom " &
+                                                                           "FROM Region " &
+                                                                           "ORDER BY nom;")
 
         'ajoute les colonnes à la combobox
         Me.comboBoxRegion.DisplayMember = "Text"
@@ -184,7 +201,9 @@
         tb.Rows.Add("", -1)
 
         While reader.Read()
-            tb.Rows.Add(reader.GetString(1), reader.GetInt32(0))
+            Dim id As Integer = reader.GetInt32(0)
+            Dim nom As String = reader.GetString(1)
+            tb.Rows.Add(nom, id)
         End While
 
         'applique les données à la combo
@@ -206,7 +225,9 @@
         tb.Rows.Add("", -1)
 
         While reader.Read()
-            tb.Rows.Add(reader.GetString(0) & " " & reader.GetString(1), reader.GetInt32(2))
+            Dim nomPrenom As String = reader.GetString(0) & " " & reader.GetString(1)
+            Dim id As Integer = reader.GetInt32(2)
+            tb.Rows.Add(nomPrenom, id)
         End While
 
         'applique les données à la combo
@@ -214,8 +235,8 @@
     End Sub
 
     Private Sub loadDataGrid()
-        Dim reader As System.Data.Odbc.OdbcDataReader = General.BDD.query("SELECT identif, nom, prenom, email, dateDeNaissance, transport, noteRessourceHumaine 
-                                                                           FROM " & Me.table & ";")
+        Dim reader As System.Data.Odbc.OdbcDataReader = General.BDD.query("SELECT identif, nom, prenom, email, dateDeNaissance, transport, noteRessourceHumaine " &
+                                                                           "FROM " & Me.table & ";")
 
         Dim dataTable = New DataTable()
         dataTable.Load(reader)
@@ -227,6 +248,9 @@
 
 
     Private Sub clear()
+        Me.btnDelete.Enabled = False
+        Me.btnSave.Enabled = False
+
         'désactive les boutons nécessitant un élément sélectionné
         Me.btnLiaisonCompetences.Enabled = False
         Me.btnLiaisonFormations.Enabled = False

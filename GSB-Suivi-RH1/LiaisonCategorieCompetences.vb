@@ -12,10 +12,9 @@
         'va chercher la catégorie dans la base de donnée
         Me.identif = identif
 
-        Dim reader As System.Data.Odbc.OdbcDataReader = General.BDD.query("SELECT libelle 
-                                                                           FROM Categorie  
-                                                                           WHERE identif = " & Me.identif & " 
-                                                                           LIMIT 1;")
+        Dim reader As System.Data.Odbc.OdbcDataReader = General.BDD.query("SELECT libelle " &
+                                                                           "FROM Categorie " &
+                                                                           "WHERE identif = " & Me.identif & ";")
         If reader.HasRows Then
             While reader.Read()
                 Me.libelle = reader.GetString(0)
@@ -38,8 +37,7 @@
         Me.loadDataGrid()
     End Sub
 
-    Private Sub LiaisonCategorieCompetences_Load(sender As Object, e As EventArgs)
-        MessageBox.Show("test")
+    Private Sub LiaisonCategorieCompetences_Load(ByVal sender As Object, ByVal e As EventArgs)
         Me.Text = Me.Text & " " & Me.libelle
         MessageBox.Show(Me.Text)
     End Sub
@@ -47,26 +45,26 @@
 
 
 
-    Private Sub btnAdd_Click(sender As Object, e As EventArgs) Handles btnAdd.Click
-        If Not (Me.comboBoxCompetence.SelectedIndex = -1) And Not (Me.hasCompetence(Me.comboBoxCompetence.SelectedIndex)) Then
-            General.BDD.nonQuery("INSERT INTO " & Me.table & "(identif_Categorie, identif_Competence) 
-                                  VALUES (" & Me.identif & ", " & Me.comboBoxCompetence.SelectedIndex & ");")
+    Private Sub btnAdd_Click(ByVal sender As Object, ByVal e As EventArgs) Handles btnAdd.Click
+        If Me.comboBoxCompetence.SelectedValue <> -1 And Me.hasCompetence(Me.comboBoxCompetence.SelectedValue) = False Then
+            General.BDD.nonQuery("INSERT INTO " & Me.table & "(identif_Categorie, identif_Competence) " &
+                                  "VALUES (" & Me.identif & ", " & Me.comboBoxCompetence.SelectedValue & ");")
         End If
 
         Me.loadDataGrid()
     End Sub
 
-    Private Sub btnDelete_Click(sender As Object, e As EventArgs) Handles btnDelete.Click
-        General.BDD.nonQuery("DELETE FROM " & Me.table & " 
-                              WHERE identif_Competence = " & Me.comboBoxCompetence.SelectedValue & "
-                              AND identif_Categorie = " & Me.identif & ";")
+    Private Sub btnDelete_Click(ByVal sender As Object, ByVal e As EventArgs) Handles btnDelete.Click
+        General.BDD.nonQuery("DELETE FROM " & Me.table & " " &
+                              "WHERE identif_Competence = " & Me.comboBoxCompetence.SelectedValue & " " &
+                              "AND identif_Categorie = " & Me.identif & ";")
 
         Me.loadDataGrid()
     End Sub
 
 
 
-    Private Sub DataGridView1_CellContentClick(sender As Object, e As DataGridViewCellEventArgs) Handles DataGridView1.CellContentClick, DataGridView1.CellContentDoubleClick, DataGridView1.CellClick
+    Private Sub DataGridView1_CellContentClick(ByVal sender As Object, ByVal e As DataGridViewCellEventArgs) Handles DataGridView1.CellContentClick, DataGridView1.CellContentDoubleClick, DataGridView1.CellClick
         'focus compétence dans la combobox
         Dim x As Integer = e.RowIndex
 
@@ -82,9 +80,9 @@
 
 
     Private Sub loadComboBoxCompetence()
-        Dim reader As System.Data.Odbc.OdbcDataReader = General.BDD.query("SELECT * 
-                                                                           FROM Competence
-                                                                           ORDER BY libelle;")
+        Dim reader As System.Data.Odbc.OdbcDataReader = General.BDD.query("SELECT identif, libelle " &
+                                                                           "FROM Competence " &
+                                                                           "ORDER BY libelle;")
 
         'ajoute les colonnes à la combobox
         Me.comboBoxCompetence.DisplayMember = "Text"
@@ -98,7 +96,9 @@
         tb.Rows.Add("", -1)
 
         While reader.Read()
-            tb.Rows.Add(reader.GetString(1), reader.GetInt32(0))
+            Dim id As Integer = Integer.Parse(reader.GetInt32(0))
+            Dim libelle As String = reader.GetString(1)
+            tb.Rows.Add(libelle, id)
         End While
 
         'applique les données à la combo
@@ -108,10 +108,10 @@
 
 
     Private Sub loadDataGrid()
-        Dim reader As System.Data.Odbc.OdbcDataReader = General.BDD.query("SELECT Competence.* 
-                                                                           FROM " & Me.table & ", Competence
-                                                                           WHERE " & Me.table & ".identif_Competence = Competence.identif 
-                                                                           AND " & Me.table & ".identif_Categorie = " & Me.identif & ";")
+        Dim reader As System.Data.Odbc.OdbcDataReader = General.BDD.query("SELECT Competence.*  " &
+                                                                            "FROM Competence_Categorie, Competence  " &
+                                                                            "WHERE Competence_Categorie.identif_Competence = Competence.identif  " &
+                                                                            "AND Competence_Categorie.identif_Categorie=1;")
 
         Dim dataTable = New DataTable()
         dataTable.Load(reader)
@@ -124,21 +124,11 @@
 
     'vérifie si la categorie a déjà la compétence en passant par un select avant une insertion (évite de planter le programme)
     Private Function hasCompetence(ByVal identif_competence As Integer) As Boolean
-        Dim reader As System.Data.Odbc.OdbcDataReader = General.BDD.query("SELECT * 
-                                                                           FROM " & Me.table & " 
-                                                                           WHERE identif_Categorie = " & Me.identif & "
-                                                                           AND identif_Competence = " & identif_competence & "
-                                                                           LIMIT 1;")
-        If reader.HasRows Then
-            While reader.Read()
-                Return True
-            End While
-        End If
-
-        Return False
+        Dim reader As System.Data.Odbc.OdbcDataReader = General.BDD.query("SELECT *  " &
+                                                                           "FROM " & Me.table & " " &
+                                                                           "WHERE identif_Categorie = " & Me.identif & " " &
+                                                                           "AND identif_Competence = " & identif_competence & ";")
+        Return reader.HasRows 
     End Function
 
-    Private Sub LiaisonCategorieCompetences_Load_1(sender As Object, e As EventArgs) Handles MyBase.Load
-
-    End Sub
 End Class

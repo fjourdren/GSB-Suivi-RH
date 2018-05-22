@@ -20,9 +20,9 @@
 
     'load combo boxs
     Public Sub loadComboBoxCompetence()
-        Dim reader As System.Data.Odbc.OdbcDataReader = General.BDD.query("SELECT identif, libelle  
-                                                                           FROM Competence 
-                                                                           ORDER BY libelle;")
+        Dim reader As System.Data.Odbc.OdbcDataReader = General.BDD.query("SELECT identif, libelle " &
+                                                                           "FROM Competence " &
+                                                                           "ORDER BY libelle;")
 
         'ajoute les colonnes à la combobox
         Me.comboBoxCompetence.DisplayMember = "Text"
@@ -36,7 +36,9 @@
         tb.Rows.Add("", -1)
 
         While reader.Read()
-            tb.Rows.Add(reader.GetString(1), reader.GetInt32(0))
+            Dim id As Integer = Integer.Parse(reader.GetInt32(0))
+            Dim libelle As String = reader.GetString(1)
+            tb.Rows.Add(libelle, id)
         End While
 
         'applique les données à la combo
@@ -44,9 +46,9 @@
     End Sub
 
     Public Sub loadComboBoxFormation()
-        Dim reader As System.Data.Odbc.OdbcDataReader = General.BDD.query("SELECT identif, nom  
-                                                                           FROM Formation 
-                                                                           ORDER BY nom;")
+        Dim reader As System.Data.Odbc.OdbcDataReader = General.BDD.query("SELECT identif, nom " &
+                                                                           "FROM Formation " &
+                                                                           "ORDER BY nom;")
 
         'ajoute les colonnes à la combobox
         Me.comboBoxFormation.DisplayMember = "Text"
@@ -60,7 +62,9 @@
         tb.Rows.Add("", -1)
 
         While reader.Read()
-            tb.Rows.Add(reader.GetString(1), reader.GetInt32(0))
+            Dim id As Integer = Integer.Parse(reader.GetInt32(0))
+            Dim nom As String = reader.GetString(1)
+            tb.Rows.Add(nom, id)
         End While
 
         'applique les données à la combo
@@ -68,9 +72,9 @@
     End Sub
 
     Public Sub loadComboBoxEntreprise()
-        Dim reader As System.Data.Odbc.OdbcDataReader = General.BDD.query("SELECT identif, nom  
-                                                                           FROM Entreprise 
-                                                                           ORDER BY nom;")
+        Dim reader As System.Data.Odbc.OdbcDataReader = General.BDD.query("SELECT identif, nom  " &
+                                                                           "FROM Entreprise " &
+                                                                           "ORDER BY nom;")
 
         'ajoute les colonnes à la combobox
         Me.comboBoxEntreprise.DisplayMember = "Text"
@@ -84,7 +88,9 @@
         tb.Rows.Add("", -1)
 
         While reader.Read()
-            tb.Rows.Add(reader.GetString(1), reader.GetInt32(0))
+            Dim id As Integer = Integer.Parse(reader.GetInt32(0))
+            Dim nom As String = reader.GetString(1)
+            tb.Rows.Add(nom, id)
         End While
 
         'applique les données à la combo
@@ -92,9 +98,9 @@
     End Sub
 
     Public Sub loadComboBoxRegion()
-        Dim reader As System.Data.Odbc.OdbcDataReader = General.BDD.query("SELECT identif, nom 
-                                                                           FROM Region 
-                                                                           ORDER BY nom;")
+        Dim reader As System.Data.Odbc.OdbcDataReader = General.BDD.query("SELECT identif, nom " &
+                                                                           "FROM Region " &
+                                                                           "ORDER BY nom;")
 
         'ajoute les colonnes à la combobox
         Me.comboBoxRegion.DisplayMember = "Text"
@@ -108,7 +114,9 @@
         tb.Rows.Add("", -1)
 
         While reader.Read()
-            tb.Rows.Add(reader.GetString(1), reader.GetInt32(0))
+            Dim id As Integer = Integer.Parse(reader.GetInt32(0))
+            Dim nom As String = reader.GetString(1)
+            tb.Rows.Add(nom, id)
         End While
 
         'applique les données à la combo
@@ -116,9 +124,9 @@
     End Sub
 
     Public Sub loadComboBoxResponsable()
-        Dim reader As System.Data.Odbc.OdbcDataReader = General.BDD.query("SELECT identif, nom, prenom 
-                                                                           FROM MembreRessourceHumaine 
-                                                                           ORDER BY nom;")
+        Dim reader As System.Data.Odbc.OdbcDataReader = General.BDD.query("SELECT identif, nom, prenom " &
+                                                                           "FROM MembreRessourceHumaine " &
+                                                                           "ORDER BY nom;")
 
         'ajoute les colonnes à la combobox
         Me.comboBoxResponsable.DisplayMember = "Text"
@@ -132,7 +140,9 @@
         tb.Rows.Add("", -1)
 
         While reader.Read()
-            tb.Rows.Add(reader.GetString(1) & " " & reader.GetString(2), reader.GetInt32(0))
+            Dim id As Integer = Integer.Parse(reader.GetInt32(0))
+            Dim nom As String = reader.GetString(1)
+            tb.Rows.Add(nom, id)
         End While
 
         'applique les données à la combo
@@ -189,14 +199,14 @@
         If Me.rechercheCollection.Count = 0 Then
             Me.sql = "SELECT identif, nom, prenom FROM Personne;"
         Else
-            Me.sql = "SELECT Personne.identif, Personne.nom, Personne.prenom 
-                    FROM Personne, Competence, Entreprise, Formation, Personne_Competence, Personne_Entreprise, Personne_Formation 
-                    WHERE Personne.identif = Personne_Competence.identif_Personne
-                    AND Competence.identif = Personne_Competence.identif_Competence 
-                    AND Personne.identif = Personne_Entreprise.identif_Personne 
-                    AND Entreprise.identif = Personne_Entreprise.identif_Entreprise 
-                    AND Personne.identif = Personne_Formation.identif_Personne 
-                    AND Formation.identif = Personne_Formation.identif_Formation"
+            Me.sql = "SELECT Personne.identif, Personne.nom, Personne.prenom " &
+                    "FROM Personne, Competence, Entreprise, Formation, Personne_Competence, Personne_Entreprise, Personne_Formation " &
+                    "WHERE Personne.identif = Personne_Competence.identif_Personne " &
+                    "AND Competence.identif = Personne_Competence.identif_Competence " &
+                    "AND Personne.identif = Personne_Entreprise.identif_Personne " &
+                    "AND Entreprise.identif = Personne_Entreprise.identif_Entreprise " &
+                    "AND Personne.identif = Personne_Formation.identif_Personne " &
+                    "AND Formation.identif = Personne_Formation.identif_Formation"
 
 
 

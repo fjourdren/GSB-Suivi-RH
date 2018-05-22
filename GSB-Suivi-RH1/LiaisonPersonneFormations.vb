@@ -14,10 +14,9 @@
         'va chercher la personne dans la base de donnée
         Me.identif = identif
 
-        Dim reader As System.Data.Odbc.OdbcDataReader = General.BDD.query("SELECT nom, prenom, email 
-                                                                           FROM Personne 
-                                                                           WHERE identif = " & Me.identif & " 
-                                                                           LIMIT 1;")
+        Dim reader As System.Data.Odbc.OdbcDataReader = General.BDD.query("SELECT nom, prenom, email " &
+                                                                           "FROM Personne " &
+                                                                           "WHERE identif = " & Me.identif & ";")
         If reader.HasRows Then
             While reader.Read()
                 Me.nom = reader.GetString(0)
@@ -50,17 +49,17 @@
 
 
 
-    Private Sub btnAdd_Click(sender As Object, e As EventArgs) Handles btnAdd.Click
-        If Not (Me.comboBoxFormation.SelectedValue = -1) And Not (Me.hasFormation(Me.comboBoxFormation.SelectedValue)) Then
+    Private Sub btnAdd_Click(ByVal sender As Object, ByVal e As EventArgs) Handles btnAdd.Click
+        If Me.comboBoxFormation.SelectedValue <> -1 And Me.hasFormation(Me.comboBoxFormation.SelectedValue) = False Then
             Dim annee As String = Me.textBoxAnnee.Text
             If String.IsNullOrEmpty(annee) Then
-                General.BDD.nonQuery("INSERT INTO " & Me.table & "(identif_Personne, identif_Formation) 
-                                      VALUES (" & Me.identif & ", " & Me.comboBoxFormation.SelectedValue & ");")
+                General.BDD.nonQuery("INSERT INTO " & Me.table & "(identif_Personne, identif_Formation) " &
+                                      "VALUES (" & Me.identif & ", " & Me.comboBoxFormation.SelectedValue & ");")
                 Me.loadDataGrid()
             Else
                 If Utils.yearIsValid(annee) Then
-                    General.BDD.nonQuery("INSERT INTO " & Me.table & "(identif_Personne, identif_Formation, annee) 
-                                      VALUES (" & Me.identif & ", " & Me.comboBoxFormation.SelectedValue & ", " & annee & ");")
+                    General.BDD.nonQuery("INSERT INTO " & Me.table & "(identif_Personne, identif_Formation, annee) " &
+                                      "VALUES (" & Me.identif & ", " & Me.comboBoxFormation.SelectedValue & ", " & annee & ");")
                     Me.loadDataGrid()
                 Else
                     MessageBox.Show("Année non valide")
@@ -70,9 +69,9 @@
     End Sub
 
     Private Sub btnDelete_Click(sender As Object, e As EventArgs) Handles btnDelete.Click
-        General.BDD.nonQuery("DELETE FROM " & Me.table & " 
-                              WHERE identif_Formation = " & Me.comboBoxFormation.SelectedValue & "
-                              AND identif_Personne = " & Me.identif & ";")
+        General.BDD.nonQuery("DELETE FROM " & Me.table & " " &
+                              "WHERE identif_Formation = " & Me.comboBoxFormation.SelectedValue & " " &
+                              "AND identif_Personne = " & Me.identif & ";")
 
         Me.loadDataGrid()
     End Sub
@@ -88,7 +87,7 @@
                 Me.comboBoxFormation.SelectedValue = Me.DataGridView1.Rows(x).Cells(0).Value
 
                 Dim annee As String = ""
-                If TypeOf Me.DataGridView1.Rows(x).Cells(2).Value IsNot DBNull Then
+                If Not (TypeOf Me.DataGridView1.Rows(x).Cells(2).Value Is DBNull) Then
                     annee = Me.DataGridView1.Rows(x).Cells(2).Value
                 End If
                 Me.textBoxAnnee.Text = annee
@@ -102,9 +101,9 @@
 
 
     Private Sub loadComboBoxFormation()
-        Dim reader As System.Data.Odbc.OdbcDataReader = General.BDD.query("SELECT identif, nom 
-                                                                           FROM Formation
-                                                                           ORDER BY nom;")
+        Dim reader As System.Data.Odbc.OdbcDataReader = General.BDD.query("SELECT identif, nom " &
+                                                                           "FROM Formation " &
+                                                                           "ORDER BY nom;")
 
         'ajoute les colonnes à la combobox
         Me.comboBoxFormation.DisplayMember = "Text"
@@ -118,7 +117,9 @@
         tb.Rows.Add("", -1)
 
         While reader.Read()
-            tb.Rows.Add(reader.GetString(1), reader.GetInt32(0))
+            Dim id As Integer = Integer.Parse(reader.GetInt32(0))
+            Dim nom As String = reader.GetString(1)
+            tb.Rows.Add(nom, id)
         End While
 
         'applique les données à la combo
@@ -128,11 +129,11 @@
 
 
     Private Sub loadDataGrid()
-        Dim reader As System.Data.Odbc.OdbcDataReader = General.BDD.query("SELECT Formation.*, " & Me.table & ".annee
-                                                                           FROM " & Me.table & ", Formation
-                                                                           WHERE " & Me.table & ".identif_Personne = " & Me.identif & "
-                                                                           AND " & Me.table & ".identif_Formation = Formation.identif
-                                                                           ORDER BY annee DESC;")
+        Dim reader As System.Data.Odbc.OdbcDataReader = General.BDD.query("SELECT Formation.*, " & Me.table & ".annee " &
+                                                                           "FROM " & Me.table & ", Formation " &
+                                                                           "WHERE " & Me.table & ".identif_Personne = " & Me.identif & " " &
+                                                                           "AND " & Me.table & ".identif_Formation = Formation.identif " &
+                                                                           "ORDER BY annee DESC;")
 
         Dim dataTable = New DataTable()
         dataTable.Load(reader)
@@ -145,18 +146,11 @@
 
     'vérifie si la personne a déjà la formation en passant par un select avant une insertion (évite de planter le programme)
     Private Function hasFormation(ByVal identif_formation As Integer) As Boolean
-        Dim reader As System.Data.Odbc.OdbcDataReader = General.BDD.query("SELECT * 
-                                                                           FROM " & Me.table & " 
-                                                                           WHERE identif_Personne = " & Me.identif & "
-                                                                           AND identif_Formation = " & identif_formation & "
-                                                                           LIMIT 1;")
-        If reader.HasRows Then
-            While reader.Read()
-                Return True
-            End While
-        End If
-
-        Return False
+        Dim reader As System.Data.Odbc.OdbcDataReader = General.BDD.query("SELECT * " &
+                                                                           "FROM " & Me.table & " " &
+                                                                           "WHERE identif_Personne = " & Me.identif & " " &
+                                                                           "AND identif_Formation = " & identif_formation & ";")
+        Return reader.HasRows
     End Function
 
 End Class

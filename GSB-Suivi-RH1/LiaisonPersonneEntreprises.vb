@@ -14,10 +14,9 @@
         ' va chercher la personne dans la base de donnée
         Me.identif = identif
 
-        Dim reader As System.Data.Odbc.OdbcDataReader = General.BDD.query("SELECT nom, prenom, email 
-                                                                           FROM Personne 
-                                                                           WHERE identif = " & Me.identif & " 
-                                                                           LIMIT 1;")
+        Dim reader As System.Data.Odbc.OdbcDataReader = General.BDD.query("SELECT nom, prenom, email " &
+                                                                           "FROM Personne " &
+                                                                           "WHERE identif = " & Me.identif & ";")
         If reader.HasRows Then
             While reader.Read()
                 Me.nom = reader.GetString(0)
@@ -55,20 +54,20 @@
 
 
     Private Sub btnAdd_Click(sender As Object, e As EventArgs) Handles btnAdd.Click
-        If Not (Me.comboBoxEntreprise.SelectedValue = -1) And Not (Me.hasEntreprise(Me.comboBoxEntreprise.SelectedValue)) Then
-            General.BDD.nonQuery("INSERT INTO " & Me.table & "(identif_Personne, identif_Entreprise, dateDeb, dateFin) 
-                                  VALUES (" & Me.identif & ", 
-                                  " & Me.comboBoxEntreprise.SelectedValue & ", 
-                                  '" & Format(Me.DateTimeDateDeb.Value, "yyyy-MM-dd") & "', 
-                                  '" & Format(Me.DateTimeDateFin.Value, "yyyy-MM-dd") & "');")
-            Me.loadDataGrid()
-        End If
+            If Me.comboBoxEntreprise.SelectedValue <> -1 And Me.hasEntreprise(Me.comboBoxEntreprise.SelectedValue) = False Then
+                General.BDD.nonQuery("INSERT INTO " & Me.table & "(identif_Personne, identif_Entreprise, dateDeb, dateFin) " &
+                                      "VALUES (" & Me.identif & ", " &
+                                      "" & Me.comboBoxEntreprise.SelectedValue & ", " &
+                                        "'" & Format(Me.DateTimeDateDeb.Value, "yyyy-MM-dd") & "', " &
+                                        "'" & Format(Me.DateTimeDateFin.Value, "yyyy-MM-dd") & "');")
+                Me.loadDataGrid()
+            End If
     End Sub
 
     Private Sub btnDelete_Click(sender As Object, e As EventArgs) Handles btnDelete.Click
-        General.BDD.nonQuery("DELETE FROM " & Me.table & " 
-                              WHERE identif_Entreprise = " & Me.comboBoxEntreprise.SelectedValue & "
-                              AND identif_Personne = " & Me.identif & ";")
+        General.BDD.nonQuery("DELETE FROM " & Me.table & " " &
+                              "WHERE identif_Entreprise = " & Me.comboBoxEntreprise.SelectedValue & " " &
+                              "AND identif_Personne = " & Me.identif & ";")
 
         Me.loadDataGrid()
     End Sub
@@ -93,9 +92,9 @@
 
 
     Private Sub loadComboBoxEntreprises()
-        Dim reader As System.Data.Odbc.OdbcDataReader = General.BDD.query("SELECT identif, nom 
-                                                                           FROM Entreprise
-                                                                           ORDER BY nom;")
+        Dim reader As System.Data.Odbc.OdbcDataReader = General.BDD.query("SELECT identif, nom " &
+                                                                           "FROM Entreprise " &
+                                                                           "ORDER BY nom;")
 
         'ajoute les colonnes à la combobox
         Me.comboBoxEntreprise.DisplayMember = "Text"
@@ -109,7 +108,9 @@
         tb.Rows.Add("", -1)
 
         While reader.Read()
-            tb.Rows.Add(reader.GetString(1), reader.GetInt32(0))
+            Dim id As Integer = Integer.Parse(reader.GetInt32(0))
+            Dim nom As String = reader.GetString(1)
+            tb.Rows.Add(nom, id)
         End While
 
         'applique les données à la combo
@@ -119,11 +120,11 @@
 
 
     Private Sub loadDataGrid()
-        Dim reader As System.Data.Odbc.OdbcDataReader = General.BDD.query("SELECT Entreprise.*, " & Me.table & ".datedeb, " & Me.table & ".datefin 
-                                                                           FROM " & Me.table & ", Entreprise
-                                                                           WHERE " & Me.table & ".identif_Personne = " & Me.identif & "
-                                                                           AND " & Me.table & ".identif_Entreprise = Entreprise.identif
-                                                                           ORDER BY Entreprise.nom;")
+        Dim reader As System.Data.Odbc.OdbcDataReader = General.BDD.query("SELECT Entreprise.*, " & Me.table & ".datedeb, " & Me.table & ".datefin " &
+                                                                           "FROM " & Me.table & ", Entreprise " &
+                                                                           "WHERE " & Me.table & ".identif_Personne = " & Me.identif & " " &
+                                                                           "AND " & Me.table & ".identif_Entreprise = Entreprise.identif " &
+                                                                           "ORDER BY Entreprise.nom;")
 
         Dim dataTable = New DataTable()
         dataTable.Load(reader)
@@ -136,16 +137,11 @@
 
     'vérifie si la personne a déjà le entreprise en passant par un select avant une insertion (évite de planter le programme)
     Private Function hasEntreprise(ByVal identif_Entreprise As Integer) As Boolean
-        Dim reader As System.Data.Odbc.OdbcDataReader = General.BDD.query("SELECT * 
-                                                                           FROM " & Me.table & " 
-                                                                           WHERE identif_Personne = " & Me.identif & "
-                                                                           AND identif_Entreprise = " & identif_Entreprise & "
-                                                                           LIMIT 1;")
-        If reader.HasRows Then
-            While reader.Read()
-                Return True
-            End While
-        End If
+        Dim reader As System.Data.Odbc.OdbcDataReader = General.BDD.query("SELECT * " &
+                                                                           "FROM " & Me.table & " " &
+                                                                           "WHERE identif_Personne = " & Me.identif & " " &
+                                                                           "AND identif_Entreprise = " & identif_Entreprise & ";")
+        Return reader.HasRows
 
         Return False
     End Function

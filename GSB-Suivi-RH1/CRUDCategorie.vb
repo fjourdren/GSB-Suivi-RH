@@ -15,6 +15,8 @@
                 Me.labelIdentifRender.Text = Me.DataGridView1.Rows(x).Cells(0).Value
                 Me.textBoxLibelle.Text = Me.DataGridView1.Rows(x).Cells(1).Value
 
+                Me.btnDelete.Enabled = True
+                Me.btnSave.Enabled = True
                 'show bouton de liaison compétence
                 Me.btnLiaisonCompetences.Enabled = True
             Catch ex As Exception
@@ -73,6 +75,9 @@
     End Sub
 
     Private Sub clear()
+        Me.btnDelete.Enabled = False
+        Me.btnSave.Enabled = False
+
         'désactive le bouton compétence car il n'y aura pas d'identif
         Me.btnLiaisonCompetences.Enabled = False
 

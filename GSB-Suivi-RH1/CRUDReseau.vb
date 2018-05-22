@@ -15,6 +15,9 @@
             Try
                 Me.labelIdentifRender.Text = Me.DataGridView1.Rows(x).Cells(0).Value
                 Me.textBoxName.Text = Me.DataGridView1.Rows(x).Cells(1).Value
+
+                Me.btnDelete.Enabled = True
+                Me.btnSave.Enabled = True
             Catch ex As Exception
                 MessageBox.Show("Erreur de chargement des données")
                 Me.clear()
@@ -65,6 +68,9 @@
     End Sub
 
     Private Sub clear()
+        Me.btnDelete.Enabled = False
+        Me.btnSave.Enabled = False
+
         Me.labelIdentifRender.Text = ""
         Me.textBoxName.Text = ""
     End Sub

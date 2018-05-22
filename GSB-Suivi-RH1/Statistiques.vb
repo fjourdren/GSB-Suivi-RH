@@ -23,7 +23,7 @@
     'get statistics values
     'age
     Private Function averageAge() As Integer
-        Dim reader As System.Data.Odbc.OdbcDataReader = General.BDD.query("SELECT FLOOR(avg(DATEDIFF(CURRENT_DATE, dateDeNaissance))/365) as ageMoyen FROM Personne;")
+        Dim reader As System.Data.Odbc.OdbcDataReader = General.BDD.query("SELECT FLOOR(avg(TO_DATE(dateDeNaissance, 'DD/MM/YYYY') - TO_DATE(SYSDATE, 'DD/MM/YYYY'))/365) FROM Personne;")
 
         While reader.Read()
             Return reader.GetInt32(0)
@@ -44,7 +44,7 @@
 
 
     Private Function minAge() As Integer
-        Dim reader As System.Data.Odbc.OdbcDataReader = General.BDD.query("SELECT FLOOR(min(DATEDIFF(CURRENT_DATE, dateDeNaissance))/365) as ageMin , nom, prenom FROM Personne GROUP BY nom, prenom;")
+        Dim reader As System.Data.Odbc.OdbcDataReader = General.BDD.query("SELECT FLOOR(min(TO_DATE(dateDeNaissance, 'DD/MM/YYYY') - TO_DATE(SYSDATE, 'DD/MM/YYYY'))/365) FROM Personne;")
 
         While reader.Read()
             Return reader.GetInt32(0)
@@ -65,7 +65,7 @@
 
 
     Private Function maxAge() As Integer
-        Dim reader As System.Data.Odbc.OdbcDataReader = General.BDD.query("SELECT FLOOR(max(DATEDIFF(CURRENT_DATE, dateDeNaissance))/365) as ageMax , nom, prenom FROM Personne GROUP BY nom, prenom;")
+        Dim reader As System.Data.Odbc.OdbcDataReader = General.BDD.query("SELECT FLOOR(max(TO_DATE(dateDeNaissance, 'DD/MM/YYYY') - TO_DATE(SYSDATE, 'DD/MM/YYYY'))/365) FROM Personne;")
 
         While reader.Read()
             Return reader.GetInt32(0)
@@ -87,17 +87,18 @@
 
     'name
     Private Function nameMostUseString() As String
-        Dim reader As System.Data.Odbc.OdbcDataReader = General.BDD.query("SELECT prenom, COUNT(prenom) As nbUtiliser 
-                                                                           FROM Personne 
-                                                                           GROUP BY prenom 
-                                                                           ORDER BY COUNT(prenom) DESC LIMIT 1;")
+        Dim reader As System.Data.Odbc.OdbcDataReader = General.BDD.query("SELECT prenom, count(prenom) As nbUtiliser " &
+                                                                           "FROM Personne " &
+                                                                           "WHERE ROWNUM=1 " &
+                                                                           "GROUP BY prenom " &
+                                                                           "ORDER BY count(prenom) DESC;")
         If reader.HasRows Then
             While reader.Read()
                 Return reader.GetString(0) & " (" & reader.GetInt32(1) & ")"
             End While
-        Else
-            Return "Erreur de donnée"
         End If
+
+        Return "Erreur de donnée"
     End Function
 
 
@@ -209,12 +210,12 @@
 
     'tops
     Public Sub remplirTopPersonnesAvecCompetences()
-        Dim reader As System.Data.Odbc.OdbcDataReader = General.BDD.query("SELECT Personne.identif, Personne.nom, Personne.prenom, count(Personne_Competence.identif_Competence) As nbCompetence 
-                                                                           FROM Personne, Personne_Competence 
-                                                                           WHERE Personne_Competence.identif_Personne=Personne.identif 
-                                                                           GROUP BY Personne.identif, Personne.nom, Personne.prenom
-                                                                           ORDER BY count(Personne_Competence.identif_Competence) DESC
-                                                                           LIMIT 5;")
+        Dim reader As System.Data.Odbc.OdbcDataReader = General.BDD.query("SELECT Personne.identif, Personne.nom, Personne.prenom, count(Personne_Competence.identif_Competence) As nbCompetence " &
+                                                                           "FROM Personne, Personne_Competence " &
+                                                                           "WHERE Personne_Competence.identif_Personne=Personne.identif " &
+                                                                           "AND ROWNUM <= 5 " &
+                                                                           "GROUP BY Personne.identif, Personne.nom, Personne.prenom " &
+                                                                           "ORDER BY count(Personne_Competence.identif_Competence) DESC;")
         While reader.Read()
             Dim lab As Label = New Label()
             lab.Text = reader.GetString(1) & " " & reader.GetString(2) & " (" & reader.GetInt32(3) & ")"
@@ -225,12 +226,12 @@
 
 
     Public Sub remplirTopFormationsAvecPersonnes()
-        Dim reader As System.Data.Odbc.OdbcDataReader = General.BDD.query("SELECT Formation.identif, Formation.nom, count(Personne_Formation.identif_Personne) As nbPeronne 
-                                                                           FROM Formation, Personne_Formation 
-                                                                           WHERE Personne_Formation.identif_Formation=Formation.identif 
-                                                                           GROUP BY Formation.identif, Formation.nom 
-                                                                           ORDER BY count(Personne_Formation.identif_Personne) DESC
-                                                                           LIMIT 5;")
+        Dim reader As System.Data.Odbc.OdbcDataReader = General.BDD.query("SELECT Formation.identif, Formation.nom, count(Personne_Formation.identif_Personne) As nbPeronne " &
+                                                                           "FROM Formation, Personne_Formation " &
+                                                                           "WHERE Personne_Formation.identif_Formation=Formation.identif " &
+                                                                           "AND ROWNUM <= 5 " &
+                                                                           "GROUP BY Formation.identif, Formation.nom " &
+                                                                           "ORDER BY count(Personne_Formation.identif_Personne) DESC;")
         While reader.Read()
             Dim lab As Label = New Label()
             lab.Text = reader.GetString(1) & " (" & reader.GetInt32(2) & ")"
@@ -241,12 +242,12 @@
 
 
     Public Sub remplirTopRegionsAvecPersonnes()
-        Dim reader As System.Data.Odbc.OdbcDataReader = General.BDD.query("SELECT Region.identif, Region.nom, count(Personne.identif) as nbPersonne
-                                                                           FROM Region, Personne 
-                                                                           WHERE Personne.identif_Region=Region.identif
-                                                                           GROUP BY Region.identif, Region.nom 
-                                                                           ORDER BY count(Personne.identif) DESC
-                                                                           LIMIT 5;")
+        Dim reader As System.Data.Odbc.OdbcDataReader = General.BDD.query("SELECT Region.identif, Region.nom, count(Personne.identif) as nbPersonne " &
+                                                                           "FROM Region, Personne " &
+                                                                           "WHERE Personne.identif_Region=Region.identif " &
+                                                                           "AND ROWNUM <= 5 " &
+                                                                           "GROUP BY Region.identif, Region.nom " &
+                                                                           "ORDER BY count(Personne.identif) DESC;")
         While reader.Read()
             Dim lab As Label = New Label()
             lab.Text = reader.GetString(1) & " (" & reader.GetInt32(2) & ")"
@@ -257,12 +258,12 @@
 
 
     Public Sub remplirTopEntreprisesAvecPersonnes()
-        Dim reader As System.Data.Odbc.OdbcDataReader = General.BDD.query("SELECT Entreprise.identif, Entreprise.nom, count(Personne_Entreprise.identif_Personne) As nbPeronne 
-                                                                           FROM Entreprise, Personne_Entreprise 
-                                                                           WHERE Personne_Entreprise.identif_Entreprise=Entreprise.identif 
-                                                                           GROUP BY Entreprise.identif, Entreprise.nom
-                                                                           ORDER BY count(Personne_Entreprise.identif_Personne) DESC
-                                                                           LIMIT 5;")
+        Dim reader As System.Data.Odbc.OdbcDataReader = General.BDD.query("SELECT Entreprise.identif, Entreprise.nom, count(Personne_Entreprise.identif_Personne) As nbPeronne " &
+                                                                           "FROM Entreprise, Personne_Entreprise " &
+                                                                           "WHERE Personne_Entreprise.identif_Entreprise=Entreprise.identif " &
+                                                                           "AND ROWNUM <= 5 " &
+                                                                           "GROUP BY Entreprise.identif, Entreprise.nom " &
+                                                                           "ORDER BY count(Personne_Entreprise.identif_Personne) DESC;")
         While reader.Read()
             Dim lab As Label = New Label()
             lab.Text = reader.GetString(1) & " (" & reader.GetInt32(2) & ")"
@@ -273,12 +274,12 @@
 
 
     Public Sub remplirTopMembresRessourceHumaineAvecPersonnes()
-        Dim reader As System.Data.Odbc.OdbcDataReader = General.BDD.query("SELECT MembreRessourceHumaine.identif, MembreRessourceHumaine.nom, MembreRessourceHumaine.prenom, count(Personne.identif) as nbPersonne
-                                                                           FROM MembreRessourceHumaine, Personne 
-                                                                           WHERE Personne.identif_MembreRessourceHumaine=MembreRessourceHumaine.identif
-                                                                           GROUP BY MembreRessourceHumaine.identif, MembreRessourceHumaine.nom, MembreRessourceHumaine.prenom
-                                                                           ORDER BY count(Personne.identif) DESC
-                                                                           LIMIT 5;")
+        Dim reader As System.Data.Odbc.OdbcDataReader = General.BDD.query("SELECT MembreRessourceHumaine.identif, MembreRessourceHumaine.nom, MembreRessourceHumaine.prenom, count(Personne.identif) as nbPersonne " &
+                                                                           "FROM MembreRessourceHumaine, Personne " &
+                                                                           "WHERE Personne.identif_MembreRessourceHumaine=MembreRessourceHumaine.identif " &
+                                                                           "AND ROWNUM <= 5 " &
+                                                                           "GROUP BY MembreRessourceHumaine.identif, MembreRessourceHumaine.nom, MembreRessourceHumaine.prenom " &
+                                                                           "ORDER BY count(Personne.identif) DESC;")
         While reader.Read()
             Dim lab As Label = New Label()
             lab.Text = reader.GetString(1) & " " & reader.GetString(2) & " (" & reader.GetInt32(3) & ")"

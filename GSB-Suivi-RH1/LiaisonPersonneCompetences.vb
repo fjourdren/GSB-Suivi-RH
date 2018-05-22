@@ -14,10 +14,9 @@
         'va chercher la personne dans la base de donnée
         Me.identif = identif
 
-        Dim reader As System.Data.Odbc.OdbcDataReader = General.BDD.query("SELECT nom, prenom, email 
-                                                                           FROM Personne 
-                                                                           WHERE identif = " & Me.identif & " 
-                                                                           LIMIT 1;")
+        Dim reader As System.Data.Odbc.OdbcDataReader = General.BDD.query("SELECT nom, prenom, email " &
+                                                                           "FROM Personne " &
+                                                                           "WHERE identif = " & Me.identif & ";")
         If reader.HasRows Then
             While reader.Read()
                 Me.nom = reader.GetString(0)
@@ -52,18 +51,18 @@
 
 
     Private Sub btnAdd_Click(sender As Object, e As EventArgs) Handles btnAdd.Click
-        If Not (Me.comboBoxCompetence.SelectedIndex = -1) And Not (Me.hasCompetence(Me.comboBoxCompetence.SelectedIndex)) Then
-            General.BDD.nonQuery("INSERT INTO " & Me.table & "(identif_Personne, identif_Competence) 
-                                  VALUES (" & Me.identif & ", " & Me.comboBoxCompetence.SelectedIndex & ");")
-        End If
+            If Me.comboBoxCompetence.SelectedValue <> -1 And Me.hasCompetence(Me.comboBoxCompetence.SelectedValue) = False Then
+            General.BDD.nonQuery("INSERT INTO " & Me.table & "(identif_Personne, identif_Competence) " &
+                                  "VALUES (" & Me.identif & ", " & Me.comboBoxCompetence.SelectedValue & ");")
+            End If
 
-        Me.loadDataGrid()
+            Me.loadDataGrid()
     End Sub
 
     Private Sub btnDelete_Click(sender As Object, e As EventArgs) Handles btnDelete.Click
-        General.BDD.nonQuery("DELETE FROM " & Me.table & " 
-                              WHERE identif_Competence = " & Me.comboBoxCompetence.SelectedValue & "
-                              AND identif_Personne = " & Me.identif & ";")
+        General.BDD.nonQuery("DELETE FROM " & Me.table & " " &
+                              "WHERE identif_Competence = " & Me.comboBoxCompetence.SelectedValue & " " &
+                              "AND identif_Personne = " & Me.identif & ";")
 
         Me.loadDataGrid()
     End Sub
@@ -86,9 +85,9 @@
 
 
     Private Sub loadComboBoxCompetence()
-        Dim reader As System.Data.Odbc.OdbcDataReader = General.BDD.query("SELECT * 
-                                                                           FROM Competence
-                                                                           ORDER BY libelle;")
+        Dim reader As System.Data.Odbc.OdbcDataReader = General.BDD.query("SELECT identif, libelle " &
+                                                                           "FROM Competence " &
+                                                                           "ORDER BY libelle;")
 
         'ajoute les colonnes à la combobox
         Me.comboBoxCompetence.DisplayMember = "Text"
@@ -102,7 +101,9 @@
         tb.Rows.Add("", -1)
 
         While reader.Read()
-            tb.Rows.Add(reader.GetString(1), reader.GetInt32(0))
+            Dim id As Integer = Integer.Parse(reader.GetInt32(0))
+            Dim libelle As String = reader.GetString(1)
+            tb.Rows.Add(libelle, id)
         End While
 
         'applique les données à la combo
@@ -112,10 +113,10 @@
 
 
     Private Sub loadDataGrid()
-        Dim reader As System.Data.Odbc.OdbcDataReader = General.BDD.query("SELECT Competence.* 
-                                                                           FROM " & Me.table & ", Competence
-                                                                           WHERE " & Me.table & ".identif_Competence = Competence.identif 
-                                                                           AND " & Me.table & ".identif_Personne = " & Me.identif & ";")
+        Dim reader As System.Data.Odbc.OdbcDataReader = General.BDD.query("SELECT Competence.* " &
+                                                                           "FROM " & Me.table & ", Competence " &
+                                                                           "WHERE " & Me.table & ".identif_Competence = Competence.identif " &
+                                                                           "AND " & Me.table & ".identif_Personne = " & Me.identif & ";")
 
         Dim dataTable = New DataTable()
         dataTable.Load(reader)
@@ -128,18 +129,11 @@
 
     'vérifie si la personne a déjà la compétence en passant par un select avant une insertion (évite de planter le programme)
     Private Function hasCompetence(ByVal identif_competence As Integer) As Boolean
-        Dim reader As System.Data.Odbc.OdbcDataReader = General.BDD.query("SELECT * 
-                                                                           FROM " & Me.table & " 
-                                                                           WHERE identif_Personne = " & Me.identif & "
-                                                                           AND identif_Competence = " & identif_competence & "
-                                                                           LIMIT 1;")
-        If reader.HasRows Then
-            While reader.Read()
-                Return True
-            End While
-        End If
-
-        Return False
+        Dim reader As System.Data.Odbc.OdbcDataReader = General.BDD.query("SELECT * " &
+                                                                           "FROM " & Me.table & " " &
+                                                                           "WHERE identif_Personne = " & Me.identif & " " &
+                                                                           "AND identif_Competence = " & identif_competence & ";")
+        Return reader.HasRows
     End Function
 
 End Class

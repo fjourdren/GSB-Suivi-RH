@@ -176,11 +176,11 @@ Partial Class Recherche
         Me.DataGridView1.AllowUserToDeleteRows = False
         Me.DataGridView1.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill
         Me.DataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
-        Me.DataGridView1.Location = New System.Drawing.Point(12, 187)
+        Me.DataGridView1.Location = New System.Drawing.Point(12, 149)
         Me.DataGridView1.MultiSelect = False
         Me.DataGridView1.Name = "DataGridView1"
         Me.DataGridView1.ReadOnly = True
-        Me.DataGridView1.Size = New System.Drawing.Size(508, 245)
+        Me.DataGridView1.Size = New System.Drawing.Size(508, 283)
         Me.DataGridView1.TabIndex = 32
         '
         'Recherche
