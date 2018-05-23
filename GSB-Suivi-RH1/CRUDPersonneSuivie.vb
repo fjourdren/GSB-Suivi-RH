@@ -110,7 +110,7 @@
                               "VALUES ('" & Me.textBoxNom.Text & "', " &
                                         "'" & Me.textBoxPrenom.Text & "', " &
                                         "'" & Me.textBoxEmail.Text & "'," &
-                                        "'" & Format(Me.dateTimeDateDeNaissance.Value, "yyyy-MM-dd") & "', " &
+                                        "'" & Me.dateTimeDateDeNaissance.Value & "', " &
                                         "'" & Me.textBoxTransport.Text & "', " &
                                         "'" & Me.textBoxNote.Text & "', " &
                                         "'" & identif_MembreRessourceHumaineValue & "', " &
