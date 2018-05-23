@@ -55,11 +55,11 @@
 
     Private Sub btnAdd_Click(sender As Object, e As EventArgs) Handles btnAdd.Click
             If Me.comboBoxEntreprise.SelectedValue <> -1 And Me.hasEntreprise(Me.comboBoxEntreprise.SelectedValue) = False Then
-                General.BDD.nonQuery("INSERT INTO " & Me.table & "(identif_Personne, identif_Entreprise, dateDeb, dateFin) " &
-                                      "VALUES (" & Me.identif & ", " &
-                                      "" & Me.comboBoxEntreprise.SelectedValue & ", " &
-                                        "'" & Format(Me.DateTimeDateDeb.Value, "yyyy-MM-dd") & "', " &
-                                        "'" & Format(Me.DateTimeDateFin.Value, "yyyy-MM-dd") & "');")
+            General.BDD.nonQuery("INSERT INTO " & Me.table & "(identif_Personne, identif_Entreprise, dateDeb, dateFin) " &
+                                  "VALUES (" & Me.identif & ", " &
+                                  "" & Me.comboBoxEntreprise.SelectedValue & ", " &
+                                    "'" & Me.DateTimeDateDeb.Value & "', " &
+                                    "'" & Me.DateTimeDateFin.Value & "');")
                 Me.loadDataGrid()
             End If
     End Sub
