@@ -106,6 +106,8 @@
             identif_regionValue = "NULL"
         End If
 
+        MessageBox.Show(Me.dateTimeDateDeNaissance.Value)
+
         General.BDD.nonQuery("INSERT INTO " & Me.table & "(nom, prenom, email, dateDeNaissance, transport, noteRessourceHumaine, identif_MembreRessourceHumaine, identif_Region) " &
                               "VALUES ('" & Me.textBoxNom.Text & "', " &
                                         "'" & Me.textBoxPrenom.Text & "', " &
@@ -134,10 +136,11 @@
                 identif_regionValue = "NULL"
             End If
 
+            Dim dateNaissance As String = Convert.ToDateTime(Me.dateTimeDateDeNaissance.Value).ToString("dd/MM/yyyy")
             General.BDD.nonQuery("UPDATE " & Me.table & " SET nom='" & Me.textBoxNom.Text & "', " &
                                                               "prenom='" & Me.textBoxPrenom.Text & "'," &
                                                               "email='" & Me.textBoxEmail.Text & "'," &
-                                                              "dateDeNaissance='" & Format(Me.dateTimeDateDeNaissance.Value, "yyyy-MM-dd") & "'," &
+                                                              "dateDeNaissance='" & dateNaissance & "'," &
                                                               "transport='" & Me.textBoxTransport.Text & "'," &
                                                               "noteRessourceHumaine='" & Me.textBoxNote.Text & "'," &
                                                               "identif_MembreRessourceHumaine='" & identif_MembreRessourceHumaineValue & "'," &
