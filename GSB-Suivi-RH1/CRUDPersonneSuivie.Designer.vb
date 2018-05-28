@@ -230,6 +230,7 @@ Partial Class CRUDPersonneSuivie
         Me.dateTimeDateDeNaissance.Name = "dateTimeDateDeNaissance"
         Me.dateTimeDateDeNaissance.Size = New System.Drawing.Size(163, 20)
         Me.dateTimeDateDeNaissance.TabIndex = 16
+        Me.dateTimeDateDeNaissance.Value = New Date(2018, 5, 28, 0, 0, 0, 0)
         '
         'textBoxEmail
         '

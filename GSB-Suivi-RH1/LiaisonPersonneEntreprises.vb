@@ -37,8 +37,12 @@
         Me.labelEmailRender.Text = Me.email
 
         'setup date
-        Me.DateTimeDateDeb.Text = Date.Now
-        Me.DateTimeDateFin.Text = Date.Now
+        Me.DateTimeDateDeb.MaxDate = DateTime.Now
+        Me.DateTimeDateDeb.MinDate = Me.DateTimeDateDeb.MaxDate.AddYears(-100)
+
+        Me.DateTimeDateFin.MaxDate = DateTime.Now
+        Me.DateTimeDateFin.MinDate = Me.DateTimeDateFin.MaxDate.AddYears(-100)
+
 
         ' load entreprises combo box
         Me.loadComboBoxEntreprises()

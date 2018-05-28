@@ -7,6 +7,9 @@
         Me.loadComboBoxRegion()
         Me.loadComboBoxResponsable()
         Me.loadDataGrid()
+
+        Me.dateTimeDateDeNaissance.MaxDate = DateTime.Now
+        Me.dateTimeDateDeNaissance.MinDate = Me.dateTimeDateDeNaissance.MaxDate.AddYears(-100)
     End Sub
 
     Private Sub DataGridView_CellContentClick(ByVal sender As Object, ByVal e As DataGridViewCellEventArgs) Handles DataGridView1.CellContentClick, DataGridView1.CellContentDoubleClick, DataGridView1.CellClick
@@ -274,7 +277,7 @@
         Me.textBoxNom.Text = ""
         Me.textBoxPrenom.Text = ""
         Me.textBoxEmail.Text = ""
-        Me.dateTimeDateDeNaissance.Text = Date.Now
+        Me.dateTimeDateDeNaissance.Text = DateTime.Now.AddDays(-1)
         Me.textBoxTransport.Text = ""
         Me.textBoxNote.Text = ""
         Me.comboBoxResponsable.SelectedValue = -1
