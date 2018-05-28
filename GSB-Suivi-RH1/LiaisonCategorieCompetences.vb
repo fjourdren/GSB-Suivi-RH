@@ -111,7 +111,7 @@
         Dim reader As System.Data.Odbc.OdbcDataReader = General.BDD.query("SELECT Competence.*  " &
                                                                             "FROM Competence_Categorie, Competence  " &
                                                                             "WHERE Competence_Categorie.identif_Competence = Competence.identif  " &
-                                                                            "AND Competence_Categorie.identif_Categorie=1;")
+                                                                            "AND Competence_Categorie.identif_Categorie=" & Me.identif & ";")
 
         Dim dataTable = New DataTable()
         dataTable.Load(reader)
