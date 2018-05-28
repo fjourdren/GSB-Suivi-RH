@@ -57,8 +57,8 @@
                                           "VALUES (" & Me.identif & ", " & Me.comboBoxReseau.SelectedValue & ");")
                     Me.loadDataGrid()
                 Else
-                    General.BDD.nonQuery("INSERT INTO " & Me.table & "(identif_Personne, identif_Reseau, lien) " &
-                                          "VALUES (" & Me.identif & ", " & Me.comboBoxReseau.SelectedValue & ", '" & lien & "');")
+                General.BDD.nonQuery("INSERT INTO " & Me.table & "(identif_Personne, identif_Reseau, lien) " &
+                                      "VALUES (" & Me.identif & ", " & Me.comboBoxReseau.SelectedValue & ", '" & Replace(lien, "'", "''") & "');")
                     Me.loadDataGrid()
                 End If
             End If

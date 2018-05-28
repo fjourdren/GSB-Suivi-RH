@@ -114,12 +114,12 @@
 
         Dim dateNaissance As String = Convert.ToDateTime(Me.dateTimeDateDeNaissance.Value).ToString("dd/MM/yyyy")
         General.BDD.nonQuery("INSERT INTO " & Me.table & "(nom, prenom, email, dateDeNaissance, transport, noteRessourceHumaine, identif_MembreRessourceHumaine, identif_Region) " &
-                              "VALUES ('" & Me.textBoxNom.Text & "', " &
-                                        "'" & Me.textBoxPrenom.Text & "', " &
-                                        "'" & Me.textBoxEmail.Text & "'," &
+                              "VALUES ('" & Replace(Me.textBoxNom.Text, "'", "''") & "', " &
+                                        "'" & Replace(Me.textBoxPrenom.Text, "'", "''") & "', " &
+                                        "'" & Replace(Me.textBoxEmail.Text, "'", "''") & "'," &
                                         "TO_DATE('" & dateNaissance & "', 'dd/MM/yyyy'), " &
-                                        "'" & Me.textBoxTransport.Text & "', " &
-                                        "'" & Me.textBoxNote.Text & "', " &
+                                        "'" & Replace(Me.textBoxTransport.Text, "'", "''") & "', " &
+                                        "'" & Replace(Me.textBoxNote.Text, "'", "''") & "', " &
                                         completeSql & ");")
         Me.clear() 'clear form
         Me.loadDataGrid() 'refresh data grid
@@ -147,12 +147,12 @@
             End If
 
             Dim dateNaissance As String = Convert.ToDateTime(Me.dateTimeDateDeNaissance.Value).ToString("dd/MM/yyyy")
-            General.BDD.nonQuery("UPDATE " & Me.table & " SET nom='" & Me.textBoxNom.Text & "', " &
-                                                              "prenom='" & Me.textBoxPrenom.Text & "'," &
-                                                              "email='" & Me.textBoxEmail.Text & "'," &
+            General.BDD.nonQuery("UPDATE " & Me.table & " SET nom='" & Replace(Me.textBoxNom.Text, "'", "''") & "', " &
+                                                              "prenom='" & Replace(Me.textBoxPrenom.Text, "'", "''") & "'," &
+                                                              "email='" & Replace(Me.textBoxEmail.Text, "'", "''") & "'," &
                                                               "dateDeNaissance=TO_DATE('" & dateNaissance & "', 'dd/MM/yyyy'), " &
-                                                              "transport='" & Me.textBoxTransport.Text & "'," &
-                                                              "noteRessourceHumaine='" & Me.textBoxNote.Text & "'," &
+                                                              "transport='" & Replace(Me.textBoxTransport.Text, "'", "''") & "'," &
+                                                              "noteRessourceHumaine='" & Replace(Me.textBoxNote.Text, "'", "''") & "'," &
                                                               completeSql &
                                   "WHERE identif=" & identif & ";")
             Me.clear() 'clear form
