@@ -61,7 +61,7 @@
                                   "VALUES (" & Me.identif & ", " &
                                           "" & Me.comboBoxEntreprise.SelectedValue & ", " &
                                           "TO_DATE('" & DateTimeDateDeb & "', 'dd/MM/yyyy'), " &
-                                          "TO_DATE('" & DateTimeDateFin & "', 'dd/MM/yyyy');")
+                                          "TO_DATE('" & DateTimeDateFin & "', 'dd/MM/yyyy'));")
             Me.loadDataGrid()
         End If
     End Sub
