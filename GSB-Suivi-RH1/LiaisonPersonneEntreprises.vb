@@ -59,9 +59,9 @@
             Dim DateTimeDateFin As String = Convert.ToDateTime(Me.DateTimeDateFin.Value).ToString("dd/MM/yyyy")
             General.BDD.nonQuery("INSERT INTO " & Me.table & "(identif_Personne, identif_Entreprise, dateDeb, dateFin) " &
                                   "VALUES (" & Me.identif & ", " &
-                                  "" & Me.comboBoxEntreprise.SelectedValue & ", " &
-                                    "'" & DateTimeDateDeb & "', " &
-                                    "'" & DateTimeDateFin & "');")
+                                          "" & Me.comboBoxEntreprise.SelectedValue & ", " &
+                                          "TO_DATE('" & DateTimeDateDeb & "', 'dd/MM/yyyy'), " &
+                                          "TO_DATE('" & DateTimeDateFin & "', 'dd/MM/yyyy');")
             Me.loadDataGrid()
         End If
     End Sub
