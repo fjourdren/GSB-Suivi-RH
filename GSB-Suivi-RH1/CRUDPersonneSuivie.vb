@@ -98,24 +98,29 @@
         Dim identif_MembreRessourceHumaineValue As Object = Me.comboBoxResponsable.SelectedValue
         Dim identif_regionValue As Object = Me.comboBoxRegion.SelectedValue
 
+        Dim completeSql As String = ""
+
         If identif_MembreRessourceHumaineValue = -1 Then
-            identif_MembreRessourceHumaineValue = "NULL"
+            completeSql = "NULL,"
+        Else
+            completeSql = "" & identif_MembreRessourceHumaineValue & ","
         End If
 
         If identif_regionValue = -1 Then
-            identif_regionValue = "NULL"
+            completeSql &= "NULL"
+        Else
+            completeSql &= "" & identif_regionValue & " "
         End If
 
-
+        Dim dateNaissance As String = Convert.ToDateTime(Me.dateTimeDateDeNaissance.Value).ToString("dd/MM/yyyy")
         General.BDD.nonQuery("INSERT INTO " & Me.table & "(nom, prenom, email, dateDeNaissance, transport, noteRessourceHumaine, identif_MembreRessourceHumaine, identif_Region) " &
                               "VALUES ('" & Me.textBoxNom.Text & "', " &
                                         "'" & Me.textBoxPrenom.Text & "', " &
                                         "'" & Me.textBoxEmail.Text & "'," &
-                                        "'" & Me.dateTimeDateDeNaissance.Value & "', " &
+                                        "TO_DATE('" & dateNaissance & "', 'dd/MM/yyyy'), " &
                                         "'" & Me.textBoxTransport.Text & "', " &
                                         "'" & Me.textBoxNote.Text & "', " &
-                                        "'" & identif_MembreRessourceHumaineValue & "', " &
-                                        "'" & identif_regionValue & "');")
+                                        completeSql & ");")
         Me.clear() 'clear form
         Me.loadDataGrid() 'refresh data grid
     End Sub
@@ -127,24 +132,29 @@
             Dim identif_MembreRessourceHumaineValue As Object = Me.comboBoxResponsable.SelectedValue
             Dim identif_regionValue As Object = Me.comboBoxRegion.SelectedValue
 
+            Dim completeSql As String = ""
+
             If identif_MembreRessourceHumaineValue = -1 Then
-                identif_MembreRessourceHumaineValue = "NULL"
+                completeSql = "identif_MembreRessourceHumaine=NULL,"
+            Else
+                completeSql = "identif_MembreRessourceHumaine=" & identif_MembreRessourceHumaineValue & ","
             End If
 
             If identif_regionValue = -1 Then
-                identif_regionValue = "NULL"
+                completeSql &= "identif_Region=NULL "
+            Else
+                completeSql &= "identif_Region=" & identif_regionValue & " "
             End If
 
             Dim dateNaissance As String = Convert.ToDateTime(Me.dateTimeDateDeNaissance.Value).ToString("dd/MM/yyyy")
             General.BDD.nonQuery("UPDATE " & Me.table & " SET nom='" & Me.textBoxNom.Text & "', " &
                                                               "prenom='" & Me.textBoxPrenom.Text & "'," &
                                                               "email='" & Me.textBoxEmail.Text & "'," &
-                                                              "dateDeNaissance='" & dateNaissance & "'," &
+                                                              "dateDeNaissance=TO_DATE('" & dateNaissance & "', 'dd/MM/yyyy'), " &
                                                               "transport='" & Me.textBoxTransport.Text & "'," &
                                                               "noteRessourceHumaine='" & Me.textBoxNote.Text & "'," &
-                                                              "identif_MembreRessourceHumaine='" & identif_MembreRessourceHumaineValue & "'," &
-                                                              "identif_Region='" & identif_regionValue & "'" &
-                                  "WHERE identif='" & identif & "';")
+                                                              completeSql &
+                                  "WHERE identif=" & identif & ";")
             Me.clear() 'clear form
             Me.loadDataGrid() 'refresh data grid
         End If
