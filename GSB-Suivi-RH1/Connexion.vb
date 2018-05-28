@@ -1,8 +1,8 @@
 ﻿Public Class Connexion
 
     Private Sub btnLogin_Click(sender As Object, e As EventArgs) Handles btnLogin.Click
-        Dim username As String = Me.TextBoxUsername.Text
-        Dim password As String = Me.TextBoxPassword.Text
+        Dim username As String = Replace(Me.TextBoxUsername.Text, "'", "''")
+        Dim password As String = Replace(Me.TextBoxPassword.Text, "'", "''")
 
         Dim reader As System.Data.Odbc.OdbcDataReader = General.BDD.query("SELECT * FROM MembreRessourceHumaine WHERE nomUtilisateur='" & username & "' AND motDePasse='" & password & "';")
 

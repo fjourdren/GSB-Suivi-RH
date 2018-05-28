@@ -213,11 +213,12 @@
         Dim reader As System.Data.Odbc.OdbcDataReader = General.BDD.query("SELECT Personne.identif, Personne.nom, Personne.prenom, count(Personne_Competence.identif_Competence) As nbCompetence " &
                                                                            "FROM Personne, Personne_Competence " &
                                                                            "WHERE Personne_Competence.identif_Personne=Personne.identif " &
-                                                                           "AND ROWNUM <= 5 " &
                                                                            "GROUP BY Personne.identif, Personne.nom, Personne.prenom " &
                                                                            "ORDER BY count(Personne_Competence.identif_Competence) DESC;")
         While reader.Read()
             Dim lab As Label = New Label()
+            lab.AutoSize = True
+
             lab.Text = reader.GetString(1) & " " & reader.GetString(2) & " (" & reader.GetInt32(3) & ")"
 
             Me.TopPersonnesAvecCompetences.Controls.Add(lab)
@@ -229,12 +230,16 @@
         Dim reader As System.Data.Odbc.OdbcDataReader = General.BDD.query("SELECT Formation.identif, Formation.nom, count(Personne_Formation.identif_Personne) As nbPeronne " &
                                                                            "FROM Formation, Personne_Formation " &
                                                                            "WHERE Personne_Formation.identif_Formation=Formation.identif " &
-                                                                           "AND ROWNUM <= 5 " &
                                                                            "GROUP BY Formation.identif, Formation.nom " &
                                                                            "ORDER BY count(Personne_Formation.identif_Personne) DESC;")
         While reader.Read()
             Dim lab As Label = New Label()
-            lab.Text = reader.GetString(1) & " (" & reader.GetInt32(2) & ")"
+            lab.AutoSize = True
+
+            Dim nom As String = reader.GetString(1)
+            Dim numb As String = reader.GetInt32(2).ToString()
+
+            lab.Text = nom & " (" & numb & ")"
 
             Me.TopFormationsAvecPersonnes.Controls.Add(lab)
         End While
@@ -245,12 +250,16 @@
         Dim reader As System.Data.Odbc.OdbcDataReader = General.BDD.query("SELECT Region.identif, Region.nom, count(Personne.identif) as nbPersonne " &
                                                                            "FROM Region, Personne " &
                                                                            "WHERE Personne.identif_Region=Region.identif " &
-                                                                           "AND ROWNUM <= 5 " &
                                                                            "GROUP BY Region.identif, Region.nom " &
                                                                            "ORDER BY count(Personne.identif) DESC;")
         While reader.Read()
+            Dim nom As String = reader.GetString(1)
+            Dim numb As Integer = reader.GetInt32(2)
+
             Dim lab As Label = New Label()
-            lab.Text = reader.GetString(1) & " (" & reader.GetInt32(2) & ")"
+            lab.AutoSize = True
+
+            lab.Text = nom & " (" & numb & ")"
 
             Me.TopRegionsAvecPersonnes.Controls.Add(lab)
         End While
@@ -261,11 +270,12 @@
         Dim reader As System.Data.Odbc.OdbcDataReader = General.BDD.query("SELECT Entreprise.identif, Entreprise.nom, count(Personne_Entreprise.identif_Personne) As nbPeronne " &
                                                                            "FROM Entreprise, Personne_Entreprise " &
                                                                            "WHERE Personne_Entreprise.identif_Entreprise=Entreprise.identif " &
-                                                                           "AND ROWNUM <= 5 " &
                                                                            "GROUP BY Entreprise.identif, Entreprise.nom " &
                                                                            "ORDER BY count(Personne_Entreprise.identif_Personne) DESC;")
         While reader.Read()
             Dim lab As Label = New Label()
+            lab.AutoSize = True
+
             lab.Text = reader.GetString(1) & " (" & reader.GetInt32(2) & ")"
 
             Me.TopEntreprisesAvecPersonnes.Controls.Add(lab)
@@ -277,11 +287,12 @@
         Dim reader As System.Data.Odbc.OdbcDataReader = General.BDD.query("SELECT MembreRessourceHumaine.identif, MembreRessourceHumaine.nom, MembreRessourceHumaine.prenom, count(Personne.identif) as nbPersonne " &
                                                                            "FROM MembreRessourceHumaine, Personne " &
                                                                            "WHERE Personne.identif_MembreRessourceHumaine=MembreRessourceHumaine.identif " &
-                                                                           "AND ROWNUM <= 5 " &
                                                                            "GROUP BY MembreRessourceHumaine.identif, MembreRessourceHumaine.nom, MembreRessourceHumaine.prenom " &
                                                                            "ORDER BY count(Personne.identif) DESC;")
         While reader.Read()
             Dim lab As Label = New Label()
+            lab.AutoSize = True
+
             lab.Text = reader.GetString(1) & " " & reader.GetString(2) & " (" & reader.GetInt32(3) & ")"
 
             Me.TopMembresRessourceHumaineAvecPersonnes.Controls.Add(lab)

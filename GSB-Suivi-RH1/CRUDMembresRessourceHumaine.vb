@@ -54,11 +54,11 @@
     Private Sub btnNew_Click(sender As Object, e As EventArgs) Handles btnNew.Click
         If Not (String.IsNullOrEmpty(Me.textBoxPassword.Text)) And Me.textBoxPassword.Text = Me.textBoxRepeatPassword.Text Then
             General.BDD.nonQuery("INSERT INTO " & Me.table & "(nom, prenom, email, nomUtilisateur, motDePasse)" &
-                              "VALUES ('" & Me.textBoxNom.Text & "', " &
-                                      "'" & Me.textBoxPrenom.Text & "', " &
-                                      "'" & Me.textBoxEmail.Text & "', " &
-                                      "'" & Me.textBoxUsername.Text & "', " &
-                                      "'" & Me.textBoxPassword.Text & "');")
+                              "VALUES ('" & Replace(Me.textBoxNom.Text, "'", "''") & "', " &
+                                      "'" & Replace(Me.textBoxPrenom.Text, "'", "''") & "', " &
+                                      "'" & Replace(Me.textBoxEmail.Text, "'", "''") & "', " &
+                                      "'" & Replace(Me.textBoxUsername.Text, "'", "''") & "', " &
+                                      "'" & Replace(Me.textBoxPassword.Text, "'", "''") & "');")
             Me.clear() 'clear form
             Me.loadDataGrid() 'refresh data grid
         Else
@@ -69,10 +69,10 @@
     Private Sub btnSave_Click(sender As Object, e As EventArgs) Handles btnSave.Click
         Dim identif As Integer = Me.labelIdentifRender.Text
         If identif > 0 Then
-            General.BDD.nonQuery("UPDATE " & Me.table & " SET nom='" & Me.textBoxNom.Text & "', " &
-                                                              "prenom='" & Me.textBoxPrenom.Text & "', " &
-                                                              "email='" & Me.textBoxEmail.Text & "', " &
-                                                              "nomUtilisateur='" & Me.textBoxUsername.Text & "' " &
+            General.BDD.nonQuery("UPDATE " & Me.table & " SET nom='" & Replace(Me.textBoxNom.Text, "'", "''") & "', " &
+                                                              "prenom='" & Replace(Me.textBoxPrenom.Text, "'", "''") & "', " &
+                                                              "email='" & Replace(Me.textBoxEmail.Text, "'", "''") & "', " &
+                                                              "nomUtilisateur='" & Replace(Me.textBoxUsername.Text, "'", "''") & "' " &
                                   "WHERE identif = '" & identif & "';")
             Me.loadDataGrid() 'refresh data grid
 
@@ -80,7 +80,7 @@
             'update password si les champs sont remplis
             If Not (String.IsNullOrEmpty(Me.textBoxPassword.Text)) Then
                 If Me.textBoxPassword.Text = Me.textBoxRepeatPassword.Text Then
-                    General.BDD.nonQuery("UPDATE " & Me.table & " SET motDePasse='" & Me.textBoxPassword.Text & "' WHERE identif = '" & identif & "';")
+                    General.BDD.nonQuery("UPDATE " & Me.table & " SET motDePasse='" & Replace(Me.textBoxPassword.Text, "'", "''") & "' WHERE identif = '" & identif & "';")
                     Me.clear() 'clear form
                 Else
                     MessageBox.Show("Les mots de passes ne sont pas identiques")

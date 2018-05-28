@@ -389,6 +389,7 @@ Partial Class Statistiques
         '
         'TopFormationsAvecPersonnes
         '
+        Me.TopFormationsAvecPersonnes.AutoSize = True
         Me.TopFormationsAvecPersonnes.ColumnCount = 2
         Me.TopFormationsAvecPersonnes.ColumnStyles.Add(New System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 22.0!))
         Me.TopFormationsAvecPersonnes.ColumnStyles.Add(New System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 178.0!))
@@ -406,7 +407,7 @@ Partial Class Statistiques
         Me.TopFormationsAvecPersonnes.RowStyles.Add(New System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20.0!))
         Me.TopFormationsAvecPersonnes.RowStyles.Add(New System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20.0!))
         Me.TopFormationsAvecPersonnes.Size = New System.Drawing.Size(200, 100)
-        Me.TopFormationsAvecPersonnes.TabIndex = 22
+        Me.TopFormationsAvecPersonnes.TabIndex = 28
         '
         'Label16
         '
@@ -456,9 +457,9 @@ Partial Class Statistiques
         'GroupBox6
         '
         Me.GroupBox6.Controls.Add(Me.TopRegionsAvecPersonnes)
-        Me.GroupBox6.Location = New System.Drawing.Point(231, 28)
+        Me.GroupBox6.Location = New System.Drawing.Point(231, 12)
         Me.GroupBox6.Name = "GroupBox6"
-        Me.GroupBox6.Size = New System.Drawing.Size(213, 123)
+        Me.GroupBox6.Size = New System.Drawing.Size(214, 123)
         Me.GroupBox6.TabIndex = 34
         Me.GroupBox6.TabStop = False
         Me.GroupBox6.Text = "Régions avec le plus de personnes"
@@ -532,9 +533,9 @@ Partial Class Statistiques
         'GroupBox7
         '
         Me.GroupBox7.Controls.Add(Me.TopEntreprisesAvecPersonnes)
-        Me.GroupBox7.Location = New System.Drawing.Point(231, 162)
+        Me.GroupBox7.Location = New System.Drawing.Point(231, 146)
         Me.GroupBox7.Name = "GroupBox7"
-        Me.GroupBox7.Size = New System.Drawing.Size(213, 123)
+        Me.GroupBox7.Size = New System.Drawing.Size(214, 123)
         Me.GroupBox7.TabIndex = 35
         Me.GroupBox7.TabStop = False
         Me.GroupBox7.Text = "Entreprises avec le plus de personnes"
@@ -608,9 +609,9 @@ Partial Class Statistiques
         'GroupBox8
         '
         Me.GroupBox8.Controls.Add(Me.TopMembresRessourceHumaineAvecPersonnes)
-        Me.GroupBox8.Location = New System.Drawing.Point(231, 292)
+        Me.GroupBox8.Location = New System.Drawing.Point(231, 276)
         Me.GroupBox8.Name = "GroupBox8"
-        Me.GroupBox8.Size = New System.Drawing.Size(213, 142)
+        Me.GroupBox8.Size = New System.Drawing.Size(214, 142)
         Me.GroupBox8.TabIndex = 36
         Me.GroupBox8.TabStop = False
         Me.GroupBox8.Text = "Ressources Humaines avec le plus de Personnes"
@@ -710,6 +711,7 @@ Partial Class Statistiques
         Me.TopPersonnesAvecCompetences.ResumeLayout(False)
         Me.TopPersonnesAvecCompetences.PerformLayout()
         Me.GroupBox5.ResumeLayout(False)
+        Me.GroupBox5.PerformLayout()
         Me.TopFormationsAvecPersonnes.ResumeLayout(False)
         Me.TopFormationsAvecPersonnes.PerformLayout()
         Me.GroupBox6.ResumeLayout(False)

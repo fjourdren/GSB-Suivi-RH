@@ -31,7 +31,7 @@
     End Sub
 
     Private Sub btnNew_Click(sender As Object, e As EventArgs) Handles btnNew.Click
-        General.BDD.nonQuery("INSERT INTO " & Me.table & "(libelle) VALUES ('" & Me.textBoxLibelle.Text & "');")
+        General.BDD.nonQuery("INSERT INTO " & Me.table & "(libelle) VALUES ('" & Replace(Me.textBoxLibelle.Text, "'", "''") & "');")
         Me.clear() 'clear form
         Me.loadDataGrid() 'refresh data grid
     End Sub
@@ -39,7 +39,7 @@
     Private Sub btnSave_Click(sender As Object, e As EventArgs) Handles btnSave.Click
         Dim identif As Integer = Me.labelIdentifRender.Text
         If identif > 0 Then
-            General.BDD.nonQuery("UPDATE " & Me.table & " SET libelle='" & Me.textBoxLibelle.Text & "' WHERE identif = '" & identif & "';")
+            General.BDD.nonQuery("UPDATE " & Me.table & " SET libelle='" & Replace(Me.textBoxLibelle.Text, "'", "''") & "' WHERE identif = '" & identif & "';")
             Me.clear() 'clear form
             Me.loadDataGrid() 'refresh data grid
         End If

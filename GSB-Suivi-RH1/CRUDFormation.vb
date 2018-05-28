@@ -2,12 +2,12 @@
     Dim table As String = "Formation"
 
     'events
-    Private Sub CRUD_Load(sender As Object, e As EventArgs) Handles MyBase.Load
+    Private Sub CRUD_Load(ByVal sender As Object, ByVal e As EventArgs) Handles MyBase.Load
         Me.clear() 'clear form
         Me.loadDataGrid()
     End Sub
 
-    Private Sub DataGridView_CellContentClick(sender As Object, e As DataGridViewCellEventArgs) Handles DataGridView1.CellContentClick, DataGridView1.CellContentDoubleClick, DataGridView1.CellClick
+    Private Sub DataGridView_CellContentClick(ByVal sender As Object, ByVal e As DataGridViewCellEventArgs) Handles DataGridView1.CellContentClick, DataGridView1.CellContentDoubleClick, DataGridView1.CellClick
         Dim x As Integer = e.RowIndex
 
         If x >= 0 Then
@@ -26,20 +26,20 @@
 
 
     'boutons
-    Private Sub btnReset_Click(sender As Object, e As EventArgs) Handles btnReset.Click
+    Private Sub btnReset_Click(ByVal sender As Object, ByVal e As EventArgs) Handles btnReset.Click
         Me.clear() 'clear form
     End Sub
 
-    Private Sub btnNew_Click(sender As Object, e As EventArgs) Handles btnNew.Click
-        General.BDD.nonQuery("INSERT INTO " & Me.table & "(nom) VALUES ('" & Me.textBoxName.Text & "');")
+    Private Sub btnNew_Click(ByVal sender As Object, ByVal e As EventArgs) Handles btnNew.Click
+        General.BDD.nonQuery("INSERT INTO " & Me.table & "(nom) VALUES ('" & Replace(Me.textBoxName.Text, "'", "''") & "');")
         Me.clear() 'clear form
         Me.loadDataGrid() 'refresh data grid
     End Sub
 
-    Private Sub btnSave_Click(sender As Object, e As EventArgs) Handles btnSave.Click
+    Private Sub btnSave_Click(ByVal sender As Object, ByVal e As EventArgs) Handles btnSave.Click
         Dim identif As Integer = Me.labelIdentifRender.Text
         If identif > 0 Then
-            General.BDD.nonQuery("UPDATE " & Me.table & " SET nom='" & Me.textBoxName.Text & "' WHERE identif = '" & identif & "';")
+            General.BDD.nonQuery("UPDATE " & Me.table & " SET nom='" & Replace(Me.textBoxName.Text, "'", "''") & "' WHERE identif = '" & identif & "';")
             Me.clear() 'clear form
             Me.loadDataGrid() 'refresh data grid
         End If

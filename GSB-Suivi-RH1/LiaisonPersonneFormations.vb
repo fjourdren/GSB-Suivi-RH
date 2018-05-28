@@ -59,7 +59,7 @@
             Else
                 If Utils.yearIsValid(annee) Then
                     General.BDD.nonQuery("INSERT INTO " & Me.table & "(identif_Personne, identif_Formation, annee) " &
-                                      "VALUES (" & Me.identif & ", " & Me.comboBoxFormation.SelectedValue & ", " & annee & ");")
+                                      "VALUES (" & Me.identif & ", " & Me.comboBoxFormation.SelectedValue & ", " & Replace(annee, "'", "''") & ");")
                     Me.loadDataGrid()
                 Else
                     MessageBox.Show("Année non valide")
