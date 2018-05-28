@@ -106,7 +106,6 @@
             identif_regionValue = "NULL"
         End If
 
-        MessageBox.Show(Me.dateTimeDateDeNaissance.Value)
 
         General.BDD.nonQuery("INSERT INTO " & Me.table & "(nom, prenom, email, dateDeNaissance, transport, noteRessourceHumaine, identif_MembreRessourceHumaine, identif_Region) " &
                               "VALUES ('" & Me.textBoxNom.Text & "', " &
