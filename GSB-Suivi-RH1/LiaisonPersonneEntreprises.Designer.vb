@@ -34,14 +34,14 @@ Partial Class LiaisonPersonneEntreprises
         Me.labelIdentif = New System.Windows.Forms.Label()
         Me.DataGridView1 = New System.Windows.Forms.DataGridView()
         Me.GroupBox2 = New System.Windows.Forms.GroupBox()
+        Me.DateTimeDateFin = New System.Windows.Forms.DateTimePicker()
+        Me.DateTimeDateDeb = New System.Windows.Forms.DateTimePicker()
+        Me.Label2 = New System.Windows.Forms.Label()
+        Me.Label1 = New System.Windows.Forms.Label()
         Me.labelRegion = New System.Windows.Forms.Label()
         Me.btnDelete = New System.Windows.Forms.Button()
         Me.comboBoxEntreprise = New System.Windows.Forms.ComboBox()
         Me.btnAdd = New System.Windows.Forms.Button()
-        Me.Label1 = New System.Windows.Forms.Label()
-        Me.Label2 = New System.Windows.Forms.Label()
-        Me.DateTimeDateDeb = New System.Windows.Forms.DateTimePicker()
-        Me.DateTimeDateFin = New System.Windows.Forms.DateTimePicker()
         Me.GroupBox1.SuspendLayout()
         CType(Me.DataGridView1, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.GroupBox2.SuspendLayout()
@@ -166,6 +166,40 @@ Partial Class LiaisonPersonneEntreprises
         Me.GroupBox2.TabStop = False
         Me.GroupBox2.Text = "Entreprise"
         '
+        'DateTimeDateFin
+        '
+        Me.DateTimeDateFin.CustomFormat = ""
+        Me.DateTimeDateFin.Location = New System.Drawing.Point(122, 66)
+        Me.DateTimeDateFin.Name = "DateTimeDateFin"
+        Me.DateTimeDateFin.Size = New System.Drawing.Size(163, 20)
+        Me.DateTimeDateFin.TabIndex = 36
+        '
+        'DateTimeDateDeb
+        '
+        Me.DateTimeDateDeb.CustomFormat = ""
+        Me.DateTimeDateDeb.Location = New System.Drawing.Point(122, 40)
+        Me.DateTimeDateDeb.Name = "DateTimeDateDeb"
+        Me.DateTimeDateDeb.Size = New System.Drawing.Size(163, 20)
+        Me.DateTimeDateDeb.TabIndex = 35
+        '
+        'Label2
+        '
+        Me.Label2.AutoSize = True
+        Me.Label2.Location = New System.Drawing.Point(6, 72)
+        Me.Label2.Name = "Label2"
+        Me.Label2.Size = New System.Drawing.Size(50, 13)
+        Me.Label2.TabIndex = 34
+        Me.Label2.Text = "Date fin :"
+        '
+        'Label1
+        '
+        Me.Label1.AutoSize = True
+        Me.Label1.Location = New System.Drawing.Point(6, 46)
+        Me.Label1.Name = "Label1"
+        Me.Label1.Size = New System.Drawing.Size(66, 13)
+        Me.Label1.TabIndex = 32
+        Me.Label1.Text = "Date début :"
+        '
         'labelRegion
         '
         Me.labelRegion.AutoSize = True
@@ -201,40 +235,6 @@ Partial Class LiaisonPersonneEntreprises
         Me.btnAdd.TabIndex = 27
         Me.btnAdd.Text = "Ajouter"
         Me.btnAdd.UseVisualStyleBackColor = True
-        '
-        'Label1
-        '
-        Me.Label1.AutoSize = True
-        Me.Label1.Location = New System.Drawing.Point(6, 46)
-        Me.Label1.Name = "Label1"
-        Me.Label1.Size = New System.Drawing.Size(66, 13)
-        Me.Label1.TabIndex = 32
-        Me.Label1.Text = "Date début :"
-        '
-        'Label2
-        '
-        Me.Label2.AutoSize = True
-        Me.Label2.Location = New System.Drawing.Point(6, 72)
-        Me.Label2.Name = "Label2"
-        Me.Label2.Size = New System.Drawing.Size(50, 13)
-        Me.Label2.TabIndex = 34
-        Me.Label2.Text = "Date fin :"
-        '
-        'DateTimeDateDeb
-        '
-        Me.DateTimeDateDeb.CustomFormat = ""
-        Me.DateTimeDateDeb.Location = New System.Drawing.Point(122, 40)
-        Me.DateTimeDateDeb.Name = "DateTimeDateDeb"
-        Me.DateTimeDateDeb.Size = New System.Drawing.Size(163, 20)
-        Me.DateTimeDateDeb.TabIndex = 35
-        '
-        'DateTimeDateFin
-        '
-        Me.DateTimeDateFin.CustomFormat = ""
-        Me.DateTimeDateFin.Location = New System.Drawing.Point(122, 66)
-        Me.DateTimeDateFin.Name = "DateTimeDateFin"
-        Me.DateTimeDateFin.Size = New System.Drawing.Size(163, 20)
-        Me.DateTimeDateFin.TabIndex = 36
         '
         'LiaisonPersonneEntreprises
         '

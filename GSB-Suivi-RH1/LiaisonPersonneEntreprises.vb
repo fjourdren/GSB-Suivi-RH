@@ -54,14 +54,18 @@
 
 
     Private Sub btnAdd_Click(sender As Object, e As EventArgs) Handles btnAdd.Click
-            If Me.comboBoxEntreprise.SelectedValue <> -1 And Me.hasEntreprise(Me.comboBoxEntreprise.SelectedValue) = False Then
+        If Me.comboBoxEntreprise.SelectedValue <> -1 And Me.hasEntreprise(Me.comboBoxEntreprise.SelectedValue) = False Then
+            Dim DateTimeDateDeb As String = Convert.ToDateTime(Me.DateTimeDateDeb.Value).ToString("dd/MM/yyyy")
+            MessageBox.Show(DateTimeDateDeb)
+            Dim DateTimeDateFin As String = Convert.ToDateTime(Me.DateTimeDateFin.Value).ToString("dd/MM/yyyy")
+            MessageBox.Show(DateTimeDateFin)
             General.BDD.nonQuery("INSERT INTO " & Me.table & "(identif_Personne, identif_Entreprise, dateDeb, dateFin) " &
                                   "VALUES (" & Me.identif & ", " &
                                   "" & Me.comboBoxEntreprise.SelectedValue & ", " &
-                                    "'" & Me.DateTimeDateDeb.Value & "', " &
-                                    "'" & Me.DateTimeDateFin.Value & "');")
-                Me.loadDataGrid()
-            End If
+                                    "'" & DateTimeDateDeb & "', " &
+                                    "'" & DateTimeDateFin & "');")
+            Me.loadDataGrid()
+        End If
     End Sub
 
     Private Sub btnDelete_Click(sender As Object, e As EventArgs) Handles btnDelete.Click
