@@ -215,13 +215,18 @@
                                                                            "WHERE Personne_Competence.identif_Personne=Personne.identif " &
                                                                            "GROUP BY Personne.identif, Personne.nom, Personne.prenom " &
                                                                            "ORDER BY count(Personne_Competence.identif_Competence) DESC;")
-        While reader.Read()
+
+        Dim nbRun As Integer = 1
+
+        While reader.Read() And nbRun <= 5
             Dim lab As Label = New Label()
             lab.AutoSize = True
 
             lab.Text = reader.GetString(1) & " " & reader.GetString(2) & " (" & reader.GetInt32(3) & ")"
 
             Me.TopPersonnesAvecCompetences.Controls.Add(lab)
+
+            nbRun += 1
         End While
     End Sub
 
@@ -232,7 +237,9 @@
                                                                            "WHERE Personne_Formation.identif_Formation=Formation.identif " &
                                                                            "GROUP BY Formation.identif, Formation.nom " &
                                                                            "ORDER BY count(Personne_Formation.identif_Personne) DESC;")
-        While reader.Read()
+        Dim nbRun As Integer = 1
+
+        While reader.Read() And nbRun <= 5
             Dim lab As Label = New Label()
             lab.AutoSize = True
 
@@ -242,6 +249,8 @@
             lab.Text = nom & " (" & numb & ")"
 
             Me.TopFormationsAvecPersonnes.Controls.Add(lab)
+
+            nbRun += 1
         End While
     End Sub
 
@@ -252,7 +261,10 @@
                                                                            "WHERE Personne.identif_Region=Region.identif " &
                                                                            "GROUP BY Region.identif, Region.nom " &
                                                                            "ORDER BY count(Personne.identif) DESC;")
-        While reader.Read()
+
+        Dim nbRun As Integer = 1
+
+        While reader.Read() And nbRun <= 5
             Dim nom As String = reader.GetString(1)
             Dim numb As Integer = reader.GetInt32(2)
 
@@ -262,6 +274,8 @@
             lab.Text = nom & " (" & numb & ")"
 
             Me.TopRegionsAvecPersonnes.Controls.Add(lab)
+
+            nbRun += 1
         End While
     End Sub
 
@@ -272,13 +286,18 @@
                                                                            "WHERE Personne_Entreprise.identif_Entreprise=Entreprise.identif " &
                                                                            "GROUP BY Entreprise.identif, Entreprise.nom " &
                                                                            "ORDER BY count(Personne_Entreprise.identif_Personne) DESC;")
-        While reader.Read()
+
+        Dim nbRun As Integer = 1
+
+        While reader.Read() And nbRun <= 5
             Dim lab As Label = New Label()
             lab.AutoSize = True
 
             lab.Text = reader.GetString(1) & " (" & reader.GetInt32(2) & ")"
 
             Me.TopEntreprisesAvecPersonnes.Controls.Add(lab)
+
+            nbRun += 1
         End While
     End Sub
 
@@ -289,13 +308,18 @@
                                                                            "WHERE Personne.identif_MembreRessourceHumaine=MembreRessourceHumaine.identif " &
                                                                            "GROUP BY MembreRessourceHumaine.identif, MembreRessourceHumaine.nom, MembreRessourceHumaine.prenom " &
                                                                            "ORDER BY count(Personne.identif) DESC;")
-        While reader.Read()
+
+        Dim nbRun As Integer = 1
+
+        While reader.Read() And nbRun <= 5
             Dim lab As Label = New Label()
             lab.AutoSize = True
 
             lab.Text = reader.GetString(1) & " " & reader.GetString(2) & " (" & reader.GetInt32(3) & ")"
 
             Me.TopMembresRessourceHumaineAvecPersonnes.Controls.Add(lab)
+
+            nbRun += 1
         End While
     End Sub
 
