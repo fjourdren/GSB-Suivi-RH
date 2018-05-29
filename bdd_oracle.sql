@@ -236,23 +236,23 @@ END;
 
 
 /* CONSTRAINTS */
-ALTER TABLE Personne ADD CONSTRAINT fkPersonne_MembreRessourceHuma FOREIGN KEY (identif_MembreRessourceHumaine) REFERENCES MembreRessourceHumaine (identif);
-ALTER TABLE Personne ADD CONSTRAINT fkPersonne_Region FOREIGN KEY (identif_Region) REFERENCES Region (identif);
+ALTER TABLE Personne ADD CONSTRAINT fkPersonne_MembreRessourceHuma FOREIGN KEY (identif_MembreRessourceHumaine) REFERENCES MembreRessourceHumaine (identif) ON DELETE CASCADE;
+ALTER TABLE Personne ADD CONSTRAINT fkPersonne_Region FOREIGN KEY (identif_Region) REFERENCES Region (identif) ON DELETE CASCADE;
 
-ALTER TABLE Personne_Reseau ADD CONSTRAINT fkPersonne_Reseau_Personne FOREIGN KEY (identif_Personne) REFERENCES Personne (identif);
-ALTER TABLE Personne_Reseau ADD CONSTRAINT fkPersonneReseau_Reseau FOREIGN KEY (identif_Reseau) REFERENCES Reseau (identif);
+ALTER TABLE Personne_Reseau ADD CONSTRAINT fkPersonne_Reseau_Personne FOREIGN KEY (identif_Personne) REFERENCES Personne (identif) ON DELETE CASCADE;
+ALTER TABLE Personne_Reseau ADD CONSTRAINT fkPersonneReseau_Reseau FOREIGN KEY (identif_Reseau) REFERENCES Reseau (identif) ON DELETE CASCADE;
 
-ALTER TABLE Personne_Competence ADD CONSTRAINT fkPersonneCompetence_Personne FOREIGN KEY (identif_Personne) REFERENCES Personne (identif);
-ALTER TABLE Personne_Competence ADD CONSTRAINT fkPersonneCompetence_Competenc FOREIGN KEY (identif_Competence) REFERENCES Competence (identif);
+ALTER TABLE Personne_Competence ADD CONSTRAINT fkPersonneCompetence_Personne FOREIGN KEY (identif_Personne) REFERENCES Personne (identif) ON DELETE CASCADE;
+ALTER TABLE Personne_Competence ADD CONSTRAINT fkPersonneCompetence_Competenc FOREIGN KEY (identif_Competence) REFERENCES Competence (identif) ON DELETE CASCADE;
 
-ALTER TABLE Competence_Categorie ADD CONSTRAINT fkCompetenceCategorie_Competen FOREIGN KEY (identif_Competence) REFERENCES Competence (identif);
-ALTER TABLE Competence_Categorie ADD CONSTRAINT fkCompetenceCategorie_Categori FOREIGN KEY (identif_Categorie) REFERENCES Categorie (identif);
+ALTER TABLE Competence_Categorie ADD CONSTRAINT fkCompetenceCategorie_Competen FOREIGN KEY (identif_Competence) REFERENCES Competence (identif) ON DELETE CASCADE;
+ALTER TABLE Competence_Categorie ADD CONSTRAINT fkCompetenceCategorie_Categori FOREIGN KEY (identif_Categorie) REFERENCES Categorie (identif) ON DELETE CASCADE;
 
-ALTER TABLE Personne_Entreprise ADD CONSTRAINT fkPersonneEntreprise_Personne FOREIGN KEY (identif_Personne) REFERENCES Personne (identif);
-ALTER TABLE Personne_Entreprise ADD CONSTRAINT fkPersonneEntreprise_Entrepris FOREIGN KEY (identif_Entreprise) REFERENCES Entreprise (identif);
+ALTER TABLE Personne_Entreprise ADD CONSTRAINT fkPersonneEntreprise_Personne FOREIGN KEY (identif_Personne) REFERENCES Personne (identif) ON DELETE CASCADE;
+ALTER TABLE Personne_Entreprise ADD CONSTRAINT fkPersonneEntreprise_Entrepris FOREIGN KEY (identif_Entreprise) REFERENCES Entreprise (identif) ON DELETE CASCADE;
 
-ALTER TABLE Personne_Formation ADD CONSTRAINT fkPersonneFormation_Personne FOREIGN KEY (identif_Personne) REFERENCES Personne (identif);
-ALTER TABLE Personne_Formation ADD CONSTRAINT fkPersonneFormation_Formation FOREIGN KEY (identif_Formation) REFERENCES Formation (identif);
+ALTER TABLE Personne_Formation ADD CONSTRAINT fkPersonneFormation_Personne FOREIGN KEY (identif_Personne) REFERENCES Personne (identif) ON DELETE CASCADE;
+ALTER TABLE Personne_Formation ADD CONSTRAINT fkPersonneFormation_Formation FOREIGN KEY (identif_Formation) REFERENCES Formation (identif) ON DELETE CASCADE;
 
 
 

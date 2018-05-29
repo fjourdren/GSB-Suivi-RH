@@ -51,13 +51,13 @@
         Me.loadDataGrid()
     End Sub
 
-    Private Sub LiaisonPersonneEntreprises_Load(sender As Object, e As EventArgs) Handles MyBase.Load
+    Private Sub LiaisonPersonneEntreprises_Load(ByVal sender As Object, ByVal e As EventArgs) Handles MyBase.Load
         Me.Text = Me.Text & " " & Me.prenom & " " & Me.nom
     End Sub
 
 
 
-    Private Sub btnAdd_Click(sender As Object, e As EventArgs) Handles btnAdd.Click
+    Private Sub btnAdd_Click(ByVal sender As Object, ByVal e As EventArgs) Handles btnAdd.Click
         If Me.comboBoxEntreprise.SelectedValue <> -1 And Me.hasEntreprise(Me.comboBoxEntreprise.SelectedValue) = False Then
             Dim DateTimeDateDeb As String = Convert.ToDateTime(Me.DateTimeDateDeb.Value).ToString("dd/MM/yyyy")
             Dim DateTimeDateFin As String = Convert.ToDateTime(Me.DateTimeDateFin.Value).ToString("dd/MM/yyyy")
@@ -70,7 +70,7 @@
         End If
     End Sub
 
-    Private Sub btnDelete_Click(sender As Object, e As EventArgs) Handles btnDelete.Click
+    Private Sub btnDelete_Click(ByVal sender As Object, ByVal e As EventArgs) Handles btnDelete.Click
         General.BDD.nonQuery("DELETE FROM " & Me.table & " " &
                               "WHERE identif_Entreprise = " & Me.comboBoxEntreprise.SelectedValue & " " &
                               "AND identif_Personne = " & Me.identif & ";")
@@ -80,7 +80,7 @@
 
 
 
-    Private Sub DataGridView1_CellContentClick(sender As Object, e As DataGridViewCellEventArgs) Handles DataGridView1.CellContentClick, DataGridView1.CellContentDoubleClick, DataGridView1.CellClick
+    Private Sub DataGridView1_CellContentClick(ByVal sender As Object, ByVal e As DataGridViewCellEventArgs) Handles DataGridView1.CellContentClick, DataGridView1.CellContentDoubleClick, DataGridView1.CellClick
         'focus entreprise dans la combobox
         Dim x As Integer = e.RowIndex
 
